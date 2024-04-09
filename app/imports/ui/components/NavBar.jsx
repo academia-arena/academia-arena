@@ -3,8 +3,8 @@ import { Meteor } from 'meteor/meteor';
 import { useTracker } from 'meteor/react-meteor-data';
 import { NavLink } from 'react-router-dom';
 import { Roles } from 'meteor/alanning:roles';
-import { Container, Nav, Navbar, NavDropdown } from 'react-bootstrap';
-import { BoxArrowRight, PersonFill, PersonPlusFill } from 'react-bootstrap-icons';
+import { Container, Nav, Navbar, NavDropdown, Row, Col } from 'react-bootstrap';
+import { BoxArrowRight, PersonBadgeFill, PersonFill, PersonPlusFill } from 'react-bootstrap-icons';
 
 const NavBar = () => {
   // useTracker connects Meteor data to React components. https://guide.meteor.com/react.html#using-withTracker
@@ -16,7 +16,14 @@ const NavBar = () => {
     <Navbar bg="light" expand="lg">
       <Container>
         <Navbar.Brand as={NavLink} to="/">
-          <h2>meteor-application-template-react</h2>
+          <Row>
+            <Col>
+              <h2 style={{ color: '#faf3e2' }}>Academia Arena</h2>
+            </Col>
+            <Col>
+              <PersonBadgeFill size={30} className="pt-2" style={{ color: '#faf3e2' }} />
+            </Col>
+          </Row>
         </Navbar.Brand>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
