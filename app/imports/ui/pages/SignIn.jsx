@@ -42,43 +42,34 @@ const SignIn = () => {
   // Otherwise return the Login form.
   return (
     <div id="page-container" className="pt-5">
-      <Row>
-        <Container fluid className="py-3" id="title-block">
-          <Row>
-            <Col className="text-center">
-              <h2>Login to your account</h2>
-            </Col>
-          </Row>
-        </Container>
-
-        <Container id="signin-page" className="py-3">
-          <Row className="justify-content-center">
-            <Col xs={10}>
-              <AutoForm schema={bridge} onSubmit={data => submit(data)}>
-                <Card>
-                  <Card.Body id="input-card-body">
-                    <TextField id="signin-form-email" name="email" placeholder="E-mail address" />
-                    <TextField id="signin-form-password" name="password" placeholder="Password" type="password" />
-                    <ErrorsField />
-                    <SubmitField id="signin-form-submit" />
-                  </Card.Body>
-                </Card>
-              </AutoForm>
-              <Alert variant="light">
-                <Link to="/signup">Click here to Register</Link>
+      <Container id="signin-page" className="pt-5">
+        <Row className="justify-content-center">
+          <Col xs={5}>
+            <AutoForm schema={bridge} onSubmit={data => submit(data)}>
+              <Card>
+                <Card.Body id="input-card-body">
+                  <h2 className="text-center">Login to your account</h2>
+                  <TextField id="signin-form-email" name="email" placeholder="E-mail address" />
+                  <TextField id="signin-form-password" name="password" placeholder="Password" type="password" />
+                  <ErrorsField />
+                  <SubmitField id="signin-form-submit" style={{ color: 'green' }} />
+                  <div style={{ marginTop: '10px', textAlign: 'center' }}>
+                    <Link to="/signup" style={{ color: 'black' }}>Click here to Register</Link>
+                  </div>
+                </Card.Body>
+              </Card>
+            </AutoForm>
+            {error === '' ? (
+              ''
+            ) : (
+              <Alert variant="danger">
+                <Alert.Heading>Login was not successful</Alert.Heading>
+                {error}
               </Alert>
-              {error === '' ? (
-                ''
-              ) : (
-                <Alert variant="danger">
-                  <Alert.Heading>Login was not successful</Alert.Heading>
-                  {error}
-                </Alert>
-              )}
-            </Col>
-          </Row>
-        </Container>
-      </Row>
+            )}
+          </Col>
+        </Row>
+      </Container>
     </div>
   );
 };

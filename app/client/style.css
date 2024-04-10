@@ -66,3 +66,20 @@ h2 {
   background: #95bea9;
 }
 
+#login-dropdown,
+#navbar-current-user,
+#login-dropdown-sign-in,
+#login-dropdown-sign-up,
+#navbar-sign-out {
+  font-family: "Pixelify Sans", sans-serif;
+  font-size: larger;
+}
+
+.dropdown-item.active, .dropdown-item:hover {
+  background-color: #95bea9 !important; /* Change to your desired highlight color */
+}
+
+#footer {
+  font-family: "Pixelify Sans", sans-serif;
+}
+
