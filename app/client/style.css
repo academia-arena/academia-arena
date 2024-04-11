@@ -89,6 +89,72 @@ h2 {
   border-radius: 10px;
 }
 
+.partition-bar {
+  width: 100%;
+  height: 70px;
+  background-color:#faf3e2;
+  margin: 0px 0px 0px 0px;
+  padding: 0px 0px 0px 0px;
+}
+
+#landing-page {
+  background-color: #95bea9 !important;
+}
+
+#landing-page-top {
+  background: center url("/images/POSTPixel.png");
+  height: 450px;
+  align-items: center;
+  margin: 0 auto;
+  margin-left: 0px;
+  margin-right: 0px;
+  padding: 0px 0px 0px 0px;
+}
+
+#landing-page-logo {
+  max-width: 400px;
+}
+
+#landing-page-title {
+  background-color: #95bea9 !important;
+  color: #faf3e2;
+  padding: 8px 8px 8px 8px;
+  background: #95BEA9;
+  border-radius: 40px 40px 40px 40px;
+  max-width: 500px;
+  font-weight: 700;
+  margin: 0 auto;
+  margin-top: 40px;
+  font-family: "Pixelify Sans", sans-serif;
+  font-size: larger;
+  padding: 20px 8px;
+  align-items: center; /* Center content vertically */
+}
+
+#landing-page-subtitle {
+  background-color: #95bea9 !important;
+  color: #faf3e2;
+  padding: 8px 8px 8px 8px;
+  background: #95BEA9;
+  border-radius: 40px 40px 40px 40px;
+  max-width: 500px;
+  font-weight: 700;
+  margin: 0 auto;
+  margin-top: 20px;
+  font-family: "Pixelify Sans", sans-serif;
+  padding: 20px 8px;
+  align-items: center; /* Center content vertically */
+}
+
+
+#landing-page-about {
+  background-color: #95bea9 !important;
+  color: #faf3e2;
+  align-items: first !important;
+  font-family: "Pixelify Sans", sans-serif;
+  padding: 20px 8px 20px 8px;
+}
+
 #footer {
   font-family: "Pixelify Sans", sans-serif;
 }
