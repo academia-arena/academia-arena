@@ -4,6 +4,11 @@ import PropTypes from 'prop-types';
 import { Card, Image, Row, Col } from 'react-bootstrap';
 
 /** Renders a single row in the List Stuff table. See pages/ListStuff.jsx. */
+
+
+
+
+
 const TCardItem = ({ tcard }) => (
   <Card className="h-100 text-center">
     <Card.Header>
