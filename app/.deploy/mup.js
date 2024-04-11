@@ -9,12 +9,12 @@ module.exports = {
   app: {
     // if you edit the app 'name' field, be sure to run 'mup stop' if the app is already running.
     // otherwise you will have two apps deployed at once, with unpredictable results.
-    name: 'meteor-react-bootstrap-template',
+    name: 'academia-arena',
     path: '../',
     servers: { one: {}, },
     buildOptions: { serverOnly: true },
     env: {
-      ROOT_URL: 'http://111.222.333.444',
+      ROOT_URL: 'http://209.38.152.24',
       MONGO_URL: 'mongodb://mongodb/meteor',
       MONGO_OPLOG_URL: 'mongodb://mongodb/local',
     },
