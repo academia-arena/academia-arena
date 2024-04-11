@@ -14,5 +14,11 @@
     { "name": "Bicycle", "quantity": 2, "owner": "john@foo.com", "condition": "poor" },
     { "name": "Banana", "quantity": 2, "owner": "admin@foo.com", "condition": "good" },
     { "name": "Boogie Board", "quantity": 2, "owner": "admin@foo.com", "condition": "excellent" }
+  ],
+
+  "defaultCards": [
+    { "name": "Professor Philip Johnson", "image": "images/johnson.jpeg","rank": "Common Professor", "course": "ICS314", "power": 25, "smtitle": "WOD Attack", "smdescription": "Professor Johnson assigns a surprise WOD to the enemy. The shock makes skip their turn and take 25 damage.", "owner": "john@foo.com" },
+    { "name": "Professor Philip Johnson", "image": "images/johnson.jpeg","rank": "Rare Professor", "course": "ICS314", "power": 50, "smtitle": "WOD Attack", "smdescription": "Professor Johnson assigns a surprise WOD to the enemy. The shock makes skip their turn and take 50 damage.", "owner": "john@foo.com" },
+    { "name": "Professor Philip Johnson, God of Programming", "image": "images/johnson.jpeg","rank": "Legendary Professor", "course": "ICS314", "power": 100, "smtitle": "WOD Attack", "smdescription": "Professor Johnson assigns a surprise WOD to the enemy. The shock makes skip their turn and take 100 damage.", "owner": "john@foo.com" }
   ]
 }

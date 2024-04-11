@@ -41,6 +41,14 @@ h2 {
   font-family: "Pixelify Sans", sans-serif;
 }
 
+.subtitle {
+  font-family: "Pixelify Sans", sans-serif;
+  text-align: center;
+  background-color: #faf3e2;
+  padding-top: 20px;
+  padding-bottom: 20px;
+}
+
 /* Set the alert background on the signin and signup pages. */
 #signin-page .alert-light, #signup-page .alert-light {
   --bs-alert-bg: var(--matr-navbar-bg);
@@ -93,4 +101,6 @@ h2 {
   font-family: "Pixelify Sans", sans-serif;
 }
 
-
+.head {
+  background-color: #faf3e2;
+}
