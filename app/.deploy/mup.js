@@ -1,7 +1,7 @@
 module.exports = {
   servers: {
     one: {
-      host: '209.38.152.24',
+      host: 'academia-arena.xyz',
       username: 'root',
       password: 'mintyFresh3161833Hello'
     }
@@ -14,7 +14,7 @@ module.exports = {
     servers: { one: {}, },
     buildOptions: { serverOnly: true },
     env: {
-      ROOT_URL: 'http://209.38.152.24',
+      ROOT_URL: 'https://academia-arena.xyz',
       MONGO_URL: 'mongodb://mongodb/meteor',
       MONGO_OPLOG_URL: 'mongodb://mongodb/local',
     },
@@ -22,5 +22,12 @@ module.exports = {
     enableUploadProgressBar: true
   },
   mongo: { version: '5.0', servers: { one: {} }
+  },
+  proxy: {
+    domains: 'academia-arena.xyz',
+    ssl: {
+      letsEncryptEmail: 'carlovil@hawaii.edu',
+      forceSSL: true
+    }
   },
 };
