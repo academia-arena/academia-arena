@@ -41,6 +41,10 @@ h2 {
   font-family: "Pixelify Sans", sans-serif;
 }
 
+a {
+  font-family: "Pixelify Sans", sans-serif;
+}
+
 /* Set the alert background on the signin and signup pages. */
 #signin-page .alert-light, #signup-page .alert-light {
   --bs-alert-bg: var(--matr-navbar-bg);
@@ -66,3 +70,122 @@ h2 {
   background: #95bea9;
 }
 
+.nav-pills .nav-link.active {
+  background: #95bea9 !important;
+  color: #faf3e2 !important;
+  border-radius: 5px;
+}
+
+#SearchBar {
+  background-color: #faf3e2;
+}
+
+#addCard {
+  background-color: #faf3e2;
+  font-family: "Pixelify Sans", sans-serif;
+}
+
+#addCard .form-control {
+  background-color: #95bea9;
+}
+
+#Cards1 {
+  background-image: linear-gradient(#E5E0D3, #B3A88D, #665D46);
+  border-color: #4D4739;
+  border-width: 5px;
+  border-radius: 20px;
+}
+
+#CardsTitle1 {
+  background-color: #C7C7C7;
+  border-radius: 20px;
+  height: 40px;
+  width: 335px;
+  margin-top: 10px;
+  padding-top: 10px;
+  font-size: 17px;
+  color: black;
+  overflow: scroll;
+}
+
+#CardsImage1 {
+  background-color: #C7C7C7;
+}
+
+#CardsText1 {
+  background-color: #C7C7C7;
+  border-radius: 20px;
+  margin: 10px 10px 10px 10px;
+  padding-bottom: 10px;
+  padding-top: 5px;
+  height: 270px;
+  overflow: scroll;
+}
+
+#Cards2 {
+  background-image: linear-gradient(#F7EFB7, #D8D082, #C3B241);
+  border-color: #AF9A14;
+  border-width: 5px;
+  border-radius: 20px;
+}
+
+#CardsTitle2 {
+  background-color: #FFFFCC;
+  border-radius: 20px;
+  height: 40px;
+  width: 335px;
+  margin-top: 10px;
+  padding-top: 10px;
+  font-size: 17px;
+  color: black;
+  overflow: scroll;
+}
+
+#CardsImage2 {
+  background-color: #FFFFCC;
+}
+
+#CardsText2 {
+  background-color: #FFFFCC;
+  border-radius: 20px;
+  margin: 10px 10px 10px 10px;
+  padding-bottom: 10px;
+  padding-top: 5px;
+  height: 270px;
+  overflow-y: scroll;
+  overflow-x: hidden;
+}
+
+#Cards3 {
+  background-image: linear-gradient(#4BD79F, #3FB76B, #23A24D);
+  border-color: #C7F0C6;
+  border-width: 5px;
+  border-radius: 20px;
+}
+
+#CardsTitle3 {
+  background-color: #CCFFCC;
+  border-radius: 20px;
+  height: 40px;
+  width: 335px;
+  margin-top: 10px;
+  padding-top: 11px;
+  font-size: 15px;
+  white-space: nowrap;
+  overflow: scroll;
+}
+
+#CardsImage3 {
+  background-color: #95B9A1;
+}
+
+#CardsText3 {
+  background-color: #CCFFCC;
+  border-radius: 20px;
+  margin: 10px 10px 10px 10px;
+  padding-bottom: 10px;
+  padding-top: 5px;
+  height: 270px;
+  overflow-y: scroll;
+  overflow-x: hidden;
+}

@@ -19,7 +19,7 @@ const EditStuff = () => {
   // useTracker connects Meteor data to React components. https://guide.meteor.com/react.html#using-withTracker
   const { doc, ready } = useTracker(() => {
     // Get access to Stuff documents.
-    const subscription = Meteor.subscribe(Stuffs.userPublicationName);
+    const subscription = Meteor.subscribe(Stuffs.adminPublicationName);
     // Determine if the subscription is ready
     const rdy = subscription.ready();
     // Get the document
@@ -32,8 +32,8 @@ const EditStuff = () => {
   // console.log('EditStuff', doc, ready);
   // On successful submit, insert the data.
   const submit = (data) => {
-    const { name, quantity, condition } = data;
-    Stuffs.collection.update(_id, { $set: { name, quantity, condition } }, (error) => (error ?
+    const { firstName, lastName, course, power, type, title, description, funFact, cardName, image } = data;
+    Stuffs.collection.update(_id, { $set: { firstName, lastName, course, power, type, title, description, funFact, cardName, image } }, (error) => (error ?
       swal('Error', error.message, 'error') :
       swal('Success', 'Item updated successfully', 'success')));
   };
@@ -46,9 +46,16 @@ const EditStuff = () => {
           <AutoForm schema={bridge} onSubmit={data => submit(data)} model={doc}>
             <Card>
               <Card.Body>
-                <TextField name="name" />
-                <NumField name="quantity" decimal={null} />
-                <SelectField name="condition" />
+                <TextField name="firstName" />
+                <TextField name="lastName" />
+                <TextField name="course" />
+                <SelectField name="type" />
+                <TextField name="title" />
+                <TextField name="description" />
+                <TextField name="funFact" />
+                <TextField name="cardName" />
+                <TextField name="image" />
+                <NumField name="power" decimal={null} />
                 <SubmitField value="Submit" />
                 <ErrorsField />
                 <HiddenField name="owner" />
