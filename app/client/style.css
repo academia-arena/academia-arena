@@ -212,6 +212,7 @@ a {
   padding-bottom: 10px;
   padding-top: 5px;
   height: 270px;
+  width: 315px;
   overflow: scroll;
 }
 
@@ -245,6 +246,7 @@ a {
   padding-bottom: 10px;
   padding-top: 5px;
   height: 270px;
+  width: 315px;
   overflow-y: scroll;
   overflow-x: hidden;
 }
@@ -279,6 +281,7 @@ a {
   padding-bottom: 10px;
   padding-top: 5px;
   height: 270px;
+  width: 315px;
   overflow-y: scroll;
   overflow-x: hidden;
 }
