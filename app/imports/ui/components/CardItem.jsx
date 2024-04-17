@@ -2,27 +2,27 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 
-/** Renders a single row in the List Stuff table. See pages/ViewCardsAdmin.jsx. */
-const CardItem = ({ stuff }) => (
+/** Renders a single row in the List card table. See pages/ViewCardsAdmin.jsx. */
+const CardItem = ({ card }) => (
   <tr>
-    <th>{stuff.firstName}</th>
-    <th>{stuff.lastName}</th>
-    <th>{stuff.course}</th>
-    <th>{stuff.type}</th>
-    <th>{stuff.title}</th>
-    <th>{stuff.description}</th>
-    <th>{stuff.funFact}</th>
-    <th>{stuff.cardName}</th>
-    <th>{stuff.power}</th>
+    <th>{card.firstName}</th>
+    <th>{card.lastName}</th>
+    <th>{card.course}</th>
+    <th>{card.type}</th>
+    <th>{card.title}</th>
+    <th>{card.description}</th>
+    <th>{card.funFact}</th>
+    <th>{card.cardName}</th>
+    <th>{card.power}</th>
     <td>
-      <Link to={`/edit/${stuff._id}`}>Edit</Link>
+      <Link to={`/edit/${card._id}`}>Edit</Link>
     </td>
   </tr>
 );
 
 // Require a document to be passed to this component.
 CardItem.propTypes = {
-  stuff: PropTypes.shape({
+  card: PropTypes.shape({
     firstName: PropTypes.string,
     lastName: PropTypes.string,
     course: PropTypes.string,

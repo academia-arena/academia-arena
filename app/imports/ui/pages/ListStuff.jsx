@@ -3,8 +3,8 @@ import { Meteor } from 'meteor/meteor';
 import { Col, Container, Row, Table } from 'react-bootstrap';
 import { useTracker } from 'meteor/react-meteor-data';
 import { Stuffs } from '../../api/stuff/Stuff';
-import CardItem from '../components/CardItem';
 import LoadingSpinner from '../components/LoadingSpinner';
+import StuffItem from '../components/StuffItem';
 
 /* Renders a table containing all of the Stuff documents. Use <CardItem> to render each row. */
 const ListStuff = () => {
@@ -40,7 +40,7 @@ const ListStuff = () => {
               </tr>
             </thead>
             <tbody>
-              {stuffs.map((stuff) => <CardItem key={stuff._id} stuff={stuff} />)}
+              {stuffs.map((stuff) => <StuffItem key={stuff._id} stuff={stuff} />)}
             </tbody>
           </Table>
         </Col>

@@ -1,30 +1,29 @@
 import React from 'react';
 import { Meteor } from 'meteor/meteor';
 import { Roles } from 'meteor/alanning:roles';
-import { Button, Col, Container, Form, InputGroup, Nav, Row, Table } from 'react-bootstrap';
+import { Button, Col, Container, Form, InputGroup, Nav, Row } from 'react-bootstrap';
 import { useTracker } from 'meteor/react-meteor-data';
 import { NavLink } from 'react-router-dom';
-import { Stuffs } from '../../api/stuff/Stuff';
 import LoadingSpinner from '../components/LoadingSpinner';
 import CommonCard from '../components/Common-Card';
 import RareCard from '../components/Rare-Card';
 import LegendaryCard from '../components/Legendary-Card';
-import StuffItem from '../components/StuffItem';
+import { TCards } from '../../api/tcard/TCard';
 
 /* Renders a table containing all of the Stuff documents. Use <CardItem> to render each row. */
 const ViewCardsAdmin = () => {
   // useTracker connects Meteor data to React components. https://guide.meteor.com/react.html#using-withTracker
-  const { ready, stuffs } = useTracker(() => {
+  const { ready, tcards } = useTracker(() => {
     // Note that this subscription will get cleaned up
     // when your component is unmounted or deps change.
     // Get access to Stuff documents.
-    const subscription = Meteor.subscribe(Stuffs.adminPublicationName);
+    const subscription = Meteor.subscribe(TCards.adminPublicationName);
     // Determine if the subscription is ready
     const rdy = subscription.ready();
     // Get the Stuff documents
-    const stuffItems = Stuffs.collection.find({}).fetch();
+    const cardItems = TCards.collection.find({}).fetch();
     return {
-      stuffs: stuffItems,
+      tcards: cardItems,
       ready: rdy,
     };
   }, []);
@@ -36,9 +35,11 @@ const ViewCardsAdmin = () => {
             <Container>
               <Nav variant="pills">
                 <Col><h2>Admin</h2></Col>
-                <Nav.Item><Nav.Link style={{ color: 'black' }} id="list-stuff-nav" as={NavLink} to="/list" key="list">View Cards</Nav.Link></Nav.Item>
-                <Nav.Item><Nav.Link style={{ color: 'black' }} id="add-stuff-nav" as={NavLink} to="/add" key="add">Add Card</Nav.Link></Nav.Item>
+                <Nav.Item><Nav.Link style={{ color: 'black' }} id="list-card-nav" as={NavLink} to="/admin" key="admin">View Cards</Nav.Link></Nav.Item>
+                <Nav.Item><Nav.Link style={{ color: 'black' }} id="add-card-nav" as={NavLink} to="/add" key="add">Add Card</Nav.Link></Nav.Item>
+                {/*
                 <Nav.Item><Nav.Link style={{ color: 'black' }} id="list-stuff-admin-nav" as={NavLink} to="/admin" key="admin">Manage Accounts</Nav.Link></Nav.Item>
+*/}
               </Nav>
             </Container>
           </Container>
@@ -56,73 +57,25 @@ const ViewCardsAdmin = () => {
             <Container>
               <Row>
                 <Col>
-                  <Row className="justify-content-center">{stuffs.map((stuff) => (stuff.type === 'Common' ? (<CommonCard key={stuff._id} stuff={stuff} />) :
+                  <Row className="justify-content-center">{tcards.map((tcard) => (tcard.type === 'Common' ? (<CommonCard key={tcard._id} card={tcard} />) :
                     ('')))}
                   </Row>
                 </Col>
                 <Col>
-                  <Row className="justify-content-center">{stuffs.map((stuff) => (stuff.type === 'Rare' ? (<RareCard key={stuff._id} stuff={stuff} />) :
+                  <Row className="justify-content-center">{tcards.map((tcard) => (tcard.type === 'Rare' ? (<RareCard key={tcard._id} card={tcard} />) :
                     ('')))}
                   </Row>
                 </Col>
                 <Col>
-                  <Row className="justify-content-center">{stuffs.map((stuff) => (stuff.type === 'Legendary' ? (<LegendaryCard key={stuff._id} stuff={stuff} />) :
+                  <Row className="justify-content-center">{tcards.map((tcard) => (tcard.type === 'Legendary' ? (<LegendaryCard key={tcard._id} card={tcard} />) :
                     ('')))}
                   </Row>
                 </Col>
               </Row>
             </Container>
-            {
-              /* <Table striped bordered hover>
-              <thead>
-                <tr>
-                  <th>firstName</th>
-                  <th>lastName</th>
-                  <th>course</th>
-                  <th>type</th>
-                  <th>title</th>
-                  <th>description</th>
-                  <th>funFact</th>
-                  <th>cardName</th>
-                  <th>power</th>
-                  <th>Owner</th>
-                </tr>
-              </thead>
-              <tbody>
-                {stuffs.map((stuff) => <CommonCard key={stuff._id} stuff={stuff} />)}
-              </tbody>
-            </Table> */}
           </Col>
         </Col>
-      ) : (
-        <Container className="py-3">
-          <Row className="justify-content-center">
-            <Col md={7}>
-              <Col className="text-center">
-                <h2>List Stuff</h2>
-              </Col>
-              <Table striped bordered hover>
-                <thead>
-                  <tr>
-                    <th>firstName</th>
-                    <th>lastName</th>
-                    <th>course</th>
-                    <th>type</th>
-                    <th>title</th>
-                    <th>description</th>
-                    <th>funFact</th>
-                    <th>cardName</th>
-                    <th>power</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  {stuffs.map((stuff) => <StuffItem key={stuff._id} stuff={stuff} />)}
-                </tbody>
-              </Table>
-            </Col>
-          </Row>
-        </Container>
-      )}
+      ) : ('')}
     </Col>
   ) : <LoadingSpinner />);
 };

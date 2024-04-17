@@ -2,29 +2,29 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Card, Col, Container, Image, Row } from 'react-bootstrap';
 
-/** Renders a single row in the List Stuff (Admin) table. See pages/AdminPage.jsx. */
-const RareCard = ({ stuff }) => (
+/** Renders a single row in the List card (Admin) table. See pages/AdminPage.jsx. */
+const RareCard = ({ card }) => (
   <Card id="Cards2" className="align-items-center my-2" style={{ width: '370px', height: '540px' }}>
     <Card.Title id="CardsTitle2">
       <Container className="text-center">
-        <strong>{stuff.role} {stuff.lastName}</strong>
+        <strong>{card.role} {card.lastName}</strong>
       </Container>
     </Card.Title>
     <Card.Body id="CardsImage2" className="text-center">
-      <Image src={stuff.image} height="150px" />
+      <Image src={card.image} height="150px" />
     </Card.Body>
     <Card.Text id="CardsText2">
       <Row className="text-center">
-        <th style={{ fontSize: '20px' }}>{stuff.type} {stuff.role}</th>
+        <th style={{ fontSize: '20px' }}>{card.type} {card.role}</th>
       </Row>
       <Row className="ps-5">
-        <Col>Course: {stuff.course}</Col>
-        <Col>Power: {stuff.power}</Col>
+        <Col>Course: {card.course}</Col>
+        <Col>Power: {card.power}</Col>
       </Row>
       <Container>
-        <th className="py-2">Special Move: {stuff.title}</th>
-        {stuff.description}
-        <th className="py-2">Fun Fact: {stuff.funFact}</th>
+        <th className="py-2">Special Move: {card.title}</th>
+        {card.description}
+        <th className="py-2">Fun Fact: {card.funFact}</th>
       </Container>
     </Card.Text>
   </Card>
@@ -32,7 +32,7 @@ const RareCard = ({ stuff }) => (
 
 // Require a document to be passed to this component.
 RareCard.propTypes = {
-  stuff: PropTypes.shape({
+  card: PropTypes.shape({
     firstName: PropTypes.string,
     lastName: PropTypes.string,
     course: PropTypes.string,

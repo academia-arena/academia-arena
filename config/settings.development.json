@@ -9,7 +9,7 @@
     { "email": "john@foo.com", "password": "changeme" }
   ],
 
-  "defaultData": [
+  "defaultCards": [
     { "firstName": "Philip", "lastName": "Johnson", "course": "ICS 314", "power": 25, "type": "Common", "role": "Professor", "title": "WOD Attack", "description": "Professor Johnson assigns a surprise WOD to the enemy. The shock makes them skip their turn and take 25 damage.", "funFact": "Plays electric guitar in a band called Hardly Strictly Jerry.", "cardName": "God of Programming", "image": "https://github.com/philipmjohnson.png", "owner": "admin@foo.com" }
   ]
 }
