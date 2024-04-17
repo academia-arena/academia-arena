@@ -96,6 +96,7 @@ h2 {
   background-color:#faf3e2;
   margin: 0px 0px 0px 0px;
   padding: 0px 0px 0px 0px;
+  clear: both; /* Add this line */
 }
 
 #landing-page {
@@ -153,6 +154,36 @@ h2 {
   color: #faf3e2;
   font-family: "Pixelify Sans", sans-serif;
   padding: 30px 8px 100px 8px;
+}
+
+#loginSection, #signupSection {
+  display: inline-block;
+  margin: 0 20px; /* Adjust as needed */
+}
+
+#loginButton, #signupButton {
+  display: block;
+  background-color: #FAF3E2;
+  color: #95BEA9;
+  font-family: "Pixelify Sans", sans-serif;
+  padding: 10px 50px;
+  box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1); /* Add this line */
+  transition: all 0.3s ease 0s; /* Add this line */
+}
+
+#loginButton:active, #signupButton:active {
+  box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.1); /* Add this line */
+  transform: translateY(3px); /* Add this line */
+}
+
+#buttonLayer {
+  background-color: rgb(115, 162, 112); /* Adjust to your preferred darker green color */
+  padding: 20px;
+  border-radius: 10px; /* Optional: to make the corners rounded */
+}
+
+#bottom-partition-bar {
+  margin-top: 100px;
 }
 
 #footer {
