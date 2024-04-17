@@ -92,7 +92,7 @@ h2 {
 
 .partition-bar {
   width: 100%;
-  height: 70px;
+  height: 50px;
   background-color:#faf3e2;
   margin: 0px 0px 0px 0px;
   padding: 0px 0px 0px 0px;
@@ -123,7 +123,7 @@ h2 {
   padding: 8px 8px 8px 8px;
   background: #95BEA9;
   border-radius: 40px 40px 40px 40px;
-  max-width: 500px;
+  max-width: 600px;
   font-weight: 700;
   margin: 0 auto;
   margin-top: 40px;
@@ -153,7 +153,7 @@ h2 {
   background-color: #95bea9 !important;
   color: #faf3e2;
   font-family: "Pixelify Sans", sans-serif;
-  padding: 30px 8px 100px 8px;
+  padding: 10px 8px 10px 8px;
 }
 
 #loginSection, #signupSection {
@@ -176,11 +176,32 @@ h2 {
   transform: translateY(3px); /* Add this line */
 }
 
-#buttonLayer {
-  background-color: rgb(115, 162, 112); /* Adjust to your preferred darker green color */
-  padding: 20px;
-  border-radius: 10px; /* Optional: to make the corners rounded */
+#loginButton:hover, #signupButton:hover {
+  background-color: white;
+  color: black;
 }
+
+#loginButton:hover svg, #signupButton:hover svg {
+  fill: black;
+}
+
+/*#buttonLayer {*/
+/*  background-color: rgb(115, 162, 112); !* Adjust to your preferred darker green color *!*/
+/*  padding: 20px;*/
+/*  border-radius: 10px; !* Optional: to make the corners rounded *!*/
+/*}*/
+
+academia-logo {
+  display: flex; /* Use flexbox */
+  justify-content: center; /* Center horizontally */
+  align-items: center; /* Center vertically */
+  height: 30vh; /* Set the height to fill the viewport */
+}
+academia-logo img {
+  max-width: 100%; /* Ensure image does not exceed container width */
+  max-height: 100%; /* Ensure image does not exceed container height */
+}
+
 
 #bottom-partition-bar {
   margin-top: 100px;

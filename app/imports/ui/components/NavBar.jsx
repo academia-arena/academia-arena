@@ -18,7 +18,9 @@ const NavBar = () => {
         <Navbar.Brand as={NavLink} to="/">
           <Row>
             <Col>
-              <h2 style={{ color: '#faf3e2' }}>Academia Arena</h2>
+              <h2 style={{ color: '#faf3e2' }}>
+                Academia Arena
+              </h2>
             </Col>
             <Col>
               <PersonBadgeFill size={30} className="pt-2" style={{ color: '#faf3e2' }} />
