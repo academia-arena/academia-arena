@@ -1,6 +1,8 @@
 import { Meteor } from 'meteor/meteor';
 import { Stuffs } from '../../api/stuff/Stuff.js';
+/*
 import { TCards } from '../../api/tcard/TCard.js';
+*/
 
 /* eslint-disable no-console */
 
@@ -18,7 +20,8 @@ if (Stuffs.collection.find().count() === 0) {
   }
 }
 
-/*const addTCard = (tcard) => {
+/*
+  const addTCard = (tcard) => {
   console.log(`  Adding: ${tcard.name} (${tcard.owner}) `);
   TCards.collection.insert(tcard);
 };
@@ -28,4 +31,5 @@ if (TCards.collection.find().count() === 0) {
     console.log('Creating default cards.');
     Meteor.settings.defaultCards.forEach(tcard => addTCard(tcard));
   }
-}*/
+}
+*/
