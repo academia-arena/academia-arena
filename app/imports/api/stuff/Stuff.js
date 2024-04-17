@@ -12,14 +12,24 @@ class StuffsCollection {
     this.collection = new Mongo.Collection(this.name);
     // Define the structure of each document in the collection.
     this.schema = new SimpleSchema({
-      name: String,
-      quantity: Number,
-      owner: String,
-      condition: {
+      firstName: String,
+      lastName: String,
+      course: String,
+      power: Number,
+      type: {
         type: String,
-        allowedValues: ['excellent', 'good', 'fair', 'poor'],
-        defaultValue: 'good',
+        allowedValues: ['Common', 'Rare', 'Legendary'],
       },
+      role: {
+        type: String,
+        allowedValues: ['Professor', 'Instructor'],
+      },
+      title: String,
+      description: String,
+      funFact: String,
+      cardName: String,
+      image: String,
+      owner: String,
     });
     // Attach the schema to the collection, so all attempts to insert a document are checked against schema.
     this.collection.attachSchema(this.schema);
