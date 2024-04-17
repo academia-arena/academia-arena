@@ -7,7 +7,7 @@ import SimpleSchema2Bridge from 'uniforms-bridge-simple-schema-2';
 import SimpleSchema from 'simpl-schema';
 import { Roles } from 'meteor/alanning:roles';
 import { NavLink } from 'react-router-dom';
-import { Stuffs } from '../../api/stuff/Stuff';
+import { TCards } from '../../api/tcard/TCard';
 
 // Create a schema to specify the structure of the data to appear in the form.
 const formSchema = new SimpleSchema({
@@ -39,7 +39,7 @@ const AddCard = () => {
   const submit = (data, formRef) => {
     const { firstName, lastName, course, power, type, role, title, description, funFact, cardName, image } = data;
     const owner = Meteor.user().username;
-    Stuffs.collection.insert(
+    TCards.collection.insert(
       { firstName, lastName, course, power, type, role, title, description, funFact, cardName, image, owner },
       (error) => {
         if (error) {
