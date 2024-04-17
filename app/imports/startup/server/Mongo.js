@@ -18,7 +18,7 @@ if (Stuffs.collection.find().count() === 0) {
   }
 }
 
-const addTCard = (tcard) => {
+/*const addTCard = (tcard) => {
   console.log(`  Adding: ${tcard.name} (${tcard.owner}) `);
   TCards.collection.insert(tcard);
 };
@@ -28,4 +28,4 @@ if (TCards.collection.find().count() === 0) {
     console.log('Creating default cards.');
     Meteor.settings.defaultCards.forEach(tcard => addTCard(tcard));
   }
-}
+}*/
