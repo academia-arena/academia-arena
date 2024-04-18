@@ -2,8 +2,7 @@
 /* Use Open Sans as the default sans serif font. */
 @import url("https://fonts.googleapis.com/css?family=Open+Sans:300,400,500,700|Source+Code+Pro:300,400,500,700");
 
-/* Import Pixel Sans */
-@import url('https://fonts.googleapis.com/css2?family=Pixelify+Sans:wght@400..700&display=swap');
+ @import url('https://fonts.googleapis.com/css2?family=Pixelify+Sans:wght@400..700&display=swap');
 
 /* Set up some CSS variables to theme the application. */
 :root {
@@ -230,6 +229,10 @@ a {
   background-color: #95bea9;
 }
 
+#search {
+  width: 60vh;
+}
+
 #Cards1 {
   background-image: linear-gradient(#E5E0D3, #B3A88D, #665D46);
   border-color: #4D4739;
@@ -332,5 +335,13 @@ a {
   width: 315px;
   overflow-y: scroll;
   overflow-x: hidden;
+}
+
+#card-collection-subtitle {
+  background-color: #FFFFCC;
+  font-family: "Pixelify Sans", sans-serif;
+  padding-top: 2vh;
+  padding-bottom: 2vh;
+  text-align: center;
 }
 
