@@ -8,7 +8,6 @@ import LoadingSpinner from '../components/LoadingSpinner';
 import CommonCard from '../components/Common-Card';
 import RareCard from '../components/Rare-Card';
 import LegendaryCard from '../components/Legendary-Card';
-import { TCards } from '../../api/tcard/TCard';
 import { AllCards } from '../../api/allcard/AllCards';
 
 /* Renders a table containing all of the Stuff documents. Use <CardItem> to render each row. */

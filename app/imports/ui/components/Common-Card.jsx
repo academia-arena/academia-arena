@@ -13,7 +13,7 @@ const CommonCard = ({ card }) => (
       </Container>
     </Card.Title>
     <Card.Body id="CardsImage1" className="text-center">
-      <Image src={card.image} height="150px"/>
+      <Image src={card.image} height="150px" />
     </Card.Body>
     <Card.Text id="CardsText1">
       <Row className="text-center">
