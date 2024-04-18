@@ -1,7 +1,6 @@
 import React from 'react';
 import { Meteor } from 'meteor/meteor';
-import { Roles } from 'meteor/alanning:roles';
-import { Button, Col, Container, Form, InputGroup, Nav, Row, Table } from 'react-bootstrap';
+import { Button, Col, Container, Form, InputGroup, Nav, Row } from 'react-bootstrap';
 import { useTracker } from 'meteor/react-meteor-data';
 import { NavLink } from 'react-router-dom';
 import { Stuffs } from '../../api/stuff/Stuff';
@@ -9,7 +8,6 @@ import LoadingSpinner from '../components/LoadingSpinner';
 import CommonCard from '../components/Common-Card';
 import RareCard from '../components/Rare-Card';
 import LegendaryCard from '../components/Legendary-Card';
-import StuffItem from '../components/StuffItem';
 
 /* Renders a table containing all of the Stuff documents. Use <CardItem> to render each row. */
 const ViewCardsAdmin = () => {
@@ -30,99 +28,47 @@ const ViewCardsAdmin = () => {
   }, []);
   return (ready ? (
     <Col>
-      {Roles.userIsInRole(Meteor.userId(), 'admin') ? (
-        <Col>
-          <Container fluid className="py-3" id="title-block">
-            <Container>
-              <Nav variant="pills">
-                <Col><h2>Admin</h2></Col>
-                <Nav.Item><Nav.Link style={{ color: 'black' }} id="list-stuff-nav" as={NavLink} to="/list" key="list">View Cards</Nav.Link></Nav.Item>
-                <Nav.Item><Nav.Link style={{ color: 'black' }} id="add-stuff-nav" as={NavLink} to="/add" key="add">Add Card</Nav.Link></Nav.Item>
-                <Nav.Item><Nav.Link style={{ color: 'black' }} id="list-stuff-admin-nav" as={NavLink} to="/admin" key="admin">Manage Accounts</Nav.Link></Nav.Item>
-              </Nav>
-            </Container>
-          </Container>
-          <Container>
-            <Row className="justify-content-center">
-              <Row className="py-4" style={{ width: '400px' }}>
-                <InputGroup>
-                  <Form.Control id="SearchBar" placeholder="Name" />
-                  <Button variant="success">Search</Button>
-                </InputGroup>
+      <Container fluid className="py-3" id="title-block">
+        <Container>
+          <Nav variant="pills">
+            <Col><h2>Admin</h2></Col>
+            <Nav.Item><Nav.Link style={{ color: 'black' }} id="list-stuff-nav" as={NavLink} to="/list" key="list">View Cards</Nav.Link></Nav.Item>
+            <Nav.Item><Nav.Link style={{ color: 'black' }} id="add-stuff-nav" as={NavLink} to="/add" key="add">Add Card</Nav.Link></Nav.Item>
+            <Nav.Item><Nav.Link style={{ color: 'black' }} id="list-stuff-admin-nav" as={NavLink} to="/admin" key="admin">Manage Accounts</Nav.Link></Nav.Item>
+          </Nav>
+        </Container>
+      </Container>
+      <Container>
+        <Row className="justify-content-center">
+          <Row className="py-4" style={{ width: '400px' }}>
+            <InputGroup>
+              <Form.Control id="SearchBar" placeholder="Name"/>
+              <Button variant="success" on>Search</Button>
+            </InputGroup>
+          </Row>
+        </Row>
+      </Container>
+      <Col className="py-5">
+        <Container>
+          <Row>
+            <Col>
+              <Row className="justify-content-center">{stuffs.map((stuff) => (stuff.type === 'Common' ? (<CommonCard key={stuff._id} stuff={stuff} />) :
+                ('')))}
               </Row>
-            </Row>
-          </Container>
-          <Col className="py-5">
-            <Container>
-              <Row>
-                <Col>
-                  <Row className="justify-content-center">{stuffs.map((stuff) => (stuff.type === 'Common' ? (<CommonCard key={stuff._id} stuff={stuff} />) :
-                    ('')))}
-                  </Row>
-                </Col>
-                <Col>
-                  <Row className="justify-content-center">{stuffs.map((stuff) => (stuff.type === 'Rare' ? (<RareCard key={stuff._id} stuff={stuff} />) :
-                    ('')))}
-                  </Row>
-                </Col>
-                <Col>
-                  <Row className="justify-content-center">{stuffs.map((stuff) => (stuff.type === 'Legendary' ? (<LegendaryCard key={stuff._id} stuff={stuff} />) :
-                    ('')))}
-                  </Row>
-                </Col>
+            </Col>
+            <Col>
+              <Row className="justify-content-center">{stuffs.map((stuff) => (stuff.type === 'Rare' ? (<RareCard key={stuff._id} stuff={stuff} />) :
+                ('')))}
               </Row>
-            </Container>
-            {
-              /* <Table striped bordered hover>
-              <thead>
-                <tr>
-                  <th>firstName</th>
-                  <th>lastName</th>
-                  <th>course</th>
-                  <th>type</th>
-                  <th>title</th>
-                  <th>description</th>
-                  <th>funFact</th>
-                  <th>cardName</th>
-                  <th>power</th>
-                  <th>Owner</th>
-                </tr>
-              </thead>
-              <tbody>
-                {stuffs.map((stuff) => <CommonCard key={stuff._id} stuff={stuff} />)}
-              </tbody>
-            </Table> */}
-          </Col>
-        </Col>
-      ) : (
-        <Container className="py-3">
-          <Row className="justify-content-center">
-            <Col md={7}>
-              <Col className="text-center">
-                <h2>List Stuff</h2>
-              </Col>
-              <Table striped bordered hover>
-                <thead>
-                  <tr>
-                    <th>firstName</th>
-                    <th>lastName</th>
-                    <th>course</th>
-                    <th>type</th>
-                    <th>title</th>
-                    <th>description</th>
-                    <th>funFact</th>
-                    <th>cardName</th>
-                    <th>power</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  {stuffs.map((stuff) => <StuffItem key={stuff._id} stuff={stuff} />)}
-                </tbody>
-              </Table>
+            </Col>
+            <Col>
+              <Row className="justify-content-center">{stuffs.map((stuff) => (stuff.type === 'Legendary' ? (<LegendaryCard key={stuff._id} stuff={stuff} />) :
+                ('')))}
+              </Row>
             </Col>
           </Row>
         </Container>
-      )}
+      </Col>
     </Col>
   ) : <LoadingSpinner />);
 };
