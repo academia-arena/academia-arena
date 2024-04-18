@@ -7,11 +7,13 @@ const LegendaryCard = ({ card }) => (
   <Card id="Cards3" className="align-items-center my-2" style={{ width: '370px', height: '540px' }}>
     <Card.Title id="CardsTitle3">
       <Container className="text-center">
-        <strong>{card.role} {card.lastName}, {card.cardName}</strong>
+        <strong>{card.role} {card.firstName} {card.lastName}</strong>
+        <br/>
+        <div className="card-subtitle">{card.cardName}</div>
       </Container>
     </Card.Title>
     <Card.Body id="CardsImage3" className="text-center">
-      <Image src={card.image} height="150px" />
+      <Image src={card.image} height="150px"/>
     </Card.Body>
     <Card.Text id="CardsText3">
       <Row className="text-center">

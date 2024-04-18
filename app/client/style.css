@@ -233,6 +233,11 @@ a {
   width: 60vh;
 }
 
+.card-subtitle {
+  font-size: 16px;
+  font-style: italic;
+}
+
 #Cards1 {
   background-image: linear-gradient(#E5E0D3, #B3A88D, #665D46);
   border-color: #4D4739;
@@ -242,14 +247,14 @@ a {
 
 #CardsTitle1 {
   background-color: #C7C7C7;
-  border-radius: 20px;
-  height: 40px;
+  border-radius: 25px;
+  height: 50px;
   width: 335px;
   margin-top: 10px;
-  padding-top: 10px;
-  font-size: 17px;
+  padding-top: 5px;
+  font-size: 20px;
   color: black;
-  overflow: scroll;
+  overflow: visible;
 }
 
 #CardsImage1 {
@@ -276,14 +281,14 @@ a {
 
 #CardsTitle2 {
   background-color: #FFFFCC;
-  border-radius: 20px;
-  height: 40px;
+  border-radius: 25px;
+  height: 50px;
   width: 335px;
+  padding-top: 5px;
   margin-top: 10px;
-  padding-top: 10px;
-  font-size: 17px;
+  font-size: 20px;
   color: black;
-  overflow: scroll;
+  overflow: visible;
 }
 
 #CardsImage2 {
@@ -311,14 +316,14 @@ a {
 
 #CardsTitle3 {
   background-color: #CCFFCC;
-  border-radius: 20px;
-  height: 40px;
+  border-radius: 25px;
+  height: 50px;
   width: 335px;
   margin-top: 10px;
-  padding-top: 11px;
-  font-size: 15px;
+  padding-top: 5px;
+  font-size: 20px;
   white-space: nowrap;
-  overflow: scroll;
+  overflow: visible;
 }
 
 #CardsImage3 {
