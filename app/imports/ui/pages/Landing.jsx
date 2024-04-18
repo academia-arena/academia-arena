@@ -1,6 +1,7 @@
 import React from 'react';
 import { Meteor } from 'meteor/meteor';
-import { Col, Container, Nav, Row } from 'react-bootstrap';
+import { Col, Container, Nav, Row, Button } from 'react-bootstrap';
+import { PersonFill, PersonPlusFill } from 'react-bootstrap-icons';
 import { Roles } from 'meteor/alanning:roles';
 import { NavLink } from 'react-router-dom';
 
@@ -23,26 +24,47 @@ const Landing = () => (
         </Container>
       </Col>
     ) : (
-      <Col>
+      <Container id="landing-page" fluid className="py-3">
         <div className="partition-bar" />
         <Col className="align-items-center text-center" id="landing-page-top">
           <Container className="text-center">
-            <h1 id="landing-page-title">PROFESSOR! <br /> I CHOOSE YOU!</h1>
-            <p id="landing-page-subtitle">Collect your favorite ICS professors to learn more about them, their courses, and your fellow students!</p>
+            <div id="landing-page-title">
+              <h1>PROFESSOR! <br /> I CHOOSE YOU!</h1>
+              <p>Collect your favorite ICS professors to learn more about them, their courses, and your fellow students!</p>
+            </div>
+            <div id="landing-page-subtitle">
+              <div id="buttonLayer">
+                <div id="loginSection">
+                  <p>Already a member?</p>
+                  <Button id="loginButton" as={NavLink} to="/signin">
+                    <PersonFill />
+                    LOGIN
+                  </Button>
+                </div>
+                <div id="signupSection">
+                  <p>Not a Member?</p>
+                  <Button id="signupButton" as={NavLink} to="/signup">
+                    <PersonPlusFill />
+                    SIGNUP
+                  </Button>
+                </div>
+              </div>
+            </div>
           </Container>
         </Col>
         <div className="partition-bar" />
-        <Row id="landing-page-about">
-          <h2>About Academia Arena</h2>
-          <p>The purpose of this web application is to help incoming students or continuing ICS students, especially those who feel disconnected from their professors, connect with them and learn about them more easily.</p>
-          {/* eslint-disable-next-line max-len */}
-          <p>Inspired by trading card games such as Magic: The Gathering, Pokemon, Yu-Gi-Oh Academia Arena: ICS Edition revolves around collectible cards that contain information about the professors on the UH Manoa campus. The
-            information on the card includes a headshot image, the version of the card (ex: “ICS 314 Spring 2024”, “ICS 311 Fall 2023”, etc.), fun facts, projects they may have worked on, and the rarity of the card.
-          </p>
-          <p>This platform provides an opportunity for students to meet and interact with others who may have the same class, providing an alleyway to find friends with shared academic interests or professors.</p>
-        </Row>
-        <div id="divider" />
-      </Col>
+        <Container>
+          <Row id="landing-page-about">
+            <h2>About Academia Arena</h2>
+            <p>The purpose of this web application is to help incoming students or continuing ICS students, especially those who feel disconnected from their professors, connect with them and learn about them more easily.</p>
+            {/* eslint-disable-next-line max-len */}
+            <p>Inspired by trading card games such as Magic: The Gathering, Pokemon, Yu-Gi-Oh Academia Arena: ICS Edition revolves around collectible cards that contain information about the professors on the UH Manoa campus. The information on
+              the card includes a headshot image, the version of the card (ex: “ICS 314 Spring 2024”, “ICS 311 Fall 2023”, etc.), fun facts, projects they may have worked on, and the rarity of the card.
+            </p>
+            <p>This platform provides an opportunity for students to meet and interact with others who may have the same class, providing an alleyway to find friends with shared academic interests or professors.</p>
+          </Row>
+        </Container>
+      </Container>
     )}
   </Col>
 );

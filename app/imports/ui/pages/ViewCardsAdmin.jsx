@@ -8,22 +8,22 @@ import LoadingSpinner from '../components/LoadingSpinner';
 import CommonCard from '../components/Common-Card';
 import RareCard from '../components/Rare-Card';
 import LegendaryCard from '../components/Legendary-Card';
-import { TCards } from '../../api/tcard/TCard';
+import { AllCards } from '../../api/allcard/AllCards';
 
 /* Renders a table containing all of the Stuff documents. Use <CardItem> to render each row. */
 const ViewCardsAdmin = () => {
   // useTracker connects Meteor data to React components. https://guide.meteor.com/react.html#using-withTracker
-  const { ready, tcards } = useTracker(() => {
+  const { ready, allcards } = useTracker(() => {
     // Note that this subscription will get cleaned up
     // when your component is unmounted or deps change.
     // Get access to Stuff documents.
-    const subscription = Meteor.subscribe(TCards.adminPublicationName);
+    const subscription = Meteor.subscribe(AllCards.adminPublicationName);
     // Determine if the subscription is ready
     const rdy = subscription.ready();
     // Get the Stuff documents
-    const cardItems = TCards.collection.find({}).fetch();
+    const cardItems = AllCards.collection.find({}).fetch();
     return {
-      tcards: cardItems,
+      allcards: cardItems,
       ready: rdy,
     };
   }, []);
@@ -57,17 +57,17 @@ const ViewCardsAdmin = () => {
             <Container>
               <Row>
                 <Col>
-                  <Row className="justify-content-center">{tcards.map((tcard) => (tcard.type === 'Common' ? (<CommonCard key={tcard._id} card={tcard} />) :
+                  <Row className="justify-content-center">{allcards.map((tcard) => (tcard.type === 'Common' ? (<CommonCard key={tcard._id} card={tcard} />) :
                     ('')))}
                   </Row>
                 </Col>
                 <Col>
-                  <Row className="justify-content-center">{tcards.map((tcard) => (tcard.type === 'Rare' ? (<RareCard key={tcard._id} card={tcard} />) :
+                  <Row className="justify-content-center">{allcards.map((tcard) => (tcard.type === 'Rare' ? (<RareCard key={tcard._id} card={tcard} />) :
                     ('')))}
                   </Row>
                 </Col>
                 <Col>
-                  <Row className="justify-content-center">{tcards.map((tcard) => (tcard.type === 'Legendary' ? (<LegendaryCard key={tcard._id} card={tcard} />) :
+                  <Row className="justify-content-center">{allcards.map((tcard) => (tcard.type === 'Legendary' ? (<LegendaryCard key={tcard._id} card={tcard} />) :
                     ('')))}
                   </Row>
                 </Col>
