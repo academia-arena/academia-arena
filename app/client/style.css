@@ -46,6 +46,13 @@ a {
   font-family: "Pixelify Sans", sans-serif;
 }
 
+#divider {
+  height: 2px;
+  width: 100%; /* Set the width of the divider */
+  margin: 0; /* Add margin for spacing */
+  background-color: #faf3e2;
+}
+
 /* Set the alert background on the signin and signup pages. */
 #signin-page .alert-light, #signup-page .alert-light {
   --bs-alert-bg: var(--matr-navbar-bg);
@@ -98,8 +105,13 @@ a {
   width: 100%;
   height: 70px;
   background-color:#faf3e2;
-  margin: 0px 0px 0px 0px;
-  padding: 0px 0px 0px 0px;
+}
+
+.partition-bar, #landing-page-top, .align-middle {
+  box-sizing: border-box; /* Ensures padding and borders are included in width/height */
+  margin: 0;
+  padding: 0;
+  width: 100%;
 }
 
 #landing-page {
@@ -107,13 +119,19 @@ a {
 }
 
 #landing-page-top {
-  background: center url("/images/POSTPixel.png");
+  background-image: url("/images/POSTPixel.png");
+  background-size: cover;
+  background-position: center;
   height: 450px;
-  align-items: center;
-  margin: 0 auto;
-  margin-left: 0px;
-  margin-right: 0px;
-  padding: 0px 0px 0px 0px;
+  display: flex;
+}
+
+#landing-page-about {
+  background-color: #95bea9 !important;
+  color: #faf3e2;
+  font-family: "Pixelify Sans", sans-serif;
+  padding: 30px 30px 30px 30px;
+  margin: 0px;
 }
 
 #landing-page-logo {
@@ -121,17 +139,14 @@ a {
 }
 
 #landing-page-title {
-  background-color: #95bea9 !important;
   color: #faf3e2;
-  padding: 8px 8px 8px 8px;
   background: #95BEA9;
-  border-radius: 40px 40px 40px 40px;
+  padding: 8px 8px 8px 8px;
+  border-radius: 40px;
   max-width: 500px;
   font-weight: 700;
   margin: 0 auto;
-  margin-top: 40px;
   font-family: "Pixelify Sans", sans-serif;
-  font-size: larger;
   padding: 20px 8px;
   align-items: center; /* Center content vertically */
 }
@@ -143,7 +158,6 @@ a {
   background: #95BEA9;
   border-radius: 40px 40px 40px 40px;
   max-width: 500px;
-  font-weight: 700;
   margin: 0 auto;
   margin-top: 20px;
   font-family: "Pixelify Sans", sans-serif;
@@ -151,22 +165,56 @@ a {
   align-items: center; /* Center content vertically */
 }
 
-
-#landing-page-about {
-  background-color: #95bea9 !important;
-  color: #faf3e2;
-  font-family: "Pixelify Sans", sans-serif;
-  padding: 30px 8px 100px 8px;
-}
-
 #footer {
   font-family: "Pixelify Sans", sans-serif;
+  padding-top: 20px;
+}
+
+#logo {
+  width: 90px;
+  margin: 0;
+}
+
+#logo-title {
+  margin: 0;
 }
 
 .nav-pills .nav-link.active {
   background: #95bea9 !important;
   color: #faf3e2 !important;
   border-radius: 5px;
+}
+
+#collection-nav,
+#pull-nav,
+#trade-nav,
+#wish-nav,
+#admin-collection-nav {
+  color: #faf3e2;
+  background: #749885;
+  border-radius: 20px;
+  padding: 7px 20px 5px 20px;
+  margin-right: 10px;
+  margin-left: 10px;
+  transition: background-color 0.01ms ease;
+}
+
+#collection-nav.active,
+#pull-nav.active,
+#trade-nav.active,
+#wish-nav.active,
+#admin-collection-nav.active,
+#collection-nav:hover,
+#pull-nav:hover,
+#trade-nav:hover,
+#wish-nav:hover,
+#admin-collection-nav:hover {
+  color: #95bea9;
+  background: #faf3e2;
+  border-radius: 20px;
+  padding: 7px 20px 5px 20px;
+  margin-right: 10px;
+  margin-left: 10px;
 }
 
 #SearchBar {
