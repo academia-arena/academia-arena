@@ -1,6 +1,7 @@
 import React from 'react';
 import { Meteor } from 'meteor/meteor';
-import { Col, Container, Nav, Row } from 'react-bootstrap';
+import { Col, Container, Nav, Row, Button } from 'react-bootstrap';
+import { PersonFill, PersonPlusFill } from 'react-bootstrap-icons';
 import { Roles } from 'meteor/alanning:roles';
 import { NavLink } from 'react-router-dom';
 
@@ -27,8 +28,28 @@ const Landing = () => (
         <div className="partition-bar" />
         <Col className="align-items-center text-center" id="landing-page-top">
           <Container className="text-center">
-            <h1 id="landing-page-title">PROFESSOR! <br /> I CHOOSE YOU!</h1>
-            <p id="landing-page-subtitle">Collect your favorite ICS professors to learn more about them, their courses, and your fellow students!</p>
+            <div id="landing-page-title">
+              <h1>PROFESSOR! <br /> I CHOOSE YOU!</h1>
+              <p>Collect your favorite ICS professors to learn more about them, their courses, and your fellow students!</p>
+            </div>
+            <div id="landing-page-subtitle">
+              <div id="buttonLayer">
+                <div id="loginSection">
+                  <p>Already a member?</p>
+                  <Button id="loginButton" as={NavLink} to="/signin">
+                    <PersonFill />
+                    LOGIN
+                  </Button>
+                </div>
+                <div id="signupSection">
+                  <p>Not a Member?</p>
+                  <Button id="signupButton" as={NavLink} to="/signup">
+                    <PersonPlusFill />
+                    SIGNUP
+                  </Button>
+                </div>
+              </div>
+            </div>
           </Container>
         </Col>
         <div className="partition-bar" />

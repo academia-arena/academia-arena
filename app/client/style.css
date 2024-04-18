@@ -217,6 +217,35 @@ a {
   margin-left: 10px;
 }
 
+#loginSection, #signupSection {
+  display: inline-block;
+  margin: 0 20px; /* Adjust as needed */
+}
+
+#loginButton, #signupButton {
+  display: block;
+  background-color: #FAF3E2;
+  color: #95BEA9;
+  font-family: "Pixelify Sans", sans-serif;
+  padding: 10px 50px;
+  box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1); /* Add this line */
+  transition: all 0.3s ease 0s; /* Add this line */
+}
+
+#loginButton:active, #signupButton:active {
+  box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.1); /* Add this line */
+  transform: translateY(3px); /* Add this line */
+}
+
+#loginButton:hover, #signupButton:hover {
+  background-color: white;
+  color: black;
+}
+
+#loginButton:hover svg, #signupButton:hover svg {
+  fill: black;
+}
+
 #SearchBar {
   background-color: #faf3e2;
 }
