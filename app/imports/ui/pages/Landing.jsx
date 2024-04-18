@@ -1,9 +1,9 @@
 import React from 'react';
 import { Meteor } from 'meteor/meteor';
 import { Col, Container, Nav, Row, Button } from 'react-bootstrap';
+import { PersonFill, PersonPlusFill } from 'react-bootstrap-icons';
 import { Roles } from 'meteor/alanning:roles';
 import { NavLink } from 'react-router-dom';
-import { PersonFill, PersonPlusFill } from 'react-bootstrap-icons';
 
 /* A simple static component to render some text for the landing page. */
 const Landing = () => (
@@ -26,34 +26,32 @@ const Landing = () => (
     ) : (
       <Container id="landing-page" fluid className="py-3">
         <div className="partition-bar" />
-        <div id="landing-page-top" className="py-3 align-middle">
-          <Col fluid className="align-middle text-center">
-            <Row id="landing-page-title" className="d-flex flex-column justify-content-center">
-              <h1>PROFESSOR! I CHOOSE YOU!</h1>
+        <Col className="align-items-center text-center" id="landing-page-top">
+          <Container className="text-center">
+            <div id="landing-page-title">
+              <h1>PROFESSOR! <br /> I CHOOSE YOU!</h1>
               <p>Collect your favorite ICS professors to learn more about them, their courses, and your fellow students!</p>
-            </Row>
-            <Row id="landing-page-subtitle" className="d-flex flex-column justify-content-center">
-              <Col fluid className="align-middle text-center">
-                <div id="buttonLayer">
-                  <div id="loginSection">
-                    <p>Already a member?</p>
-                    <Button id="loginButton" as={NavLink} to="/signin">
-                      <PersonFill />
-                      LOGIN
-                    </Button>
-                  </div>
-                  <div id="signupSection">
-                    <p>Not a Member?</p>
-                    <Button id="signupButton" as={NavLink} to="/signup">
-                      <PersonPlusFill />
-                      SIGNUP
-                    </Button>
-                  </div>
+            </div>
+            <div id="landing-page-subtitle">
+              <div id="buttonLayer">
+                <div id="loginSection">
+                  <p>Already a member?</p>
+                  <Button id="loginButton" as={NavLink} to="/signin">
+                    <PersonFill />
+                    LOGIN
+                  </Button>
                 </div>
-              </Col>
-            </Row>
-          </Col>
-        </div>
+                <div id="signupSection">
+                  <p>Not a Member?</p>
+                  <Button id="signupButton" as={NavLink} to="/signup">
+                    <PersonPlusFill />
+                    SIGNUP
+                  </Button>
+                </div>
+              </div>
+            </div>
+          </Container>
+        </Col>
         <div className="partition-bar" />
         <Container>
           <Row id="landing-page-about">
