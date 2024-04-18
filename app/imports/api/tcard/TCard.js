@@ -12,13 +12,23 @@ class TCardsCollection {
     this.collection = new Mongo.Collection(this.name);
     // Define the structure of each document in the collection.
     this.schema = new SimpleSchema({
-      name: String,
-      image: String,
-      rank: String,
+      firstName: String,
+      lastName: String,
       course: String,
       power: Number,
-      smtitle: String,
-      smdescription: String,
+      type: {
+        type: String,
+        allowedValues: ['Common', 'Rare', 'Legendary'],
+      },
+      role: {
+        type: String,
+        allowedValues: ['Professor', 'Instructor'],
+      },
+      title: String,
+      description: String,
+      funFact: String,
+      cardName: String,
+      image: String,
       owner: String,
     });
     // Attach the schema to the collection, so all attempts to insert a document are checked against schema.

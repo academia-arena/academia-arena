@@ -6,7 +6,7 @@ import { TCards } from '../../api/tcard/TCard.js';
 
 // Initialize the database with a default data document.
 const addData = (data) => {
-  console.log(`  Adding: ${data.name} (${data.owner})`);
+  console.log(`  Adding: ${data.lastName} (${data.owner})`);
   Stuffs.collection.insert(data);
 };
 
@@ -19,7 +19,7 @@ if (Stuffs.collection.find().count() === 0) {
 }
 
 const addTCard = (tcard) => {
-  console.log(`  Adding: ${tcard.name} (${tcard.owner}) `);
+  console.log(`  Adding: ${tcard.lastName} (${tcard.owner}) `);
   TCards.collection.insert(tcard);
 };
 
