@@ -2,8 +2,7 @@
 /* Use Open Sans as the default sans serif font. */
 @import url("https://fonts.googleapis.com/css?family=Open+Sans:300,400,500,700|Source+Code+Pro:300,400,500,700");
 
-/* Import Pixel Sans */
-@import url('https://fonts.googleapis.com/css2?family=Pixelify+Sans:wght@400..700&display=swap');
+ @import url('https://fonts.googleapis.com/css2?family=Pixelify+Sans:wght@400..700&display=swap');
 
 /* Set up some CSS variables to theme the application. */
 :root {
@@ -170,6 +169,35 @@ a {
   padding-top: 20px;
 }
 
+#loginSection, #signupSection {
+  display: inline-block;
+  margin: 0 20px; /* Adjust as needed */
+}
+
+#loginButton, #signupButton {
+  display: block;
+  background-color: #FAF3E2;
+  color: #95BEA9;
+  font-family: "Pixelify Sans", sans-serif;
+  padding: 10px 50px;
+  box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1); /* Add this line */
+  transition: all 0.3s ease 0s; /* Add this line */
+}
+
+#loginButton:active, #signupButton:active {
+  box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.1); /* Add this line */
+  transform: translateY(3px); /* Add this line */
+}
+
+#loginButton:hover, #signupButton:hover {
+  background-color: white;
+  color: black;
+}
+
+#loginButton:hover svg, #signupButton:hover svg {
+  fill: black;
+}
+
 #logo {
   width: 90px;
   margin: 0;
@@ -259,6 +287,15 @@ a {
   background-color: #95bea9;
 }
 
+#search {
+  width: 60vh;
+}
+
+.card-subtitle {
+  font-size: 16px;
+  font-style: italic;
+}
+
 #Cards1 {
   background-image: linear-gradient(#E5E0D3, #B3A88D, #665D46);
   border-color: #4D4739;
@@ -268,14 +305,14 @@ a {
 
 #CardsTitle1 {
   background-color: #C7C7C7;
-  border-radius: 20px;
-  height: 40px;
+  border-radius: 25px;
+  height: 50px;
   width: 335px;
   margin-top: 10px;
-  padding-top: 10px;
-  font-size: 17px;
+  padding-top: 5px;
+  font-size: 20px;
   color: black;
-  overflow: scroll;
+  overflow: visible;
 }
 
 #CardsImage1 {
@@ -302,14 +339,14 @@ a {
 
 #CardsTitle2 {
   background-color: #FFFFCC;
-  border-radius: 20px;
-  height: 40px;
+  border-radius: 25px;
+  height: 50px;
   width: 335px;
+  padding-top: 5px;
   margin-top: 10px;
-  padding-top: 10px;
-  font-size: 17px;
+  font-size: 20px;
   color: black;
-  overflow: scroll;
+  overflow: visible;
 }
 
 #CardsImage2 {
@@ -337,14 +374,14 @@ a {
 
 #CardsTitle3 {
   background-color: #CCFFCC;
-  border-radius: 20px;
-  height: 40px;
+  border-radius: 25px;
+  height: 50px;
   width: 335px;
   margin-top: 10px;
-  padding-top: 11px;
-  font-size: 15px;
+  padding-top: 5px;
+  font-size: 20px;
   white-space: nowrap;
-  overflow: scroll;
+  overflow: visible;
 }
 
 #CardsImage3 {
@@ -361,5 +398,13 @@ a {
   width: 315px;
   overflow-y: scroll;
   overflow-x: hidden;
+}
+
+#card-collection-subtitle {
+  background-color: #FFFFCC;
+  font-family: "Pixelify Sans", sans-serif;
+  padding-top: 2vh;
+  padding-bottom: 2vh;
+  text-align: center;
 }
 

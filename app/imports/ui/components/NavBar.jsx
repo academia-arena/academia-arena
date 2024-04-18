@@ -35,6 +35,7 @@ const NavBar = () => {
             ]) : ''}
             {currentUser === 'admin@foo.com' ? ([
               <Nav.Link id="admin-collection-nav" as={NavLink} to="/admin" key="list">Admin Collection</Nav.Link>,
+            // <Nav.Link id="add-stuff-nav" as={NavLink} to="/add" key="add">Add Stuff</Nav.Link>,
             ]) : ''}
           </Nav>
           <Nav className="justify-content-end">
