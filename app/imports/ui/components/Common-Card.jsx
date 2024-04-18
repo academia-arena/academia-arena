@@ -7,9 +7,7 @@ const CommonCard = ({ card }) => (
   <Card id="Cards1" className="align-items-center my-2" style={{ width: '370px', height: '540px' }}>
     <Card.Title id="CardsTitle1">
       <Container className="text-center">
-        <strong>{card.role} {card.firstName} {card.lastName}</strong>
-        <br />
-        <div className="card-subtitle">{card.cardName}</div>
+        <strong>{card.role} {card.lastName}</strong>
       </Container>
     </Card.Title>
     <Card.Body id="CardsImage1" className="text-center">
