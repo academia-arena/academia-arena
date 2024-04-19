@@ -6,6 +6,7 @@ import { Roles } from 'meteor/alanning:roles';
 import { BrowserRouter as Router, Route, Routes, Navigate } from 'react-router-dom';
 import Footer from '../components/Footer';
 import Landing from '../pages/Landing';
+import HomePage from '../pages/HomePage';
 import ViewCardsAdmin from '../pages/ViewCardsAdmin';
 import AddCard from '../pages/AddCard';
 import EditStuff from '../pages/EditStuff';
@@ -20,10 +21,12 @@ import ListTCard from '../pages/ListTCard';
 
 /** Top-level layout component for this application. Called in imports/startup/client/startup.jsx. */
 const App = () => {
-  const { ready } = useTracker(() => {
+  const { ready, loggedIn } = useTracker(() => {
     const rdy = Roles.subscription.ready();
+    const user = Meteor.user();
     return {
       ready: rdy,
+      loggedIn: !!user,
     };
   });
   return (
@@ -31,11 +34,16 @@ const App = () => {
       <div className="d-flex flex-column min-vh-100">
         <NavBar />
         <Routes>
+          {loggedIn ? (
+            <Route path="/home" element={<ProtectedRoute><HomePage /></ProtectedRoute>} />
+          ) : (
+            <Route path="/home" element={<Landing />} />
+          )}
           <Route exact path="/" element={<Landing />} />
           <Route path="/signin" element={<SignIn />} />
           <Route path="/signup" element={<SignUp />} />
           <Route path="/signout" element={<SignOut />} />
-          <Route path="/home" element={<ProtectedRoute><Landing /></ProtectedRoute>} />
+          <Route path="/landing" element={<ProtectedRoute><Landing /></ProtectedRoute>} />
           <Route path="/list" element={<ProtectedRoute><ListTCard /></ProtectedRoute>} />
           <Route path="/add" element={<ProtectedRoute><AddCard /></ProtectedRoute>} />
           <Route path="/edit/:_id" element={<ProtectedRoute><EditStuff /></ProtectedRoute>} />
