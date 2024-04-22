@@ -37,6 +37,7 @@ TCardItem.propTypes = {
     smtitle: PropTypes.string,
     smdescription: PropTypes.string,
     owner: PropTypes.string,
+    collection: PropTypes.string,
     _id: PropTypes.string,
   }).isRequired,
 };

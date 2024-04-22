@@ -31,7 +31,7 @@ const NavBar = () => {
               <Nav.Link id="collection-nav" as={NavLink} to="/list" key="list">Collection</Nav.Link>,
               <Nav.Link id="pull-nav" as={NavLink} to="/home" key="list">Pull for Cards</Nav.Link>,
               <Nav.Link id="wish-nav" as={NavLink} to="/" key="list">Wishlist</Nav.Link>,
-              <Nav.Link id="trade-nav" as={NavLink} to="/" key="list">Market Place</Nav.Link>,
+              <Nav.Link id="trade-nav" as={NavLink} to="/trade" key="list">Market Place</Nav.Link>,
             ]) : ''}
             {currentUser === 'admin@foo.com' ? ([
               <Nav.Link id="admin-collection-nav" as={NavLink} to="/admin" key="list">Admin Collection</Nav.Link>,

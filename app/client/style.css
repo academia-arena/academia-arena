@@ -42,7 +42,8 @@ h2 {
   font-family: "Pixelify Sans", sans-serif;
 }
 
-a {
+a,
+p {
   font-family: "Pixelify Sans", sans-serif;
 }
 
@@ -361,5 +362,9 @@ a {
   width: 315px;
   overflow-y: scroll;
   overflow-x: hidden;
+}
+
+#prof-icon {
+  width: 100px;
 }
 

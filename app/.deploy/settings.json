@@ -48,7 +48,8 @@
       "funFact": "Plays electric guitar in a band called Hardly Strictly Jerry.",
       "cardName": "God of Programming",
       "image": "https://github.com/philipmjohnson.png",
-      "owner": "admin@foo.com"
+      "owner": "admin@foo.com",
+      "collection": "Personal"
     },
     {
       "firstName": "Philip",
@@ -62,7 +63,8 @@
       "funFact": "Plays electric guitar in a band called Hardly Strictly Jerry.",
       "cardName": "God of Programming",
       "image": "https://github.com/philipmjohnson.png",
-      "owner": "admin@foo.com"
+      "owner": "admin@foo.com",
+      "collection": "Personal"
     },
     {
       "firstName": "Philip",
@@ -76,7 +78,8 @@
       "funFact": "Plays electric guitar in a band called Hardly Strictly Jerry.",
       "cardName": "God of Programming",
       "image": "https://github.com/philipmjohnson.png",
-      "owner": "admin@foo.com"
+      "owner": "admin@foo.com",
+      "collection": "Trade"
     }
   ],
   "monti": {

@@ -4,10 +4,10 @@ import SimpleSchema from 'simpl-schema';
 /**
  * The StuffsCollection. It encapsulates state and variable values for stuff.
  */
-class TCardsCollection {
+class TradesCollection {
   constructor() {
     // The name of this collection.
-    this.name = 'TCardsCollection';
+    this.name = 'TradesCollection';
     // Define the Mongo collection.
     this.collection = new Mongo.Collection(this.name);
     // Define the structure of each document in the collection.
@@ -30,22 +30,17 @@ class TCardsCollection {
       cardName: String,
       image: String,
       owner: String,
-      collection: {
-        type: String,
-        allowedValues: ['Personal', 'Trade'],
-      },
     });
     // Attach the schema to the collection, so all attempts to insert a document are checked against schema.
     this.collection.attachSchema(this.schema);
     // Define names for publications and subscriptions
-    this.userTradePublicationName = `${this.name}.publication.trade`; // Rename the publication name for trade cards
-    this.userPublicationName = `${this.name}.publication.user`; // Add a publication name for personal cards
+    this.userPublicationName = `${this.name}.publication.user`;
     this.adminPublicationName = `${this.name}.publication.admin`;
   }
 }
 
 /**
- * The singleton instance of the TCardsCollection.
- * @type {TCardsCollection}
+ * The singleton instance of the TradesCollection.
+ * @type {TradesCollection}
  */
-export const TCards = new TCardsCollection();
+export const Trades = new TradesCollection();
