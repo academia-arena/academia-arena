@@ -24,7 +24,10 @@ const ListTCard = () => {
     };
   }, []);
   return (ready ? (
-    <><h1 className="subtitle">Card Collection</h1>
+    <>
+      <div id="partition-bar">
+        <h1 className="subtitle">Card Collection</h1>
+      </div>
       <Container className="py-3">
         <Row xs={1} md={2} lg={3} className="gy-4">
           {tcards.map((tcard) => (<Col key={tcard.id}><TCardItem tcard={tcard} /></Col>))}

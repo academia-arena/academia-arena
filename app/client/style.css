@@ -114,6 +114,19 @@ a {
   width: 100%;
 }
 
+#partition-bar {
+  background-color: #faf3e2; /* Yellow color */
+  height: 70px; /* Height of the partition bar */
+  display: flex; /* Use flexbox to center the text vertically and horizontally */
+  justify-content: center;
+  align-items: center;
+}
+
+#partition-bar h1 {
+  font-family: "Pixelify Sans", sans-serif; /* Pixel font */
+  color: #95BEA9; /* Same color scheme as the site */
+}
+
 #landing-page {
   background-color: #95bea9 !important;
 }
