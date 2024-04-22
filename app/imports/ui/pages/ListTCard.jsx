@@ -4,7 +4,9 @@ import { Col, Container, Row } from 'react-bootstrap';
 import { useTracker } from 'meteor/react-meteor-data';
 import { TCards } from '../../api/tcard/TCard';
 import LoadingSpinner from '../components/LoadingSpinner';
-import TCardItem from '../components/TCardItem';
+import CommonCard from '../components/Common-Card';
+import RareCard from '../components/Rare-Card';
+import LegendaryCard from '../components/Legendary-Card';
 
 /* Renders a table containing all of the Stuff documents. Use <StuffItem> to render each row. */
 const ListTCard = () => {
@@ -32,8 +34,12 @@ const ListTCard = () => {
         </div>
       </div>
       <Container className="py-3">
-        <Row xs={1} md={2} lg={3} className="gy-4">
-          {tcards.map((tcard) => (<Col key={tcard.id}><TCardItem tcard={tcard} /></Col>))}
+        <Row style={{ paddingLeft: '6vh' }} className="py-3 gx-2 justify-content-center">
+          {tcards.map((tcard) => {
+            if (tcard.type === 'Common') return <Col><CommonCard key={tcard._id} card={tcard} /></Col>;
+            if (tcard.type === 'Rare') return <Col><RareCard key={tcard._id} card={tcard} /></Col>;
+            return <Col><LegendaryCard key={tcard._id} card={tcard} /></Col>;
+          })}
         </Row>
       </Container>
     </>
