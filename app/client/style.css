@@ -118,13 +118,33 @@ a {
   background-color: #faf3e2; /* Yellow color */
   height: 70px; /* Height of the partition bar */
   display: flex; /* Use flexbox to center the text vertically and horizontally */
-  justify-content: center;
+  padding: 20px 20px;
+  justify-content: space-between;
   align-items: center;
 }
 
 #partition-bar h1 {
   font-family: "Pixelify Sans", sans-serif; /* Pixel font */
   color: #95BEA9; /* Same color scheme as the site */
+}
+
+#search-bar {
+  background-color: #F7EFB7; /* Yellow color */
+  height: 50px; /* Height of the search bar */
+  display: flex; /* Use flexbox to center the text vertically and horizontally */
+  margin-left: 40px;
+  justify-content: right;
+  align-items: center;
+}
+
+#search-bar input {
+  font-family: "Pixelify Sans", sans-serif; /* Pixel font */
+  color: #95BEA9; /* Same color scheme as the site */
+  border: none;
+  background-color: #F7EFB7; /* Yellow color */
+  width: 80%; /* Width of the input field */
+  padding: 10px;
+  flex-grow: 1;
 }
 
 #landing-page {
@@ -284,6 +304,8 @@ a {
 #loginButton:hover svg, #signupButton:hover svg {
   fill: black;
 }
+
+
 
 .navButton {
   display: block;

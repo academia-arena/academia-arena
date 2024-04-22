@@ -27,6 +27,9 @@ const ListTCard = () => {
     <>
       <div id="partition-bar">
         <h1 className="subtitle">Card Collection</h1>
+        <div id="search-bar">
+          <input type="text" placeholder="Search..." />
+        </div>
       </div>
       <Container className="py-3">
         <Row xs={1} md={2} lg={3} className="gy-4">
