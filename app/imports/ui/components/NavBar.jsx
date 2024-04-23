@@ -33,7 +33,7 @@ const NavBar = () => {
             {isLoggedIn && (
               <>
                 <Nav.Link id="collection-nav" as={NavLink} to="/list">Collection</Nav.Link>
-                <Nav.Link id="pull-nav" as={NavLink} to="/home">Pull for Cards</Nav.Link>
+                <Nav.Link id="pull-nav" as={NavLink} to="/pull">Pull for Cards</Nav.Link>
                 <Nav.Link id="wish-nav" as={NavLink} to="/home">Wishlist</Nav.Link>
                 <Nav.Link id="trade-nav" as={NavLink} to="/home">Market Place</Nav.Link>
                 {isAdmin && (
