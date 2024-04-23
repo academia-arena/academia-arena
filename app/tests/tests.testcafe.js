@@ -2,6 +2,7 @@ import { landingPage } from './landing.page';
 import { signinPage } from './signin.page';
 import { signoutPage } from './signout.page';
 import { navBar } from './navbar.component';
+import { signupPage } from './signup.page';
 
 /* global fixture:false, test:false */
 
@@ -19,6 +20,15 @@ test('Test that signin and signout work', async (testController) => {
   await navBar.gotoSignInPage(testController);
   await signinPage.signin(testController, credentials.username, credentials.password);
   await navBar.isLoggedIn(testController, credentials.username);
+  await navBar.logout(testController);
+  await signoutPage.isDisplayed(testController);
+});
+
+test('Test that signup page then signout work', async (testController) => {
+  const newUser = `user-${new Date().getTime()}@foo.com`;
+  await navBar.gotoSignUpPage(testController);
+  await signupPage.isDisplayed(testController);
+  await signupPage.signupUser(testController, newUser, 'password');
   await navBar.logout(testController);
   await signoutPage.isDisplayed(testController);
 });

@@ -48,10 +48,10 @@ const SignUp = ({ location }) => {
               <Card id="input-card-body">
                 <Card.Body>
                   <h2 className="text-center">Register your account</h2>
-                  <TextField name="email" placeholder="E-mail address" />
-                  <TextField name="password" placeholder="Password" type="password" />
+                  <TextField id="signup-form-email" name="email" placeholder="E-mail address" />
+                  <TextField id="signup-form-password" name="password" placeholder="Password" type="password" />
                   <ErrorsField />
-                  <SubmitField />
+                  <SubmitField id="signup-form-submit" />
                   <div style={{ marginTop: '10px', textAlign: 'center' }}>
                     Already have an account? Login
                     {' '}
