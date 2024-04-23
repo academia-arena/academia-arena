@@ -18,7 +18,7 @@ Meteor.publish(Stuffs.userPublicationName, function () {
 
 // Publish trade cards to all users
 Meteor.publish(TCards.userTradePublicationName, function () {
-  return TCards.collection.find({ isListedForTrade: true });
+  return TCards.collection.find({ isListedForTrade: 'Yes' });
 });
 
 // Publish personal cards to their respective owners

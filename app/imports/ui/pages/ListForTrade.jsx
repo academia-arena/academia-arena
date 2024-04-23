@@ -51,7 +51,7 @@ const ListForTrade = () => {
             <AutoForm schema={bridge} onSubmit={data => submit(data)} model={doc}>
               <Card>
                 <Card.Body>
-                  <SelectField name="list" label="List For Trade?" />
+                  <SelectField name="isListedForTrade" label="List For Trade?" />
                   <SubmitField value="Submit" />
                   <ErrorsField />
                   <HiddenField name="owner" />

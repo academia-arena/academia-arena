@@ -15,7 +15,7 @@ const ListPublicTrade = () => {
     // Determine if the subscription is ready
     const rdy = subscription.ready();
     // Filter the cards to include only those where collection property is "trade"
-    const items = TCards.collection.find({ isListedForTrade: true }).fetch();
+    const items = TCards.collection.find({ isListedForTrade: 'Yes' }).fetch();
     return {
       tcards: items,
       ready: rdy,

@@ -30,7 +30,11 @@ class TCardsCollection {
       cardName: String,
       image: String,
       owner: String,
-      isListedForTrade: Boolean,
+      isListedForTrade: {
+        type: String,
+        allowedValues: ['Yes', 'No'],
+        defaultValue: 'No',
+      },
     });
     // Attach the schema to the collection, so all attempts to insert a document are checked against schema.
     this.collection.attachSchema(this.schema);

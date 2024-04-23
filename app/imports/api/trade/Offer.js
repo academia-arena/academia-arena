@@ -13,6 +13,7 @@ class OffersCollection {
     // Define the structure of each document in the collection.
     this.schema = new SimpleSchema({
       senderId: String,
+      senderCardId: String,
       recipientId: String,
       offeredCardName: String,
       offeredCardImage: String,
