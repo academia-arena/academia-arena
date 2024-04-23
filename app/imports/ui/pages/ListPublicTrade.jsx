@@ -22,7 +22,7 @@ const ListPublicTrade = () => {
     };
   }, []);
   return (ready ? (
-    <Col>
+    <Col id="marketplace-page">
       <Container fluid className="py-3" id="title-block">
         <Container>
           <h2 className="text-center pt-2">MARKETPLACE</h2>
