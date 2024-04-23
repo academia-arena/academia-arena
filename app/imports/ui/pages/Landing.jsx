@@ -7,7 +7,7 @@ import { NavLink } from 'react-router-dom';
 
 /* A simple static component to render some text for the landing page. */
 const Landing = () => (
-  <Col>
+  <Col id="landing-page">
     {Roles.userIsInRole(Meteor.userId(), 'admin') ? (
       <Col>
         <Container fluid className="py-3" id="title-block">
