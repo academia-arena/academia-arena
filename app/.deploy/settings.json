@@ -50,7 +50,7 @@
       "cardName": "God of Programming",
       "image": "https://github.com/philipmjohnson.png",
       "owner": "admin@foo.com",
-      "isListedForTrade": false
+      "isListedForTrade": "No"
     },
     {
       "firstName": "Philip",
@@ -65,7 +65,7 @@
       "cardName": "God of Programming",
       "image": "https://github.com/philipmjohnson.png",
       "owner": "admin@foo.com",
-      "isListedForTrade": false
+      "isListedForTrade": "No"
     },
     {
       "firstName": "Philip",
@@ -80,7 +80,7 @@
       "cardName": "God of Programming",
       "image": "https://github.com/philipmjohnson.png",
       "owner": "admin@foo.com",
-      "isListedForTrade": true
+      "isListedForTrade": "No"
     }
   ],
   "monti": {

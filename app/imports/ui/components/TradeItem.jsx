@@ -24,7 +24,7 @@ TradeItem.propTypes = {
     image: PropTypes.string,
     type: PropTypes.string,
     owner: PropTypes.string,
-    isListedForTrade: PropTypes.bool,
+    isListedForTrade: PropTypes.string,
     _id: PropTypes.string,
   }).isRequired,
 };

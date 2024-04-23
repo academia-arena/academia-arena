@@ -14,7 +14,7 @@ const ListPublicTrade = () => {
     const subscription = Meteor.subscribe(TCards.userTradePublicationName);
     // Determine if the subscription is ready
     const rdy = subscription.ready();
-    // Filter the cards to include only those where collection property is "trade"
+    // Filter the cards to include only those where isListedForTrade property is "Yes"
     const items = TCards.collection.find({ isListedForTrade: 'Yes' }).fetch();
     return {
       tcards: items,
