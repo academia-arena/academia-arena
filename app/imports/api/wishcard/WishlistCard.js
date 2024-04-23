@@ -4,10 +4,10 @@ import SimpleSchema from 'simpl-schema';
 /**
  * The StuffsCollection. It encapsulates state and variable values for stuff.
  */
-class TCardsCollection {
+class WishlistCardCollection {
   constructor() {
     // The name of this collection.
-    this.name = 'TCardsCollection';
+    this.name = 'WishlistCardCollection';
     // Define the Mongo collection.
     this.collection = new Mongo.Collection(this.name);
     // Define the structure of each document in the collection.
@@ -29,23 +29,32 @@ class TCardsCollection {
       funFact: String,
       cardName: String,
       image: String,
-      owner: String,
-      isListedForTrade: {
+      inWishlist: {
         type: Boolean,
-        defaultValue: false,
+        defaultValue: true,
       },
     });
-    // Attach the schema to the collection, so all attempts to insert a document are checked against schema.
     this.collection.attachSchema(this.schema);
     // Define names for publications and subscriptions
-    this.userTradePublicationName = `${this.name}.publication.trade`; // Rename the publication name for trade cards
-    this.userPublicationName = `${this.name}.publication.user`; // Add a publication name for personal cards
+    this.userPublicationName = `${this.name}.publication.user`;
     this.adminPublicationName = `${this.name}.publication.admin`;
+  }
+
+  addCard(cardData) {
+    const existingCard = this.collection.findOne({ _id: cardData._id });
+
+    if (existingCard) {
+      console.log('Card already exists in the wishlist:', existingCard);
+
+    } else {
+      const cardWithWishlistField = { ...cardData, inWishlist: true };
+      this.collection.insert(cardWithWishlistField);
+    }
   }
 }
 
 /**
  * The singleton instance of the TCardsCollection.
- * @type {TCardsCollection}
+ * @type {WishlistCardCollection}
  */
-export const TCards = new TCardsCollection();
+export const WishlistCard = new WishlistCardCollection();

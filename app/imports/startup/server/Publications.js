@@ -3,7 +3,8 @@ import { Roles } from 'meteor/alanning:roles';
 import { Stuffs } from '../../api/stuff/Stuff';
 import { TCards } from '../../api/tcard/TCard';
 import { AllCards } from '../../api/allcard/AllCard';
-import { Wishlist } from '../../api/wishlist/Wishlist';
+import { WishlistCard } from '../../api/wishcard/WishlistCard';
+import { CatalogCard } from '../../api/cardcatalog/CatalogCard';
 import { Offers } from '../../api/trade/Offer';
 
 // User-level publication.
@@ -18,7 +19,7 @@ Meteor.publish(Stuffs.userPublicationName, function () {
 
 // Publish trade cards to all users
 Meteor.publish(TCards.userTradePublicationName, function () {
-  return TCards.collection.find({ isListedForTrade: 'Yes' });
+  return TCards.collection.find({ isListedForTrade: true });
 });
 
 // Publish personal cards to their respective owners
@@ -69,17 +70,26 @@ Meteor.publish(AllCards.adminPublicationName, function () {
   return this.ready();
 });
 
-Meteor.publish(Wishlist.userPublicationName, function () {
-  if (this.userId) {
-    const username = Meteor.users.findOne(this.userId).username;
-    return Wishlist.collection.find({ owner: username });
+Meteor.publish(WishlistCard.userPublicationName, function () {
+  return WishlistCard.collection.find();
+});
+
+Meteor.publish(WishlistCard.adminPublicationName, function () {
+  if (this.userId && Roles.userIsInRole(this.userId, 'admin')) {
+    return WishlistCard.collection.find();
+
   }
   return this.ready();
 });
+// Publish all cards to Card Catalog
+Meteor.publish(CatalogCard.userPublicationName, function () {
+  return CatalogCard.collection.find();
+});
 
-Meteor.publish(Wishlist.adminPublicationName, function () {
+Meteor.publish(CatalogCard.adminPublicationName, function () {
   if (this.userId && Roles.userIsInRole(this.userId, 'admin')) {
-    return Wishlist.collection.find();
+    return CatalogCard.collection.find();
+
   }
   return this.ready();
 });

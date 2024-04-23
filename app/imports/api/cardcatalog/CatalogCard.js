@@ -2,12 +2,12 @@ import { Mongo } from 'meteor/mongo';
 import SimpleSchema from 'simpl-schema';
 
 /**
- * The WishlistCollection. It encapsulates state and variable values for stuff.
+ * The StuffsCollection. It encapsulates state and variable values for stuff.
  */
-class WishlistCollection {
+class CatalogCardCollection {
   constructor() {
     // The name of this collection.
-    this.name = 'WishlistCollection';
+    this.name = 'CatalogCardCollection';
     // Define the Mongo collection.
     this.collection = new Mongo.Collection(this.name);
     // Define the structure of each document in the collection.
@@ -30,6 +30,10 @@ class WishlistCollection {
       cardName: String,
       image: String,
       owner: String,
+      inWishlist: {
+        type: Boolean,
+        defaultValue: false,
+      },
     });
     // Attach the schema to the collection, so all attempts to insert a document are checked against schema.
     this.collection.attachSchema(this.schema);
@@ -40,7 +44,7 @@ class WishlistCollection {
 }
 
 /**
- * The singleton instance of the WishlistCollection.
- * @type {WishlistCollection}
+ * The singleton instance of the TCardsCollection.
+ * @type {CatalogCardCollection}
  */
-export const Wishlist = new WishlistCollection();
+export const CatalogCard = new CatalogCardCollection();

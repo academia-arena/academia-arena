@@ -21,6 +21,7 @@ import ListTCard from '../pages/ListTCard';
 import ListPublicTrade from '../pages/ListPublicTrade';
 import MakeOffer from '../pages/MakeOffer';
 import ListForTrade from '../pages/ListForTrade';
+import ViewWishlist from '../pages/ViewWishlist';
 
 /** Top-level layout component for this application. Called in imports/startup/client/startup.jsx. */
 const App = () => {
@@ -48,6 +49,7 @@ const App = () => {
           <Route path="/signout" element={<SignOut />} />
           <Route path="/landing" element={<ProtectedRoute><Landing /></ProtectedRoute>} />
           <Route path="/list" element={<ProtectedRoute><ListTCard /></ProtectedRoute>} />
+          <Route path="/wishlist" element={<ProtectedRoute><ViewWishlist /></ProtectedRoute>} />
           <Route path="/add" element={<ProtectedRoute><AddCard /></ProtectedRoute>} />
           <Route path="/trade" element={<ProtectedRoute><ListPublicTrade /></ProtectedRoute>} />
           <Route path="/listtrade/:_id" element={<ProtectedRoute><ListForTrade /></ProtectedRoute>} />

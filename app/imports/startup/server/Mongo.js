@@ -2,6 +2,8 @@ import { Meteor } from 'meteor/meteor';
 import { Stuffs } from '../../api/stuff/Stuff.js';
 import { TCards } from '../../api/tcard/TCard.js';
 import { AllCards } from '../../api/allcard/AllCard.js';
+import { WishlistCard } from '../../api/wishcard/WishlistCard.js';
+import { CatalogCard } from '../../api/cardcatalog/CatalogCard';
 
 /* eslint-disable no-console */
 
@@ -41,4 +43,21 @@ if (AllCards.collection.find().count() === 0) {
     console.log('Creating all cards.');
     Meteor.settings.allCards.forEach(allcard => addAllCard(allcard));
   }
+}
+
+const addCatalogCard = (cardcatalog) => {
+  console.log(`  Adding: ${cardcatalog.lastName} (${cardcatalog.owner}) `);
+  CatalogCard.collection.insert(cardcatalog);
+};
+
+if (CatalogCard.collection.find().count() === 0) {
+  if (Meteor.settings.allCards) {
+    console.log('Creating allCards cards.');
+    Meteor.settings.allCards.forEach(cardcatalog => addCatalogCard(cardcatalog));
+  }
+}
+
+if (WishlistCard.collection.find().count() === 0) {
+  console.log('Initializing Wishlist collection.');
+  // You can optionally add default wishlist items here if needed.
 }
