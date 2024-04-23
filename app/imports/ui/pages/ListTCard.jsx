@@ -26,7 +26,7 @@ const ListTCard = () => {
     };
   }, []);
   return (ready ? (
-    <Col>
+    <Col id="view-collection-page">
       <Container fluid className="py-3" id="title-block">
         <Container>
           <h2 className="text-center pt-2">Card Collection</h2>

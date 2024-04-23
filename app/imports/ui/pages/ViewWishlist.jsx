@@ -54,7 +54,7 @@ const ViewCardsAdmin = () => {
   };
 
   return (wishListReady && cardCatalogReady ? (
-    <Col>
+    <Col id="wishlist-page">
 
       <Container fluid className="py-3" id="title-block">
         <Container>
