@@ -1,6 +1,6 @@
 import React from 'react';
 import { Meteor } from 'meteor/meteor';
-import { Col, Container, Row } from 'react-bootstrap';
+import { Button, Col, Container, Form, InputGroup, Row } from 'react-bootstrap';
 import { useTracker } from 'meteor/react-meteor-data';
 import { TCards } from '../../api/tcard/TCard';
 import LoadingSpinner from '../components/LoadingSpinner';
@@ -26,14 +26,19 @@ const ListTCard = () => {
     };
   }, []);
   return (ready ? (
-    <>
-      <div id="partition-bar">
-        <h1 className="subtitle">Card Collection</h1>
-        <div id="search-bar">
-          <input type="text" placeholder="Search..." />
-        </div>
-      </div>
-      <Container className="py-3">
+    <Col>
+      <Container fluid className="py-3" id="title-block">
+        <Container>
+          <h2 className="text-center pt-2">Card Collection</h2>
+        </Container>
+      </Container>
+      <Container className="py-3 justify-content-center">
+        <Row className="py-3 d-flex justify-content-center">
+          <InputGroup id="search">
+            <Form.Control id="SearchBar" placeholder="Name" />
+            <Button variant="success">Search</Button>
+          </InputGroup>
+        </Row>
         <Row style={{ paddingLeft: '6vh' }} className="py-3 gx-2 justify-content-center">
           {tcards.map((tcard) => {
             if (tcard.type === 'Common') return <Col><CommonCard key={tcard._id} card={tcard} /></Col>;
@@ -42,7 +47,7 @@ const ListTCard = () => {
           })}
         </Row>
       </Container>
-    </>
+    </Col>
   ) : <LoadingSpinner />);
 };
 

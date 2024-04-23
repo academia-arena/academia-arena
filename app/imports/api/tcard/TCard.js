@@ -30,11 +30,13 @@ class TCardsCollection {
       cardName: String,
       image: String,
       owner: String,
+      isListedForTrade: Boolean,
     });
     // Attach the schema to the collection, so all attempts to insert a document are checked against schema.
     this.collection.attachSchema(this.schema);
     // Define names for publications and subscriptions
-    this.userPublicationName = `${this.name}.publication.user`;
+    this.userTradePublicationName = `${this.name}.publication.trade`; // Rename the publication name for trade cards
+    this.userPublicationName = `${this.name}.publication.user`; // Add a publication name for personal cards
     this.adminPublicationName = `${this.name}.publication.admin`;
   }
 }

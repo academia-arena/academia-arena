@@ -4,6 +4,7 @@ import { Stuffs } from '../../api/stuff/Stuff';
 import { TCards } from '../../api/tcard/TCard';
 import { AllCards } from '../../api/allcard/AllCard';
 import { Wishlist } from '../../api/wishlist/Wishlist';
+import { Offers } from '../../api/trade/Offer';
 
 // User-level publication.
 // If logged in, then publish documents owned by this user. Otherwise, publish nothing.
@@ -11,6 +12,29 @@ Meteor.publish(Stuffs.userPublicationName, function () {
   if (this.userId) {
     const username = Meteor.users.findOne(this.userId).username;
     return Stuffs.collection.find({ owner: username });
+  }
+  return this.ready();
+});
+
+// Publish trade cards to all users
+Meteor.publish(TCards.userTradePublicationName, function () {
+  return TCards.collection.find({ isListedForTrade: true });
+});
+
+// Publish personal cards to their respective owners
+Meteor.publish(TCards.userPublicationName, function () {
+  if (this.userId) {
+    const username = Meteor.users.findOne(this.userId).username;
+    return TCards.collection.find({ owner: username });
+  }
+  return this.ready();
+});
+
+// Publish offers to users
+Meteor.publish(Offers.userPublicationName, function () {
+  if (this.userId) {
+    const username = Meteor.users.findOne(this.userId).username;
+    return Offers.collection.find({ owner: username });
   }
   return this.ready();
 });
@@ -24,10 +48,9 @@ Meteor.publish(Stuffs.adminPublicationName, function () {
   return this.ready();
 });
 
-Meteor.publish(TCards.userPublicationName, function () {
-  if (this.userId) {
-    const username = Meteor.users.findOne(this.userId).username;
-    return TCards.collection.find({ owner: username });
+Meteor.publish(Offers.adminPublicationName, function () {
+  if (this.userId && Roles.userIsInRole(this.userId, 'admin')) {
+    return Offers.collection.find();
   }
   return this.ready();
 });
