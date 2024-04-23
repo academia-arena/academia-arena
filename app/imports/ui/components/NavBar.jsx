@@ -11,10 +11,13 @@ const NavBar = () => {
     currentUser: Meteor.user() ? Meteor.user().username : '',
   }), []);
 
+  const isAdmin = currentUser === 'admin@foo.com';
+  const isLoggedIn = !!currentUser;
+
   return (
     <Navbar bg="light" expand="lg">
       <Container>
-        <Navbar.Brand as={NavLink} to="/">
+        <Navbar.Brand as={NavLink} to="/home" exact>
           <Row id="home-link-container" className="p-2 align-items-center">
             <Col xs="auto">
               <Image src="/images/AcademiaArenaLogo.png" alt="Academia Arena Logo" id="logo" />
@@ -33,22 +36,20 @@ const NavBar = () => {
               <Nav.Link id="wish-nav" as={NavLink} to="/" key="list">Wishlist</Nav.Link>,
               <Nav.Link id="trade-nav" as={NavLink} to="/trade" key="list">Market Place</Nav.Link>,
             ]) : ''}
-            {currentUser === 'admin@foo.com' ? ([
+            {currentUser === isAdmin ? ([
               <Nav.Link id="admin-collection-nav" as={NavLink} to="/admin" key="list">Admin Collection</Nav.Link>,
             ]) : ''}
           </Nav>
           <Nav className="justify-content-end">
-            {currentUser === '' ? (
+            {!isLoggedIn ? (
               <NavDropdown id="login-dropdown" title="Login">
                 <NavDropdown.Item id="login-dropdown-sign-in" as={NavLink} to="/signin">
                   <PersonFill />
-                  Sign
-                  in
+                  Sign in
                 </NavDropdown.Item>
                 <NavDropdown.Item id="login-dropdown-sign-up" as={NavLink} to="/signup">
                   <PersonPlusFill />
-                  Sign
-                  up
+                  Sign up
                 </NavDropdown.Item>
               </NavDropdown>
             ) : (
@@ -56,8 +57,7 @@ const NavBar = () => {
                 <NavDropdown.Item id="navbar-sign-out" as={NavLink} to="/signout">
                   <BoxArrowRight />
                   {' '}
-                  Sign
-                  out
+                  Sign out
                 </NavDropdown.Item>
               </NavDropdown>
             )}

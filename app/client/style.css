@@ -115,6 +115,39 @@ p {
   width: 100%;
 }
 
+#partition-bar {
+  background-color: #faf3e2; /* Yellow color */
+  height: 70px; /* Height of the partition bar */
+  display: flex; /* Use flexbox to center the text vertically and horizontally */
+  padding: 20px 20px;
+  justify-content: space-between;
+  align-items: center;
+}
+
+#partition-bar h1 {
+  font-family: "Pixelify Sans", sans-serif; /* Pixel font */
+  color: #95BEA9; /* Same color scheme as the site */
+}
+
+#search-bar {
+  background-color: #F7EFB7; /* Yellow color */
+  height: 50px; /* Height of the search bar */
+  display: flex; /* Use flexbox to center the text vertically and horizontally */
+  margin-left: 40px;
+  justify-content: right;
+  align-items: center;
+}
+
+#search-bar input {
+  font-family: "Pixelify Sans", sans-serif; /* Pixel font */
+  color: #95BEA9; /* Same color scheme as the site */
+  border: none;
+  background-color: #F7EFB7; /* Yellow color */
+  width: 80%; /* Width of the input field */
+  padding: 10px;
+  flex-grow: 1;
+}
+
 #landing-page {
   background-color: #95bea9 !important;
 }
@@ -176,9 +209,35 @@ p {
   margin: 0;
 }
 
+#grass {
+  width: 30px;
+  margin: 0;
+}
+
 #logo-title {
   margin: 0;
 }
+
+.chat-bubble-container {
+  display: flex;
+  justify-content: center; /* Aligns the chat bubble to the right */
+  margin-top: 10px; /* Adjust margin top as needed */
+  margin-bottom: 10px;
+}
+
+.chat-bubble {
+  background-color: #faf3e2; /* Background color of the chat bubble */
+  padding: 10px 10px;
+  border-radius: 20px; /* Adjust the value to control the roundness of the bubble */
+  max-width: 70%; /* Set the maximum width of the chat bubble */
+}
+
+.chat-bubble h1 {
+  margin: 0; /* Remove default margin of h1 */
+  color: #95BEA9FF;
+}
+
+
 
 .nav-pills .nav-link.active {
   background: #95bea9 !important;
@@ -245,6 +304,23 @@ p {
 
 #loginButton:hover svg, #signupButton:hover svg {
   fill: black;
+}
+
+
+
+.navButton {
+  display: block;
+  background-color: #FAF3E2;
+  color: #95BEA9;
+  font-family: "Pixelify Sans", sans-serif;
+  padding: 10px 50px;
+  box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease 0s;
+}
+
+.navButton:hover {
+  background-color: white;
+  color: black;
 }
 
 #SearchBar {
