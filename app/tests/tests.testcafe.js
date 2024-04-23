@@ -62,7 +62,7 @@ test('Test that user can view the wishlist page after sign in', async (testContr
   await signoutPage.isDisplayed(testController);
 });
 
-test('Test that user can view the markplace page after sign in', async (testController) => {
+test('Test that user can view the marketplace page after sign in', async (testController) => {
   // Sign in
   await navBar.gotoSignInPage(testController);
   await signinPage.signin(testController, credentials.username, credentials.password);
