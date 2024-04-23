@@ -2,7 +2,7 @@ import { Meteor } from 'meteor/meteor';
 import { Roles } from 'meteor/alanning:roles';
 import { Stuffs } from '../../api/stuff/Stuff';
 import { TCards } from '../../api/tcard/TCard';
-import { Trades } from '../../api/trade/Trade';
+import { Offers } from '../../api/trade/Offer';
 
 // User-level publication.
 // If logged in, then publish documents owned by this user. Otherwise, publish nothing.
@@ -16,7 +16,7 @@ Meteor.publish(Stuffs.userPublicationName, function () {
 
 // Publish trade cards to all users
 Meteor.publish(TCards.userTradePublicationName, function () {
-  return TCards.collection.find({ collection: 'Trade' });
+  return TCards.collection.find({ isListedForTrade: true });
 });
 
 // Publish personal cards to their respective owners
@@ -24,6 +24,15 @@ Meteor.publish(TCards.userPublicationName, function () {
   if (this.userId) {
     const username = Meteor.users.findOne(this.userId).username;
     return TCards.collection.find({ owner: username });
+  }
+  return this.ready();
+});
+
+// Publish offers to users
+Meteor.publish(Offers.userPublicationName, function () {
+  if (this.userId) {
+    const username = Meteor.users.findOne(this.userId).username;
+    return Offers.collection.find({ owner: username });
   }
   return this.ready();
 });
@@ -37,9 +46,9 @@ Meteor.publish(Stuffs.adminPublicationName, function () {
   return this.ready();
 });
 
-Meteor.publish(Trades.adminPublicationName, function () {
+Meteor.publish(Offers.adminPublicationName, function () {
   if (this.userId && Roles.userIsInRole(this.userId, 'admin')) {
-    return Trades.collection.find();
+    return Offers.collection.find();
   }
   return this.ready();
 });

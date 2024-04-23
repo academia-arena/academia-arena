@@ -4,32 +4,26 @@ import SimpleSchema from 'simpl-schema';
 /**
  * The StuffsCollection. It encapsulates state and variable values for stuff.
  */
-class TradesCollection {
+class OffersCollection {
   constructor() {
     // The name of this collection.
-    this.name = 'TradesCollection';
+    this.name = 'OffersCollection';
     // Define the Mongo collection.
     this.collection = new Mongo.Collection(this.name);
     // Define the structure of each document in the collection.
     this.schema = new SimpleSchema({
-      firstName: String,
-      lastName: String,
-      course: String,
-      power: Number,
-      type: {
+      senderId: String,
+      recipientId: String,
+      offeredCardName: String,
+      offeredCardImage: String,
+      requestedCardId: String,
+      message: String,
+      status: {
         type: String,
-        allowedValues: ['Common', 'Rare', 'Legendary'],
+        allowedValues: ['pending', 'accepted', 'rejected'],
+        defaultValue: 'pending',
       },
-      role: {
-        type: String,
-        allowedValues: ['Professor', 'Instructor'],
-      },
-      title: String,
-      description: String,
-      funFact: String,
-      cardName: String,
-      image: String,
-      owner: String,
+      createdAt: Date,
     });
     // Attach the schema to the collection, so all attempts to insert a document are checked against schema.
     this.collection.attachSchema(this.schema);
@@ -40,7 +34,7 @@ class TradesCollection {
 }
 
 /**
- * The singleton instance of the TradesCollection.
- * @type {TradesCollection}
+ * The singleton instance of the OffersCollection.
+ * @type {OffersCollection}
  */
-export const Trades = new TradesCollection();
+export const Offers = new OffersCollection();

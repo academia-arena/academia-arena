@@ -6,13 +6,13 @@ import { Link } from 'react-router-dom';
 const TradeItem = ({ tcard }) => (
   <tr>
     <td style={{ textAlign: 'center', verticalAlign: 'middle' }}>
-      <img src={tcard.image} alt={tcard.name} id="prof-icon" />
+      <img src={tcard.image} alt={tcard.cardName} id="prof-icon" />
     </td>
-    <td>{tcard.name}</td>
-    <td>{tcard.rank}</td>
+    <td>{tcard.cardName}</td>
+    <td>{tcard.type}</td>
     <td>{tcard.owner}</td>
     <td>
-      <Link to={`/edit/${tcard._id}`}>Make Offer</Link>
+      <Link to={`/offer/${tcard._id}`}>Make Offer</Link>
     </td>
   </tr>
 );
@@ -20,11 +20,11 @@ const TradeItem = ({ tcard }) => (
 // Require a document to be passed to this component.
 TradeItem.propTypes = {
   tcard: PropTypes.shape({
-    name: PropTypes.string,
+    cardName: PropTypes.string,
     image: PropTypes.string,
-    rank: PropTypes.string,
+    type: PropTypes.string,
     owner: PropTypes.string,
-    collection: PropTypes.string,
+    isListedForTrade: PropTypes.bool,
     _id: PropTypes.string,
   }).isRequired,
 };

@@ -15,7 +15,7 @@ const ListPublicTrade = () => {
     // Determine if the subscription is ready
     const rdy = subscription.ready();
     // Filter the cards to include only those where collection property is "trade"
-    const items = TCards.collection.find({ collection: 'Trade' }).fetch();
+    const items = TCards.collection.find({ isListedForTrade: true }).fetch();
     return {
       tcards: items,
       ready: rdy,
@@ -32,7 +32,7 @@ const ListPublicTrade = () => {
       <Container className="py-3">
         <Row className="justify-content-center">
           <Col md={7}>
-            <Table striped bordered hover>
+            <Table striped bordered hover id="trade-table">
               <thead>
                 <tr>
                   <th>Professor</th>
