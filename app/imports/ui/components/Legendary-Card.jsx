@@ -1,10 +1,11 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Card, Col, Container, Image, Row } from 'react-bootstrap';
+import { Link } from 'react-router-dom';
 
 /** Renders a single row in the List card (Admin) table. See pages/AdminPage.jsx. */
 const LegendaryCard = ({ card }) => (
-  <Card id="Cards3" className="align-items-center my-2" style={{ width: '370px', height: '540px' }}>
+  <Card id="Cards3" className="align-items-center my-2" style={{ width: '370px', height: '570px' }}>
     <Card.Title id="CardsTitle3">
       <Container className="text-center">
         <strong>{card.role} {card.lastName}, {card.cardName}</strong>
@@ -25,6 +26,7 @@ const LegendaryCard = ({ card }) => (
         <th className="py-2">Special Move: {card.title}</th>
         {card.description}
         <th className="py-2">Fun Fact: {card.funFact}</th>
+        <Link to={`/listtrade/${card._id}`}>Trade</Link>
       </Container>
     </Card.Text>
   </Card>

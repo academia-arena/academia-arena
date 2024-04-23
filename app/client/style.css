@@ -365,7 +365,7 @@ p {
   margin: 10px 10px 10px 10px;
   padding-bottom: 10px;
   padding-top: 5px;
-  height: 270px;
+  height: 300px;
   width: 315px;
   overflow: scroll;
 }
@@ -399,7 +399,7 @@ p {
   margin: 10px 10px 10px 10px;
   padding-bottom: 10px;
   padding-top: 5px;
-  height: 270px;
+  height: 300px;
   width: 315px;
   overflow-y: scroll;
   overflow-x: hidden;
@@ -434,7 +434,7 @@ p {
   margin: 10px 10px 10px 10px;
   padding-bottom: 10px;
   padding-top: 5px;
-  height: 270px;
+  height: 300px;
   width: 315px;
   overflow-y: scroll;
   overflow-x: hidden;
