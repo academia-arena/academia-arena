@@ -351,12 +351,12 @@ p {
   background-color: #faf3e2;
 }
 
-#addCard {
+#addCard, #editCard {
   background-color: #faf3e2;
   font-family: "Pixelify Sans", sans-serif;
 }
 
-#addCard .form-control {
+#addCard .form-control, #editCard .form-control {
   background-color: #95bea9;
 }
 

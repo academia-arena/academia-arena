@@ -64,9 +64,8 @@ const AddCard = () => {
                 <Col><h2>Admin</h2></Col>
                 <Nav.Item><Nav.Link style={{ color: 'black' }} id="list-card-nav" as={NavLink} to="/admin" key="admin">View Cards</Nav.Link></Nav.Item>
                 <Nav.Item><Nav.Link style={{ color: 'black' }} id="add-card-nav" as={NavLink} to="/add" key="add">Add Card</Nav.Link></Nav.Item>
-                {/*
-                <Nav.Item><Nav.Link style={{ color: 'black' }} id="list-stuff-admin-nav" as={NavLink} to="/admin" key="admin">Manage Accounts</Nav.Link></Nav.Item>
-*/}
+                <Nav.Item><Nav.Link style={{ color: 'black' }} id="manage-accounts-admin-nav" as={NavLink} to="/adminmanage" key="adminmanage">Manage Accounts</Nav.Link></Nav.Item>
+
               </Nav>
             </Container>
           </Container>
@@ -74,6 +73,7 @@ const AddCard = () => {
             <AutoForm ref={ref => { fRef = ref; }} schema={bridge} onSubmit={data => submit(data, fRef)}>
               <Card id="addCard">
                 <Card.Body>
+                  <h2 className="text-center">Add Card</h2>
                   <TextField name="cardName" />
                   <TextField placeholder="Link" name="image" />
                   <Row>
