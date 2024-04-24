@@ -32,24 +32,13 @@ const NavBar = () => {
           <Nav className="me-auto justify-content-start">
             {currentUser ? ([
               <Nav.Link id="collection-nav" as={NavLink} to="/list" key="list">Collection</Nav.Link>,
-              <Nav.Link id="pull-nav" as={NavLink} to="*" key="list">Pull for Cards</Nav.Link>,
+              <Nav.Link id="pull-nav" as={NavLink} to="/pull" key="list">Pull for Cards</Nav.Link>,
               <Nav.Link id="wish-nav" as={NavLink} to="/wishlist" key="list">Wishlist</Nav.Link>,
               <Nav.Link id="trade-nav" as={NavLink} to="/trade" key="list">Market Place</Nav.Link>,
             ]) : ''}
             {currentUser === isAdmin ? ([
               <Nav.Link id="admin-collection-nav" as={NavLink} to="/admin" key="list">Admin Collection</Nav.Link>,
             ]) : ''}
-            {isLoggedIn && (
-              <>
-                <Nav.Link id="collection-nav" as={NavLink} to="/list">Collection</Nav.Link>
-                <Nav.Link id="pull-nav" as={NavLink} to="/pull">Pull for Cards</Nav.Link>
-                <Nav.Link id="wish-nav" as={NavLink} to="/home">Wishlist</Nav.Link>
-                <Nav.Link id="trade-nav" as={NavLink} to="/home">Market Place</Nav.Link>
-                {isAdmin && (
-                  <Nav.Link id="admin-collection-nav" as={NavLink} to="/admin">Admin Collection</Nav.Link>
-                )}
-              </>
-            )}
           </Nav>
           <Nav className="justify-content-end">
             {!isLoggedIn ? (
