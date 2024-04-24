@@ -277,6 +277,30 @@ p {
   margin-left: 10px;
 }
 
+#public-listed-nav,
+#my-listed-nav {
+  color: #faf3e2;
+  background: #95bea9;
+  border-radius: 20px;
+  padding: 7px 20px 5px 20px;
+  margin-right: 10px;
+  margin-left: 10px;
+  transition: background-color 0.01ms ease;
+}
+
+#public-listed-nav.active,
+#public-listed-nav:hover,
+#my-listed-nav.active,
+#my-listed-nav:hover {
+  color: black;
+  background: #749885;
+  border-radius: 20px;
+  padding: 7px 20px 5px 20px;
+  margin-right: 10px;
+  margin-left: 10px;
+  transition: background-color 0.01ms ease;
+}
+
 #loginSection, #signupSection {
   display: inline-block;
   margin: 0 20px; /* Adjust as needed */
@@ -325,12 +349,12 @@ p {
   background-color: #faf3e2;
 }
 
-#addCard {
+#addCard, #editCard {
   background-color: #faf3e2;
   font-family: "Pixelify Sans", sans-serif;
 }
 
-#addCard .form-control {
+#addCard .form-control, #editCard .form-control {
   background-color: #95bea9;
 }
 

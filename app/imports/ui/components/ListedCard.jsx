@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 
 /** Renders a single row in the List Stuff table. See pages/ListStuff.jsx. */
-const TradeItem = ({ tcard }) => (
+const ListedCard = ({ tcard }) => (
   <tr>
     <td style={{ textAlign: 'center', verticalAlign: 'middle' }}>
       <img src={tcard.image} alt={tcard.cardName} id="prof-icon" />
@@ -12,13 +12,15 @@ const TradeItem = ({ tcard }) => (
     <td>{tcard.type}</td>
     <td>{tcard.owner}</td>
     <td>
-      <Link to={`/offer/${tcard._id}`}>Make Offer</Link>
+      <Link to="*">Obtain Card</Link>
     </td>
   </tr>
 );
 
+// <Link to={`/offer/${tcard._id}`}>Obtain Card</Link>
+
 // Require a document to be passed to this component.
-TradeItem.propTypes = {
+ListedCard.propTypes = {
   tcard: PropTypes.shape({
     cardName: PropTypes.string,
     image: PropTypes.string,
@@ -29,4 +31,4 @@ TradeItem.propTypes = {
   }).isRequired,
 };
 
-export default TradeItem;
+export default ListedCard;

@@ -1,7 +1,9 @@
 import React from 'react';
+import { Meteor } from 'meteor/meteor';
 import PropTypes from 'prop-types';
 import { Card, Col, Container, Image, Row } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
+import { Roles } from 'meteor/alanning:roles';
 
 /** Renders a single row in the List card (Admin) table. See pages/AdminPage.jsx. */
 const LegendaryCard = ({ card }) => (
@@ -26,7 +28,9 @@ const LegendaryCard = ({ card }) => (
         <th className="py-2">Special Move: {card.title}</th>
         {card.description}
         <th className="py-2">Fun Fact: {card.funFact}</th>
-        <Link to={`/listtrade/${card._id}`}>Trade</Link>
+        {Roles.userIsInRole(Meteor.userId(), 'admin') ? (
+          <Link to={`/edit/${card._id}`}>Edit</Link>
+        ) : (<Link to={`/listtrade/${card._id}`}>Trade</Link>)}
       </Container>
     </Card.Text>
   </Card>
