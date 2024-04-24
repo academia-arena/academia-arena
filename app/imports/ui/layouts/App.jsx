@@ -55,8 +55,6 @@ const App = () => {
           <Route path="/trade" element={<ProtectedRoute><ListPublicTrade /></ProtectedRoute>} />
           <Route path="/listtrade/:_id" element={<ProtectedRoute><ListForTrade /></ProtectedRoute>} />
           <Route path="/pull" element={<ProtectedRoute><CardPull /></ProtectedRoute>} />
-          <Route path="/edit/:_id" element={<ProtectedRoute><EditStuff /></ProtectedRoute>} />
-          <Route path="/offer/:_id" element={<ProtectedRoute><MakeOffer /></ProtectedRoute>} />
           <Route path="/edit/:_id" element={<ProtectedRoute><EditCard /></ProtectedRoute>} />
           <Route path="/admin" element={<AdminProtectedRoute ready={ready}><ViewCardsAdmin /></AdminProtectedRoute>} />
           <Route path="/adminmanage" element={<AdminProtectedRoute ready={ready}><ManageAccountsAdmin /></AdminProtectedRoute>} />
