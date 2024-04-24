@@ -1,21 +1,12 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Link } from 'react-router-dom';
 
 /** Renders a single row in the List card table. See pages/ViewCardsAdmin.jsx. */
 const CardItem = ({ card }) => (
   <tr>
-    <th>{card.firstName}</th>
-    <th>{card.lastName}</th>
-    <th>{card.course}</th>
-    <th>{card.type}</th>
-    <th>{card.title}</th>
-    <th>{card.description}</th>
-    <th>{card.funFact}</th>
-    <th>{card.cardName}</th>
-    <th>{card.power}</th>
+    <th>{card.owner}</th>
     <td>
-      <Link to={`/edit/${card._id}`}>Edit</Link>
+      {/* <Link to={`/each/${card._id}`}>View Cards Owned By This Account</Link> */}
     </td>
   </tr>
 );
@@ -35,6 +26,7 @@ CardItem.propTypes = {
     image: PropTypes.string,
     power: PropTypes.number,
     _id: PropTypes.string,
+    owner: PropTypes.string,
   }).isRequired,
 };
 
