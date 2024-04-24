@@ -458,45 +458,59 @@ a {
   background-color: #FAF3E2;
   color: #95BEA9;
   font-family: "Pixelify Sans", sans-serif;
-  font-size: large;
+  font-size: x-large;
   border-radius: 15px;
   padding: 10px;
   margin: 10px;
+  text-align: center;
 }
 
 .quiz {
   background-color: #FAF3E2;
   color: #95BEA9;
   width: 800px;
+  position: flex;
   font-family: "Pixelify Sans", sans-serif;
   font-size: x-large;
-  align-items: center; /* Center content vertically */
   height: max-content;
   border-radius: 15px;
   padding: 20px;
-  box-shadow: 10px 10px 42px 0px #05896E;
-  display: flex;
   justify-content: space-evenly;
   margin: 0 auto;
+  margin-top: 20px;
+  margin-bottom: 40px;
+}
+
+#quiz-points {
+  padding: 5px;
+  text-align: end;
+  width: auto;
 }
 
 .question-section {
   width: 100%;
-  position: relative;
 }
 
 .answer-section {
   width: 100%;
-  display: flex;
   flex-direction: column;
-  justify-content: space-between;
-  align-items: flex-start;
+  align-items: center;
 }
 
-#quiz-button {
+
+
+/* Custom styling for checked state */
+.quiz input[type="radio"]:checked,
+.quiz input[type="checkbox"]:checked {
+  background-color: #95BEA9;
+}
+
+
+ul li {
   width: 100%;
   font-size: 16px;
   color: #ffffff;
+  cursor: pointer;
   background-color: #95BEA9;
   border-radius: 15px;
   display: flex;
@@ -504,32 +518,41 @@ a {
   border: 5px solid #F0FFF0;
   cursor: pointer;
   font-family: "Pixelify Sans", sans-serif;
+  margin-left: -15px;
 }
 
-.pull-button {
-  font-size: xx-large !important;
-  align-content: center;
+#pull-button {
+  width: 100%;
+  padding: 5px;
+  background-color: #95BEA9;
+  border-radius: 15px;
+  display: flex;
+  border: 5px solid #F0FFF0;
+  font-family: "Pixelify Sans", sans-serif;
+  font-size: x-large !important;
+  margin-left: 50px !important;
+  text-align: center;
 }
 
-ul {
-  list-style-type: square;
+.next-button {
+  color: #ffffff !important;
+  background-color: #95BEA9 !important;
+  border: 5px solid #F0FFF0 !important;
+  border-radius: 15px !important;
 }
 
-.correct {
-  background-color: #2f922f;
+ul li:hover,
+.next-button:hover,
+#pull-button:hover{
+  background-color: #F0FFF0 !important;
+  color: #95BEA9 !important;
 }
 
-.incorrect {
-  background-color: #ff3333;
-}
 
-#quiz-button:hover {
-  background-color: #F0FFF0;
-  color: #95BEA9;
-}
-
-#quiz-button:focus {
-  outline: none;
+/* Add a class for selected options */
+ul li:active {
+  background-color: #95BEA9;
+  color: #fff;
 }
 
 #quiz-button svg {

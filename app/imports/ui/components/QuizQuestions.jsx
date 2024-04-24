@@ -19,7 +19,7 @@ const QuizQuestions = [
   {
     question: 'What is the method signature for the main function in Java?',
     type: 'textarea',
-    answer: 'public static void main(String[] args) ',
+    answer: 'public static void main(String[] args)',
   },
   {
     question: 'What is recursion in coding?',
@@ -29,7 +29,7 @@ const QuizQuestions = [
   },
   {
     question: 'What room is where ICSpace, the student lounge for the ICS department, occupies? (HINT: ____ ____)',
-    type: 'textarea',
+    type: 'input',
     answer: 'POST 318B',
   },
   {
@@ -41,12 +41,12 @@ const QuizQuestions = [
   {
     question: 'What underscore function can be used to extract a list of property values?',
     type: 'radio',
-    options: ['_.contains', '_.filter', '_.pluck', '_.same'],
+    options: ['_.contains', '_.filter', '_.same', '_.pluck'],
     answer: '_.pluck',
   },
   {
     question: 'What command is used to start a meteor application (using npm script)',
-    type: 'textarea',
+    type: 'input',
     answer: 'meteor npm run start',
   },
   {
