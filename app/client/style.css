@@ -164,7 +164,7 @@ a {
   color: #faf3e2;
   font-family: "Pixelify Sans", sans-serif;
   padding: 30px 30px 30px 30px;
-  margin: 0px;
+  margin: 0;
 }
 
 #landing-page-logo {
@@ -469,7 +469,6 @@ a {
   background-color: #FAF3E2;
   color: #95BEA9;
   width: 800px;
-  position: flex;
   font-family: "Pixelify Sans", sans-serif;
   font-size: x-large;
   height: max-content;
