@@ -1,32 +1,57 @@
-import React from 'react';
+import React, { useState } from 'react'; // Import useState here
 import { Meteor } from 'meteor/meteor';
 import { useTracker } from 'meteor/react-meteor-data';
-import { Col, Container, Row, Table } from 'react-bootstrap';
+import { Col, Container, Nav, Row, Table } from 'react-bootstrap';
 import LoadingSpinner from '../components/LoadingSpinner';
 import { TCards } from '../../api/tcard/TCard';
-import TradeItem from '../components/TradeItem';
+import ListedCard from '../components/ListedCard';
 
 /* Renders a table containing all of the Stuff documents. Use <StuffItemAdmin> to render each row. */
 const ListPublicTrade = () => {
-  // useTracker connects Meteor data to React components. https://guide.meteor.com/react.html#using-withTracker
+  // Fetching and subscribing to the tcards data
   const { tcards, ready } = useTracker(() => {
-    // Get access to Stuff documents.
     const subscription = Meteor.subscribe(TCards.userTradePublicationName);
-    // Determine if the subscription is ready
-    const rdy = subscription.ready();
-    // Filter the cards to include only those where isListedForTrade property is "Yes"
     const items = TCards.collection.find({ isListedForTrade: 'Yes' }).fetch();
     return {
       tcards: items,
-      ready: rdy,
+      ready: subscription.ready(),
     };
   }, []);
-  return (ready ? (
+
+  const [activeView, setActiveView] = useState('market');
+
+  const handleNavClick = (view) => {
+    setActiveView(view);
+  };
+
+  let filteredCards = tcards; // Initialize filteredCards with all cards
+
+  if (activeView === 'my-listed') {
+    // If in "My Listed Cards" view, filter cards owned by the current user
+    filteredCards = tcards.filter(tcard => tcard.owner === Meteor.users.findOne(Meteor.userId()).username);
+  }
+
+  if (activeView === 'market') {
+    // If in "Market" view, return all cards
+    filteredCards = tcards;
+  }
+
+  return ready ? (
     <Col>
       <Container fluid className="py-3" id="title-block">
         <Container>
-          <h2 className="text-center pt-2">MARKETPLACE</h2>
-          <p className="text-center">Trade Cards here!</p>
+          <Nav variant="pills">
+            <Col>
+              <h2 className="pt-2">MARKETPLACE</h2>
+              <p>Trade Cards Here!</p>
+            </Col>
+            <Nav.Item className="pt-4">
+              <Nav.Link onClick={() => handleNavClick('market')} active={activeView === 'market'} id="public-listed-nav">Market</Nav.Link>
+            </Nav.Item>
+            <Nav.Item className="pt-4">
+              <Nav.Link onClick={() => handleNavClick('my-listed')} active={activeView === 'my-listed'} id="my-listed-nav">My Listed Cards</Nav.Link>
+            </Nav.Item>
+          </Nav>
         </Container>
       </Container>
       <Container className="py-3">
@@ -35,22 +60,22 @@ const ListPublicTrade = () => {
             <Table striped bordered hover id="trade-table">
               <thead>
                 <tr>
-                  <th>Professor</th>
+                  <th>Image</th>
                   <th>Name</th>
-                  <th>Rank</th>
+                  <th>Type</th>
                   <th>Owner</th>
-                  <th>Trade</th>
+                  <th>Action</th>
                 </tr>
               </thead>
               <tbody>
-                {tcards.map((tcard) => <TradeItem key={tcard._id} tcard={tcard} />)}
+                {filteredCards.map((tcard) => <ListedCard key={tcard._id} tcard={tcard} />)}
               </tbody>
             </Table>
           </Col>
         </Row>
       </Container>
     </Col>
-  ) : <LoadingSpinner />);
+  ) : <LoadingSpinner />;
 };
 
 export default ListPublicTrade;

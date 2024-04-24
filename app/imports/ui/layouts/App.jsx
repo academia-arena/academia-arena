@@ -19,7 +19,6 @@ import NotAuthorized from '../pages/NotAuthorized';
 import LoadingSpinner from '../components/LoadingSpinner';
 import ListTCard from '../pages/ListTCard';
 import ListPublicTrade from '../pages/ListPublicTrade';
-import MakeOffer from '../pages/MakeOffer';
 import ListForTrade from '../pages/ListForTrade';
 import ViewWishlist from '../pages/ViewWishlist';
 
@@ -54,7 +53,6 @@ const App = () => {
           <Route path="/trade" element={<ProtectedRoute><ListPublicTrade /></ProtectedRoute>} />
           <Route path="/listtrade/:_id" element={<ProtectedRoute><ListForTrade /></ProtectedRoute>} />
           <Route path="/edit/:_id" element={<ProtectedRoute><EditStuff /></ProtectedRoute>} />
-          <Route path="/offer/:_id" element={<ProtectedRoute><MakeOffer /></ProtectedRoute>} />
           <Route path="/admin" element={<AdminProtectedRoute ready={ready}><ViewCardsAdmin /></AdminProtectedRoute>} />
           <Route path="/notauthorized" element={<NotAuthorized />} />
           <Route path="*" element={<NotFound />} />
