@@ -30,7 +30,7 @@ const NavBar = () => {
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="me-auto justify-content-start">
-            {currentUser === 'john@foo.com' ? ([
+            {currentUser ? ([
               <Nav.Link id="collection-nav" as={NavLink} to="/list" key="list">Collection</Nav.Link>,
               <Nav.Link id="pull-nav" as={NavLink} to="*" key="list">Pull for Cards</Nav.Link>,
               <Nav.Link id="wish-nav" as={NavLink} to="/wishlist" key="list">Wishlist</Nav.Link>,
