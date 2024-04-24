@@ -36,8 +36,8 @@ const ListPublicTrade = () => {
     filteredCards = tcards;
   }
 
-  return ready ? (
-    <Col>
+  return (ready ? (
+    <Col id="marketplace-page">
       <Container fluid className="py-3" id="title-block">
         <Container>
           <Nav variant="pills">
