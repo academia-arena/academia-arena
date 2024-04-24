@@ -165,7 +165,7 @@ p {
   color: #faf3e2;
   font-family: "Pixelify Sans", sans-serif;
   padding: 30px 30px 30px 30px;
-  margin: 0px;
+  margin: 0;
 }
 
 #landing-page-logo {
@@ -306,8 +306,6 @@ p {
   fill: black;
 }
 
-
-
 .navButton {
   display: block;
   background-color: #FAF3E2;
@@ -444,3 +442,121 @@ p {
   width: 100px;
 }
 
+#card-pull-title {
+  font-family: "Pixelify Sans", sans-serif;
+  font-size: xxx-large;
+  color: #95BEA9;
+  padding: 10px;
+}
+
+.card-pull-page {
+  background-color: #95BEA9;
+}
+
+#card-pull-row {
+  margin-top: 50px;
+}
+
+#about-quiz, #quiz-points {
+  background-color: #FAF3E2;
+  color: #95BEA9;
+  font-family: "Pixelify Sans", sans-serif;
+  font-size: x-large;
+  border-radius: 15px;
+  padding: 10px;
+  margin: 10px;
+  text-align: center;
+}
+
+.quiz {
+  background-color: #FAF3E2;
+  color: #95BEA9;
+  width: 800px;
+  font-family: "Pixelify Sans", sans-serif;
+  font-size: x-large;
+  height: max-content;
+  border-radius: 15px;
+  padding: 20px;
+  justify-content: space-evenly;
+  margin: 0 auto;
+  margin-top: 20px;
+  margin-bottom: 40px;
+}
+
+#quiz-points {
+  padding: 5px;
+  text-align: end;
+  width: auto;
+}
+
+.question-section {
+  width: 100%;
+}
+
+.answer-section {
+  width: 100%;
+  flex-direction: column;
+  align-items: center;
+}
+
+
+
+/* Custom styling for checked state */
+.quiz input[type="radio"]:checked,
+.quiz input[type="checkbox"]:checked {
+  background-color: #95BEA9;
+}
+
+
+ul li {
+  width: 100%;
+  font-size: 16px;
+  color: #ffffff;
+  cursor: pointer;
+  background-color: #95BEA9;
+  border-radius: 15px;
+  display: flex;
+  padding: 5px;
+  border: 5px solid #F0FFF0;
+  cursor: pointer;
+  font-family: "Pixelify Sans", sans-serif;
+  margin-left: -15px;
+}
+
+#pull-button {
+  width: 100%;
+  padding: 5px;
+  background-color: #95BEA9;
+  border-radius: 15px;
+  display: flex;
+  border: 5px solid #F0FFF0;
+  font-family: "Pixelify Sans", sans-serif;
+  font-size: x-large !important;
+  margin-left: 50px !important;
+  text-align: center;
+}
+
+.next-button {
+  color: #ffffff !important;
+  background-color: #95BEA9 !important;
+  border: 5px solid #F0FFF0 !important;
+  border-radius: 15px !important;
+}
+
+ul li:hover,
+.next-button:hover,
+#pull-button:hover{
+  background-color: #F0FFF0 !important;
+  color: #95BEA9 !important;
+}
+
+
+/* Add a class for selected options */
+ul li:active {
+  background-color: #95BEA9;
+  color: #fff;
+}
+
+#quiz-button svg {
+  margin-right: 5px;
+}

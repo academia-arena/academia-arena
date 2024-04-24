@@ -22,6 +22,7 @@ import ListPublicTrade from '../pages/ListPublicTrade';
 import MakeOffer from '../pages/MakeOffer';
 import ListForTrade from '../pages/ListForTrade';
 import ViewWishlist from '../pages/ViewWishlist';
+import CardPull from '../pages/CardPull';
 
 /** Top-level layout component for this application. Called in imports/startup/client/startup.jsx. */
 const App = () => {
@@ -53,6 +54,7 @@ const App = () => {
           <Route path="/add" element={<ProtectedRoute><AddCard /></ProtectedRoute>} />
           <Route path="/trade" element={<ProtectedRoute><ListPublicTrade /></ProtectedRoute>} />
           <Route path="/listtrade/:_id" element={<ProtectedRoute><ListForTrade /></ProtectedRoute>} />
+          <Route path="/pull" element={<ProtectedRoute><CardPull /></ProtectedRoute>} />
           <Route path="/edit/:_id" element={<ProtectedRoute><EditStuff /></ProtectedRoute>} />
           <Route path="/offer/:_id" element={<ProtectedRoute><MakeOffer /></ProtectedRoute>} />
           <Route path="/admin" element={<AdminProtectedRoute ready={ready}><ViewCardsAdmin /></AdminProtectedRoute>} />
