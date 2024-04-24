@@ -75,7 +75,7 @@ const ListPublicTrade = () => {
         </Row>
       </Container>
     </Col>
-  ) : <LoadingSpinner />;
+  ) : <LoadingSpinner />);
 };
 
 export default ListPublicTrade;
