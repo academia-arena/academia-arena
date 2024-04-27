@@ -279,9 +279,7 @@ p {
 
 #public-listed-nav,
 #my-listed-nav {
-  color: #faf3e2;
-  background: #95bea9;
-  border-radius: 20px;
+  color: black;
   padding: 7px 20px 5px 20px;
   margin-right: 10px;
   margin-left: 10px;
@@ -293,7 +291,7 @@ p {
 #my-listed-nav.active,
 #my-listed-nav:hover {
   color: black;
-  background: #749885;
+  background: #95bea9;
   border-radius: 20px;
   padding: 7px 20px 5px 20px;
   margin-right: 10px;

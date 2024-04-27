@@ -5,6 +5,7 @@ import { Col, Container, Nav, Row, Table, Button, Modal } from 'react-bootstrap'
 import LoadingSpinner from '../components/LoadingSpinner';
 import { TCards } from '../../api/tcard/TCard';
 import ListedCard from '../components/ListedCard';
+import MyListedCard from '../components/MyListedCard';
 
 const ListPublicTrade = () => {
   const { ready, tcards, currentUser } = useTracker(() => {
@@ -52,23 +53,30 @@ const ListPublicTrade = () => {
     }
   };
 
-  const filteredCards = (activeView === 'my-listed') ?
-    tcards.filter(tcard => tcard.owner === currentUser.username) : tcards;
+  let filteredCards = tcards; // Initialize filteredCards with all cards
+
+  if (activeView === 'my-listed') {
+    // If in "My Listed Cards" view, filter cards owned by the current user
+    filteredCards = tcards.filter(tcard => tcard.owner === currentUser.username);
+  } else if (activeView === 'market') {
+    // If in "Market" view, filter out cards owned by the current user
+    filteredCards = tcards.filter(tcard => tcard.owner !== currentUser.username);
+  }
 
   return ready ? (
     <Col id="marketplace-page">
       <Container fluid className="py-3" id="title-block">
         <Container>
-          <Nav variant="pills">
+          <Nav>
             <Col>
               <h2 className="pt-2">MARKETPLACE</h2>
               <p>Trade Cards Here!</p>
             </Col>
             <Nav.Item className="pt-4">
-              <Nav.Link onClick={() => handleNavClick('market')} active={activeView === 'market'}>Market</Nav.Link>
+              <Nav.Link onClick={() => handleNavClick('market')} active={activeView === 'market'} id="public-listed-nav">Market</Nav.Link>
             </Nav.Item>
             <Nav.Item className="pt-4">
-              <Nav.Link onClick={() => handleNavClick('my-listed')} active={activeView === 'my-listed'}>My Listed Cards</Nav.Link>
+              <Nav.Link onClick={() => handleNavClick('my-listed')} active={activeView === 'my-listed'} id="my-listed-nav">My Listed Cards</Nav.Link>
             </Nav.Item>
           </Nav>
         </Container>
@@ -76,26 +84,47 @@ const ListPublicTrade = () => {
       <Container className="py-3">
         <Row className="justify-content-center">
           <Col md={7}>
-            <Table striped bordered hover>
-              <thead>
-                <tr>
-                  <th>Image</th>
-                  <th>Name</th>
-                  <th>Type</th>
-                  <th>Owner</th>
-                  <th>Trade</th>
-                </tr>
-              </thead>
-              <tbody>
-                {filteredCards.map((tcard) => (
-                  <ListedCard
-                    key={tcard._id}
-                    tcard={tcard}
-                    onObtainClick={() => handleObtainClick(tcard)}
-                  />
-                ))}
-              </tbody>
-            </Table>
+            {activeView === 'market' ? (
+              <Table striped bordered hover>
+                <thead>
+                  <tr>
+                    <th>Image</th>
+                    <th>Name</th>
+                    <th>Type</th>
+                    <th>Owner</th>
+                    <th>Trade</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {filteredCards.map((tcard) => (
+                    <ListedCard
+                      key={tcard._id}
+                      tcard={tcard}
+                      onObtainClick={() => handleObtainClick(tcard)}
+                    />
+                  ))}
+                </tbody>
+              </Table>
+            ) : (
+              <Table striped bordered hover>
+                <thead>
+                  <tr>
+                    <th>Image</th>
+                    <th>Name</th>
+                    <th>Type</th>
+                    <th>Owner</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {filteredCards.map((tcard) => (
+                    <MyListedCard
+                      key={tcard._id}
+                      tcard={tcard}
+                    />
+                  ))}
+                </tbody>
+              </Table>
+            )}
           </Col>
         </Row>
       </Container>
