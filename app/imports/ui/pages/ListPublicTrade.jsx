@@ -1,42 +1,61 @@
-import React, { useState } from 'react'; // Import useState here
+import React, { useState } from 'react';
 import { Meteor } from 'meteor/meteor';
 import { useTracker } from 'meteor/react-meteor-data';
-import { Col, Container, Nav, Row, Table } from 'react-bootstrap';
+import { Col, Container, Nav, Row, Table, Button, Modal } from 'react-bootstrap';
 import LoadingSpinner from '../components/LoadingSpinner';
 import { TCards } from '../../api/tcard/TCard';
 import ListedCard from '../components/ListedCard';
 
-/* Renders a table containing all of the Stuff documents. Use <StuffItemAdmin> to render each row. */
 const ListPublicTrade = () => {
-  // Fetching and subscribing to the tcards data
-  const { tcards, ready } = useTracker(() => {
+  const { ready, tcards, currentUser } = useTracker(() => {
     const subscription = Meteor.subscribe(TCards.userTradePublicationName);
-    const items = TCards.collection.find({ isListedForTrade: 'Yes' }).fetch();
     return {
-      tcards: items,
+      tcards: TCards.collection.find({ isListedForTrade: 'Yes' }).fetch(),
       ready: subscription.ready(),
+      currentUser: Meteor.user(),
     };
   }, []);
 
   const [activeView, setActiveView] = useState('market');
+  const [selectedCard, setSelectedCard] = useState(null);
+  const [showConfirmation, setShowConfirmation] = useState(false);
 
   const handleNavClick = (view) => {
     setActiveView(view);
   };
 
-  let filteredCards = tcards; // Initialize filteredCards with all cards
+  const handleObtainClick = (tcard) => {
+    if (tcard.owner === currentUser.username) {
+      alert('You already own this card.');
+      return;
+    }
+    setSelectedCard(tcard);
+    setShowConfirmation(true);
+  };
 
-  if (activeView === 'my-listed') {
-    // If in "My Listed Cards" view, filter cards owned by the current user
-    filteredCards = tcards.filter(tcard => tcard.owner === Meteor.users.findOne(Meteor.userId()).username);
-  }
+  const obtainCard = () => {
+    if (selectedCard) {
+      TCards.collection.update(selectedCard._id, {
+        $set: {
+          owner: currentUser.username,
+          isListedForTrade: 'No',
+        },
+      }, (error) => {
+        if (error) {
+          console.error('Error Making Trade:', error);
+        } else {
+          console.log('Card Obtained. Check your Collection!');
+        }
+      });
+      setShowConfirmation(false);
+      setSelectedCard(null);
+    }
+  };
 
-  if (activeView === 'market') {
-    // If in "Market" view, return all cards
-    filteredCards = tcards;
-  }
+  const filteredCards = (activeView === 'my-listed') ?
+    tcards.filter(tcard => tcard.owner === currentUser.username) : tcards;
 
-  return (ready ? (
+  return ready ? (
     <Col id="marketplace-page">
       <Container fluid className="py-3" id="title-block">
         <Container>
@@ -46,10 +65,10 @@ const ListPublicTrade = () => {
               <p>Trade Cards Here!</p>
             </Col>
             <Nav.Item className="pt-4">
-              <Nav.Link onClick={() => handleNavClick('market')} active={activeView === 'market'} id="public-listed-nav">Market</Nav.Link>
+              <Nav.Link onClick={() => handleNavClick('market')} active={activeView === 'market'}>Market</Nav.Link>
             </Nav.Item>
             <Nav.Item className="pt-4">
-              <Nav.Link onClick={() => handleNavClick('my-listed')} active={activeView === 'my-listed'} id="my-listed-nav">My Listed Cards</Nav.Link>
+              <Nav.Link onClick={() => handleNavClick('my-listed')} active={activeView === 'my-listed'}>My Listed Cards</Nav.Link>
             </Nav.Item>
           </Nav>
         </Container>
@@ -57,25 +76,41 @@ const ListPublicTrade = () => {
       <Container className="py-3">
         <Row className="justify-content-center">
           <Col md={7}>
-            <Table striped bordered hover id="trade-table">
+            <Table striped bordered hover>
               <thead>
                 <tr>
                   <th>Image</th>
                   <th>Name</th>
                   <th>Type</th>
                   <th>Owner</th>
-                  <th>Action</th>
+                  <th>Trade</th>
                 </tr>
               </thead>
               <tbody>
-                {filteredCards.map((tcard) => <ListedCard key={tcard._id} tcard={tcard} />)}
+                {filteredCards.map((tcard) => (
+                  <ListedCard
+                    key={tcard._id}
+                    tcard={tcard}
+                    onObtainClick={() => handleObtainClick(tcard)}
+                  />
+                ))}
               </tbody>
             </Table>
           </Col>
         </Row>
       </Container>
+      <Modal show={showConfirmation} onHide={() => setShowConfirmation(false)}>
+        <Modal.Header closeButton>
+          <Modal.Title>Confirm Card Acquisition</Modal.Title>
+        </Modal.Header>
+        <Modal.Body>Are you sure you want to obtain this card?</Modal.Body>
+        <Modal.Footer>
+          <Button variant="secondary" onClick={() => setShowConfirmation(false)}>Cancel</Button>
+          <Button variant="primary" onClick={obtainCard}>Yes, Obtain Card</Button>
+        </Modal.Footer>
+      </Modal>
     </Col>
-  ) : <LoadingSpinner />);
+  ) : <LoadingSpinner />;
 };
 
 export default ListPublicTrade;
