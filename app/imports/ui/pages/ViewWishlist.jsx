@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Meteor } from 'meteor/meteor';
 import { Button, Col, Container, Form, InputGroup, Nav, Row } from 'react-bootstrap';
 import { useTracker } from 'meteor/react-meteor-data';
@@ -10,6 +10,7 @@ import LegendaryCardWishlist from '../components/Legendary-Card-Wishlist';
 import { CatalogCard } from '../../api/cardcatalog/CatalogCard';
 
 const ViewCardsAdmin = () => {
+  const [searchQuery, setSearchQuery] = useState('');
   const { ready: wishListReady, wishcard } = useTracker(() => {
     const adminSubscription = Meteor.subscribe(WishlistCard.adminPublicationName);
     const userSubscription = Meteor.subscribe(WishlistCard.userPublicationName);
@@ -52,7 +53,10 @@ const ViewCardsAdmin = () => {
       console.log('Card does not exist in the catalog');
     }
   };
-
+  // Search based on name
+  const handleSearchChange = (event) => {
+    setSearchQuery(event.target.value);
+  };
   return (wishListReady && cardCatalogReady ? (
     <Col id="wishlist-page">
 
@@ -107,7 +111,12 @@ const ViewCardsAdmin = () => {
         <Row className="justify-content-center">
           <Row className="py-4" style={{ width: '400px' }}>
             <InputGroup>
-              <Form.Control id="SearchBar" placeholder="Name" />
+              <Form.Control
+                id="SearchBar"
+                placeholder="Search by Name"
+                value={searchQuery}
+                onChange={handleSearchChange}
+              />
               <Button variant="success">Search</Button>
             </InputGroup>
           </Row>
@@ -119,7 +128,7 @@ const ViewCardsAdmin = () => {
           <Row>
             <Col>
               {/* eslint-disable-next-line no-shadow */}
-              <Row className="justify-content-center">{cardcatalog.map((cardcatalog) => (
+              <Row className="justify-content-center">{cardcatalog.filter(card => card.lastName.toLowerCase().includes(searchQuery.toLowerCase())).map((cardcatalog) => (
                 cardcatalog.type === 'Common' ? (
                   <CommonCardWishlist key={cardcatalog._id} card={cardcatalog} addToWishlist={addToWishlist} inWishlist={false} />
                 ) : null
@@ -128,7 +137,7 @@ const ViewCardsAdmin = () => {
             </Col>
             <Col>
               {/* eslint-disable-next-line no-shadow */}
-              <Row className="justify-content-center">{cardcatalog.map((cardcatalog) => (
+              <Row className="justify-content-center">{cardcatalog.filter(card => card.lastName.toLowerCase().includes(searchQuery.toLowerCase())).map((cardcatalog) => (
                 cardcatalog.type === 'Rare' ? (
                   <RareCardWishlist key={cardcatalog._id} card={cardcatalog} addToWishlist={addToWishlist} inWishlist={false} />
                 ) : null
@@ -137,14 +146,9 @@ const ViewCardsAdmin = () => {
             </Col>
             <Col>
               {/* eslint-disable-next-line no-shadow */}
-              <Row className="justify-content-center">{cardcatalog.map((cardcatalog) => (
+              <Row className="justify-content-center">{cardcatalog.filter(card => card.lastName.toLowerCase().includes(searchQuery.toLowerCase())).map((cardcatalog) => (
                 cardcatalog.type === 'Legendary' ? (
-                  <LegendaryCardWishlist
-                    key={cardcatalog._id}
-                    card={cardcatalog}
-                    addToWishlist={addToWishlist}
-                    inWishlist={false}
-                  />
+                  <LegendaryCardWishlist key={cardcatalog._id} card={cardcatalog} addToWishlist={addToWishlist} inWishlist={false} />
                 ) : null
               ))}
               </Row>
