@@ -57,7 +57,7 @@ const ListTCard = () => {
       </Container>
       <Container className="py-3 justify-content-center">
         <Row className="py-3 d-flex justify-content-center">
-          <input type="text" onChange={handleChange} />
+          <input type="text" onChange={handleChange} className="search-bar" placeholder="Search by Professor's first or last name" />
           <Row style={{ paddingLeft: '6vh' }} className="py-3 gx-2 justify-content-center">
             {
               filteredCards.map((tcard) => {
@@ -65,7 +65,6 @@ const ListTCard = () => {
                 if (tcard.type === 'Rare') return <Col><ThisCard key={tcard._id} card={tcard} background={rareBackground} title={rareTitle} image={rareImage} text={rareText} /></Col>;
                 return <Col><ThisCard key={tcard._id} card={tcard} background={legendaryBackground} title={legendaryTitle} image={legendaryImage} text={legendaryText} /></Col>;
               })
-
             }
           </Row>
         </Row>

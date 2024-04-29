@@ -1,16 +1,16 @@
 import React from 'react';
-import { Meteor } from 'meteor/meteor';
+// import { Meteor } from 'meteor/meteor';
 import PropTypes from 'prop-types';
 import { Card, Col, Container, Image, Row } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
-import { Roles } from 'meteor/alanning:roles';
+// import { Roles } from 'meteor/alanning:roles';
 /** Renders a single row in the List card (Admin) table. See pages/AdminPage.jsx. */
 const ThisCard = ({ card, background, title, image, text }) => (
   <Card id={background} className="align-items-center my-2" style={{ width: '370px', height: '570px' }}>
     <Card.Title id={title}>
-      <Container className="text-center">
+      <Container className="text-center align-content-center">
         <strong>{card.role} {card.firstName} {card.lastName}</strong>
-        <div>{card.cardName}</div>
+        <div style={{ fontSize: '16px' }}><i>{card.cardName}</i></div>
       </Container>
     </Card.Title>
     <Card.Body id={image} className="text-center">
@@ -25,12 +25,25 @@ const ThisCard = ({ card, background, title, image, text }) => (
         <Col>Power: {card.power}</Col>
       </Row>
       <Container>
-        <th className="py-2">Special Move: {card.title}</th>
-        {card.description}
-        <th className="py-2">Fun Fact: {card.funFact}</th>
-        {Roles.userIsInRole(Meteor.userId(), 'admin') ? (
+        <Row>
+          <th className="py-2">Special Move: {card.title}</th>
+        </Row>
+        <Row>
+          <td>{card.description} </td>
+        </Row>
+        <Row>
+          <th className="py-2">Fun Fact: {card.funFact}</th>
+        </Row>
+        {/* {Roles.userIsInRole(Meteor.userId(), 'admin') ? (
           <Link to={`/edit/${card._id}`}>Edit</Link>
-        ) : (<Link to={`/listtrade/${card._id}`}>Trade</Link>)}
+        ) : (<Link to={`/listtrade/${card._id}`} id="trade-button">Trade</Link>)} */}
+      </Container>
+    </Card.Text>
+    <Card.Text>
+      <Container className="justify-content-center text-center">
+        <Row className="py-1">
+          <Link to={`/listtrade/${card._id}`} id="trade-button">TRADE</Link>
+        </Row>
       </Container>
     </Card.Text>
   </Card>
@@ -53,10 +66,6 @@ ThisCard.propTypes = {
     _id: PropTypes.string,
     owner: PropTypes.string,
     isListedForTrade: PropTypes.string,
-    backgroundStyle: PropTypes.string,
-    titleStyle: PropTypes.string,
-    imageStyle: PropTypes.string,
-    textStyle: PropTypes.string,
   }).isRequired,
 };
 
