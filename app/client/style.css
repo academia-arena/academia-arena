@@ -582,3 +582,11 @@ ul li:active {
 #quiz-button svg {
   margin-right: 5px;
 }
+
+#test1 {
+  color: red;
+}
+
+.test2 {
+  color: green;
+}
