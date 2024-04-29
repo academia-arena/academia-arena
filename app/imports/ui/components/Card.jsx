@@ -1,7 +1,7 @@
 import React from 'react';
 // import { Meteor } from 'meteor/meteor';
 import PropTypes from 'prop-types';
-import { Card, Col, Container, Image, Row } from 'react-bootstrap';
+import { Card, Container, Image, Row } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 // import { Roles } from 'meteor/alanning:roles';
 /** Renders a single row in the List card (Admin) table. See pages/AdminPage.jsx. */
@@ -17,14 +17,17 @@ const ThisCard = ({ card, background, title, image, text }) => (
       <Image src={card.image} height="150px" />
     </Card.Body>
     <Card.Text id={text}>
-      <Row className="text-center">
-        <th style={{ fontSize: '20px' }}>{card.type} {card.role}</th>
-      </Row>
-      <Row className="ps-5">
-        <Col>Course: {card.course}</Col>
-        <Col>Power: {card.power}</Col>
-      </Row>
       <Container>
+        <Row className="text-center">
+          <th style={{ fontSize: '20px' }}>{card.type} {card.role}</th>
+        </Row>
+        <Row className="text-center" style={{ lineHeight: '10px' }}>
+          <th>Power: {card.power}</th>
+        </Row>
+        <Row>
+          <th>Course(s):</th>
+          <td>{card.course}</td>
+        </Row>
         <Row>
           <th className="py-2">Special Move: {card.title}</th>
         </Row>

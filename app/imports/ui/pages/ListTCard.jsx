@@ -52,7 +52,7 @@ const ListTCard = () => {
     <Col id="view-collection-page">
       <Container fluid className="py-3" id="title-block">
         <Container>
-          <h2 className="text-center pt-2">Card Collection</h2>
+          <h2 className="text-center pt-2">My Card Collection</h2>
         </Container>
       </Container>
       <Container className="py-3 justify-content-center">
