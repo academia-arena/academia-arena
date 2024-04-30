@@ -81,11 +81,11 @@ const ListPublicTrade = () => {
           </Nav>
         </Container>
       </Container>
-      <Container className="py-3">
+      <Container className="py-3" id="tables">
         <Row className="justify-content-center">
           <Col md={7}>
             {activeView === 'market' ? (
-              <Table striped bordered hover>
+              <Table id="market-table" className="table-success table-borderless">
                 <thead>
                   <tr>
                     <th>Image</th>
@@ -106,7 +106,7 @@ const ListPublicTrade = () => {
                 </tbody>
               </Table>
             ) : (
-              <Table striped bordered hover>
+              <Table id="my-table" className="table-success table-borderless">
                 <thead>
                   <tr>
                     <th>Image</th>
