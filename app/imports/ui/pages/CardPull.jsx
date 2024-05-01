@@ -35,7 +35,7 @@ const CardPull = () => {
 
   // code adapted from Theodore John.S (Creating a Dynamic Quiz App in React.js Guide)
   return (
-    <Col className="card-pull-page">
+    <Col id="pull-page" className="card-pull-page">
       <div id="card-pull-title" className="partition-bar h1">Card Pull Game</div>
       <Container>
         <Row id="card-pull-row">
