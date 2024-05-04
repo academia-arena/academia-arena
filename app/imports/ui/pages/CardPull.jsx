@@ -16,7 +16,11 @@ const CardPull = () => {
     updatedAnswers[questionIndex] = selectedAnswer;
     setAnswers(updatedAnswers);
   };
-
+  const quizLoop = () => {
+    setCurrentQuestion(0);
+    setAnswers([]);
+    setShowScore(false);
+  };
   // code written by Theodore John.S (Creating a Dynamic Quiz App in React.js Guide)
   const handleNextQuestion = () => {
     if (
@@ -30,9 +34,13 @@ const CardPull = () => {
       setCurrentQuestion(currentQuestion + 1);
     } else {
       setShowScore(true);
+      quizLoop(() => {
+        setCurrentQuestion(0);
+        setAnswers([]);
+        setShowScore(false);
+      }, 1000);
     }
   };
-
   // code adapted from Theodore John.S (Creating a Dynamic Quiz App in React.js Guide)
   return (
     <Col id="pull-page" className="card-pull-page">
@@ -55,7 +63,7 @@ const CardPull = () => {
             <div className="quiz text-center">
               {showScore ? (
                 <div className="score-section">
-                  You scored {score} out of 100
+                  <h2>You scored {score} out of 100</h2>
                 </div>
               ) : (
                 <div>
