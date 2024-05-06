@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Col, Container, Row, Button } from 'react-bootstrap';
 import QuizQuestions from '../components/QuizQuestions';
 import PointsBar from '../components/PointsBar';
+import PullButton from '../components/PullButton';
 
 const CardPull = () => {
   // code written by Theodore John.S (Creating a Dynamic Quiz App in React.js Guide)
@@ -41,6 +42,11 @@ const CardPull = () => {
       }, 1000);
     }
   };
+
+  const resetScore = () => {
+    setScore(0);
+  };
+
   // code adapted from Theodore John.S (Creating a Dynamic Quiz App in React.js Guide)
   return (
     <Col id="pull-page" className="card-pull-page">
@@ -56,7 +62,7 @@ const CardPull = () => {
               <PointsBar bgcolor="#fca4cd" completed={score} />
             </Col>
             <Col size={4}>
-              <Button id="pull-button">Pull Card!</Button>
+              <PullButton score={score} resetScore={resetScore} />
             </Col>
           </Row>
           <Col id="quiz-section" className="align-content-center">

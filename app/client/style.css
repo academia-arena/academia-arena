@@ -585,7 +585,7 @@ ul li {
   margin-left: -15px;
 }
 
-#pull-button {
+#pull-button, #no-pull-button {
   width: 100%;
   padding: 5px;
   background-color: #95BEA9;

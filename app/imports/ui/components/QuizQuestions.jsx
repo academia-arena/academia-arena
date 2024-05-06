@@ -12,7 +12,7 @@ const QuizQuestions = [
     answer: 'C',
   },
   {
-    question: 'What 200 in Binary?',
+    question: 'What is 200 in Binary?',
     type: 'input',
     answer: '11001000',
   },
