@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Meteor } from 'meteor/meteor';
 import { useTracker } from 'meteor/react-meteor-data';
-import { Col, Container, Nav, Row, Table, Button, Modal } from 'react-bootstrap';
+import { Col, Container, Nav, Row, Table, Button, Modal, Card } from 'react-bootstrap';
 import LoadingSpinner from '../components/LoadingSpinner';
 import { TCards } from '../../api/tcard/TCard';
 import ListedCard from '../components/ListedCard';
@@ -85,45 +85,49 @@ const ListPublicTrade = () => {
         <Row className="justify-content-center">
           <Col md={7}>
             {activeView === 'market' ? (
-              <Table id="market-table" className="table-success table-borderless">
-                <thead>
-                  <tr>
-                    <th>Image</th>
-                    <th>Name</th>
-                    <th>Type</th>
-                    <th>Owner</th>
-                    <th>Trade</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  {filteredCards.map((tcard) => (
-                    <ListedCard
-                      key={tcard._id}
-                      tcard={tcard}
-                      onObtainClick={() => handleObtainClick(tcard)}
-                    />
-                  ))}
-                </tbody>
-              </Table>
+              <Card id="market-table" className="table-responsive">
+                <Table className="table-success table-borderless table-striped">
+                  <thead>
+                    <tr>
+                      <th>Image</th>
+                      <th>Name</th>
+                      <th>Type</th>
+                      <th>Owner</th>
+                      <th>Trade</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {filteredCards.map((tcard) => (
+                      <ListedCard
+                        key={tcard._id}
+                        tcard={tcard}
+                        onObtainClick={() => handleObtainClick(tcard)}
+                      />
+                    ))}
+                  </tbody>
+                </Table>
+              </Card>
             ) : (
-              <Table id="my-table" className="table-success table-borderless">
-                <thead>
-                  <tr>
-                    <th>Image</th>
-                    <th>Name</th>
-                    <th>Type</th>
-                    <th>Owner</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  {filteredCards.map((tcard) => (
-                    <MyListedCard
-                      key={tcard._id}
-                      tcard={tcard}
-                    />
-                  ))}
-                </tbody>
-              </Table>
+              <Card id="my-table" className="table-responsive">
+                <Table className="table-success table-borderless table-striped">
+                  <thead>
+                    <tr>
+                      <th>Image</th>
+                      <th>Name</th>
+                      <th>Type</th>
+                      <th>Owner</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {filteredCards.map((tcard) => (
+                      <MyListedCard
+                        key={tcard._id}
+                        tcard={tcard}
+                      />
+                    ))}
+                  </tbody>
+                </Table>
+              </Card>
             )}
           </Col>
         </Row>

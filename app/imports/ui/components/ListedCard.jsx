@@ -18,7 +18,7 @@ const ListedCard = ({ tcard, onObtainClick }) => {
       <td>{tcard.owner}</td>
       <td>
         {/* Pass the handleObtainClick function to the onClick event */}
-        <Button onClick={handleObtainClick}>Obtain Card</Button>
+        <Button id="obtain-button" onClick={handleObtainClick}>Obtain Card</Button>
       </td>
     </tr>
   );

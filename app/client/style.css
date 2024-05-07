@@ -82,15 +82,52 @@ p {
   border: none;
 }
 
-#signin-form-submit {
+#signin-form-submit,
+#signup-form-submit {
   background-color: #95bea9;
   border: none;
 }
 
-#signin-form-submit:hover,
-#signin-form-submit.active {
+#signin-form-submit.active,
+#signup-form-submit:hover,
+#signup-form-submit.hover {
   background-color: #749885;
   border: none;
+}
+
+#obtain-button {
+  background-color: #faf3e2;
+  color: black;
+  border: none;
+}
+
+#obtain-button:hover,
+#obtain-button.active {
+  background-color: #749885;
+  border: none;
+}
+
+#market-table th,
+#my-table th,
+#market-table tbody,
+#my-table tbody {
+  text-align: center;
+  vertical-align: middle;
+}
+
+#market-table td,
+#my-table td {
+  padding: 15px;
+}
+
+#market-table,
+#my-table {
+  border-radius: 20px;
+  background-color: #c8ded4;
+}
+
+#prof-icon {
+  border-radius: 10px;
 }
 
 #login-dropdown,
