@@ -2,10 +2,10 @@ import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import { Link, Navigate } from 'react-router-dom';
 import { Accounts } from 'meteor/accounts-base';
-import { Alert, Card, Col, Container, Row } from 'react-bootstrap';
+import { Alert, Button, Card, Col, Container, Row } from 'react-bootstrap';
 import SimpleSchema from 'simpl-schema';
 import SimpleSchema2Bridge from 'uniforms-bridge-simple-schema-2';
-import { AutoForm, ErrorsField, SubmitField, TextField } from 'uniforms-bootstrap5';
+import { AutoForm, ErrorsField, TextField } from 'uniforms-bootstrap5';
 
 /**
  * SignUp component is similar to signin component, but we create a new user instead.
@@ -16,14 +16,15 @@ const SignUp = ({ location }) => {
 
   const schema = new SimpleSchema({
     email: String,
+    nickname: String,
     password: String,
   });
   const bridge = new SimpleSchema2Bridge(schema);
 
   /* Handle SignUp submission. Create user account and a profile entry, then redirect to the home page. */
   const submit = (doc) => {
-    const { email, password } = doc;
-    Accounts.createUser({ email, username: email, password }, (err) => {
+    const { email, nickname, password } = doc;
+    Accounts.createUser({ email, nickname, username: email, password }, (err) => {
       if (err) {
         setError(err.reason);
       } else {
@@ -40,7 +41,12 @@ const SignUp = ({ location }) => {
     return <Navigate to={from} />;
   }
   return (
-    <div className="pt-5">
+    <Col>
+      <Container fluid className="py-3 text-center" id="title-block">
+        <Container>
+          <h2>Sign Up</h2>
+        </Container>
+      </Container>
       <Container id="signup-page" className="pt-5">
         <Row className="justify-content-center">
           <Col xs={5}>
@@ -49,9 +55,12 @@ const SignUp = ({ location }) => {
                 <Card.Body>
                   <h2 className="text-center">Register your account</h2>
                   <TextField id="signup-form-email" name="email" placeholder="E-mail address" />
+                  <TextField id="signup-form-nickname" name="nickname" placeholder="Trainer Name" />
                   <TextField id="signup-form-password" name="password" placeholder="Password" type="password" />
                   <ErrorsField />
-                  <SubmitField id="signup-form-submit" />
+                  <div className="d-flex justify-content-center">
+                    <Button type="submit" id="signup-form-submit">Submit</Button>
+                  </div>
                   <div style={{ marginTop: '10px', textAlign: 'center' }}>
                     Already have an account? Login
                     {' '}
@@ -71,7 +80,7 @@ const SignUp = ({ location }) => {
           </Col>
         </Row>
       </Container>
-    </div>
+    </Col>
   );
 };
 

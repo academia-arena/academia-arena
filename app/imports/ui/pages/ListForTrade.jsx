@@ -7,9 +7,9 @@ import { useTracker } from 'meteor/react-meteor-data';
 import SimpleSchema2Bridge from 'uniforms-bridge-simple-schema-2';
 import { useParams } from 'react-router';
 import LoadingSpinner from '../components/LoadingSpinner';
-import { TCards } from '../../api/tcard/TCard';
+import { AllCards } from '../../api/allcard/AllCard';
 
-const bridge = new SimpleSchema2Bridge(TCards.schema);
+const bridge = new SimpleSchema2Bridge(AllCards.schema);
 
 /* Renders the EditStuff page for editing a single document. */
 const ListForTrade = () => {
@@ -19,11 +19,11 @@ const ListForTrade = () => {
   // useTracker connects Meteor data to React components. https://guide.meteor.com/react.html#using-withTracker
   const { doc, ready } = useTracker(() => {
     // Get access to Stuff documents.
-    const subscription = Meteor.subscribe(TCards.userPublicationName);
+    const subscription = Meteor.subscribe(AllCards.userPublicationName);
     // Determine if the subscription is ready
     const rdy = subscription.ready();
     // Get the document
-    const document = TCards.collection.findOne(_id);
+    const document = AllCards.collection.findOne(_id);
     return {
       doc: document,
       ready: rdy,
@@ -33,7 +33,7 @@ const ListForTrade = () => {
   // On successful submit, insert the data.
   const submit = (data) => {
     const { isListedForTrade } = data;
-    TCards.collection.update(_id, { $set: { isListedForTrade } }, (error) => (error ?
+    AllCards.collection.update(_id, { $set: { isListedForTrade } }, (error) => (error ?
       swal('Error', error.message, 'error') :
       swal('Listed successfully')));
   };
