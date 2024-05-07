@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Meteor } from 'meteor/meteor';
 import { useTracker } from 'meteor/react-meteor-data';
-import { Col, Container, Nav, Row, Table, Button, Modal } from 'react-bootstrap';
+import { Col, Container, Nav, Row, Table, Button, Modal, Card } from 'react-bootstrap';
 import LoadingSpinner from '../components/LoadingSpinner';
 import { TCards } from '../../api/tcard/TCard';
 import ListedCard from '../components/ListedCard';
@@ -34,6 +34,20 @@ const ListPublicTrade = () => {
     setShowConfirmation(true);
   };
 
+  const handleUnlistClick = (tcard) => {
+    TCards.collection.update(tcard._id, {
+      $set: {
+        isListedForTrade: 'No',
+      },
+    }, (error) => {
+      if (error) {
+        console.error('Error Unlisting Card:', error);
+      } else {
+        console.log('Card Unlisted');
+      }
+    });
+  };
+
   const obtainCard = () => {
     if (selectedCard) {
       TCards.collection.update(selectedCard._id, {
@@ -53,13 +67,11 @@ const ListPublicTrade = () => {
     }
   };
 
-  let filteredCards = tcards; // Initialize filteredCards with all cards
+  let filteredCards = tcards;
 
   if (activeView === 'my-listed') {
-    // If in "My Listed Cards" view, filter cards owned by the current user
     filteredCards = tcards.filter(tcard => tcard.owner === currentUser.username);
   } else if (activeView === 'market') {
-    // If in "Market" view, filter out cards owned by the current user
     filteredCards = tcards.filter(tcard => tcard.owner !== currentUser.username);
   }
 
@@ -81,49 +93,55 @@ const ListPublicTrade = () => {
           </Nav>
         </Container>
       </Container>
-      <Container className="py-3">
+      <Container className="py-3" id="tables">
         <Row className="justify-content-center">
           <Col md={7}>
             {activeView === 'market' ? (
-              <Table striped bordered hover>
-                <thead>
-                  <tr>
-                    <th>Image</th>
-                    <th>Name</th>
-                    <th>Type</th>
-                    <th>Owner</th>
-                    <th>Trade</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  {filteredCards.map((tcard) => (
-                    <ListedCard
-                      key={tcard._id}
-                      tcard={tcard}
-                      onObtainClick={() => handleObtainClick(tcard)}
-                    />
-                  ))}
-                </tbody>
-              </Table>
+              <Card id="market-table" className="table-responsive">
+                <Table className="table-success table-borderless table-striped">
+                  <thead>
+                    <tr>
+                      <th>Image</th>
+                      <th>Name</th>
+                      <th>Type</th>
+                      <th>Owner</th>
+                      <th>Trade</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {filteredCards.map((tcard) => (
+                      <ListedCard
+                        key={tcard._id}
+                        tcard={tcard}
+                        onObtainClick={() => handleObtainClick(tcard)}
+                      />
+                    ))}
+                  </tbody>
+                </Table>
+              </Card>
             ) : (
-              <Table striped bordered hover>
-                <thead>
-                  <tr>
-                    <th>Image</th>
-                    <th>Name</th>
-                    <th>Type</th>
-                    <th>Owner</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  {filteredCards.map((tcard) => (
-                    <MyListedCard
-                      key={tcard._id}
-                      tcard={tcard}
-                    />
-                  ))}
-                </tbody>
-              </Table>
+              <Card id="my-table" className="table-responsive">
+                <Table className="table-success table-borderless table-striped">
+                  <thead>
+                    <tr>
+                      <th>Image</th>
+                      <th>Name</th>
+                      <th>Type</th>
+                      <th>Owner</th>
+                      <th>Unlist?</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {filteredCards.map((tcard) => (
+                      <MyListedCard
+                        key={tcard._id}
+                        tcard={tcard}
+                        onUnlistClick={() => handleUnlistClick(tcard)} // Pass the handleUnlistClick function to MyListedCard component
+                      />
+                    ))}
+                  </tbody>
+                </Table>
+              </Card>
             )}
           </Col>
         </Row>

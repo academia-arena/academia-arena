@@ -113,7 +113,7 @@ const ViewCardsAdmin = () => {
             <InputGroup>
               <Form.Control
                 id="SearchBar"
-                placeholder="Search by first or last name"
+                placeholder="Search by Name"
                 value={searchQuery}
                 onChange={handleSearchChange}
               />
@@ -128,7 +128,7 @@ const ViewCardsAdmin = () => {
           <Row>
             <Col>
               {/* eslint-disable-next-line no-shadow */}
-              <Row className="justify-content-center">{cardcatalog.filter(card => card.lastName.toLowerCase().includes(searchQuery.toLowerCase()) || card.firstName.toLowerCase().includes(searchQuery.toLowerCase())).map((cardcatalog) => (
+              <Row className="justify-content-center">{cardcatalog.filter(card => card.lastName.toLowerCase().includes(searchQuery.toLowerCase())).map((cardcatalog) => (
                 cardcatalog.type === 'Common' ? (
                   <CommonCardWishlist key={cardcatalog._id} card={cardcatalog} addToWishlist={addToWishlist} inWishlist={false} />
                 ) : null
@@ -137,7 +137,7 @@ const ViewCardsAdmin = () => {
             </Col>
             <Col>
               {/* eslint-disable-next-line no-shadow */}
-              <Row className="justify-content-center">{cardcatalog.filter(card => card.lastName.toLowerCase().includes(searchQuery.toLowerCase()) || card.firstName.toLowerCase().includes(searchQuery.toLowerCase())).map((cardcatalog) => (
+              <Row className="justify-content-center">{cardcatalog.filter(card => card.lastName.toLowerCase().includes(searchQuery.toLowerCase())).map((cardcatalog) => (
                 cardcatalog.type === 'Rare' ? (
                   <RareCardWishlist key={cardcatalog._id} card={cardcatalog} addToWishlist={addToWishlist} inWishlist={false} />
                 ) : null
@@ -146,7 +146,7 @@ const ViewCardsAdmin = () => {
             </Col>
             <Col>
               {/* eslint-disable-next-line no-shadow */}
-              <Row className="justify-content-center">{cardcatalog.filter(card => card.lastName.toLowerCase().includes(searchQuery.toLowerCase()) || card.firstName.toLowerCase().includes(searchQuery.toLowerCase())).map((cardcatalog) => (
+              <Row className="justify-content-center">{cardcatalog.filter(card => card.lastName.toLowerCase().includes(searchQuery.toLowerCase())).map((cardcatalog) => (
                 cardcatalog.type === 'Legendary' ? (
                   <LegendaryCardWishlist key={cardcatalog._id} card={cardcatalog} addToWishlist={addToWishlist} inWishlist={false} />
                 ) : null

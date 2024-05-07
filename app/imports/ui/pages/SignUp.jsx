@@ -2,10 +2,10 @@ import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import { Link, Navigate } from 'react-router-dom';
 import { Accounts } from 'meteor/accounts-base';
-import { Alert, Card, Col, Container, Row } from 'react-bootstrap';
+import { Alert, Button, Card, Col, Container, Row } from 'react-bootstrap';
 import SimpleSchema from 'simpl-schema';
 import SimpleSchema2Bridge from 'uniforms-bridge-simple-schema-2';
-import { AutoForm, ErrorsField, SubmitField, TextField } from 'uniforms-bootstrap5';
+import { AutoForm, ErrorsField, TextField } from 'uniforms-bootstrap5';
 
 /**
  * SignUp component is similar to signin component, but we create a new user instead.
@@ -51,7 +51,9 @@ const SignUp = ({ location }) => {
                   <TextField id="signup-form-email" name="email" placeholder="E-mail address" />
                   <TextField id="signup-form-password" name="password" placeholder="Password" type="password" />
                   <ErrorsField />
-                  <SubmitField id="signup-form-submit" />
+                  <div className="d-flex justify-content-center">
+                    <Button type="submit" id="signup-form-submit">Submit</Button>
+                  </div>
                   <div style={{ marginTop: '10px', textAlign: 'center' }}>
                     Already have an account? Login
                     {' '}

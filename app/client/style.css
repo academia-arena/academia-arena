@@ -73,10 +73,64 @@ p {
 #input-card-body {
   background: #faf3e2;
   font-family: "Pixelify Sans", sans-serif;
+  border: none;
+  border-radius: 1%;
 }
 
 #input-card-body .form-control {
   background: #95bea9;
+  border: none;
+}
+
+#signin-form-submit,
+#signup-form-submit {
+  background-color: #95bea9;
+  border: none;
+}
+
+#signin-form-submit.active,
+#signup-form-submit:hover,
+#signup-form-submit.hover {
+  background-color: #749885;
+  border: none;
+}
+
+#obtain-button,
+#unlist-button {
+  background-color: #faf3e2;
+  color: black;
+  border: none;
+}
+
+#obtain-button:hover,
+#obtain-button.active,
+#unlist-button:hover,
+#unlist-button.active {
+  background-color: #749885;
+  border: none;
+}
+
+#market-table th,
+#my-table th,
+#market-table tbody,
+#my-table tbody {
+  text-align: center;
+  vertical-align: middle;
+}
+
+#market-table td,
+#my-table td {
+  padding: 15px;
+}
+
+#market-table,
+#my-table {
+  border-radius: 20px;
+  background-color: #c8ded4;
+}
+
+#prof-icon {
+  border-radius: 10px;
 }
 
 #login-dropdown,
@@ -92,13 +146,13 @@ p {
   background-color: #95bea9 !important; /* Change to your desired highlight color */
 }
 
-.centered-box {
+.signout-box {
   position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
   background-color: #faf3e2;
-  padding: 20px;
+  padding: 50px;
   border-radius: 10px;
 }
 
@@ -236,8 +290,6 @@ p {
   margin: 0; /* Remove default margin of h1 */
   color: #95BEA9FF;
 }
-
-
 
 .nav-pills .nav-link.active {
   background: #95bea9 !important;
@@ -561,14 +613,11 @@ p {
   align-items: center;
 }
 
-
-
 /* Custom styling for checked state */
 .quiz input[type="radio"]:checked,
 .quiz input[type="checkbox"]:checked {
   background-color: #95BEA9;
 }
-
 
 ul li {
   width: 100%;
@@ -622,3 +671,9 @@ ul li:active {
 #quiz-button svg {
   margin-right: 5px;
 }
+
+#market-table,
+#my-table {
+  font-family: "Pixelify Sans";
+}
+
