@@ -34,6 +34,20 @@ const ListPublicTrade = () => {
     setShowConfirmation(true);
   };
 
+  const handleUnlistClick = (tcard) => {
+    TCards.collection.update(tcard._id, {
+      $set: {
+        isListedForTrade: 'No',
+      },
+    }, (error) => {
+      if (error) {
+        console.error('Error Unlisting Card:', error);
+      } else {
+        console.log('Card Unlisted');
+      }
+    });
+  };
+
   const obtainCard = () => {
     if (selectedCard) {
       TCards.collection.update(selectedCard._id, {
@@ -53,13 +67,11 @@ const ListPublicTrade = () => {
     }
   };
 
-  let filteredCards = tcards; // Initialize filteredCards with all cards
+  let filteredCards = tcards;
 
   if (activeView === 'my-listed') {
-    // If in "My Listed Cards" view, filter cards owned by the current user
     filteredCards = tcards.filter(tcard => tcard.owner === currentUser.username);
   } else if (activeView === 'market') {
-    // If in "Market" view, filter out cards owned by the current user
     filteredCards = tcards.filter(tcard => tcard.owner !== currentUser.username);
   }
 
@@ -116,6 +128,7 @@ const ListPublicTrade = () => {
                       <th>Name</th>
                       <th>Type</th>
                       <th>Owner</th>
+                      <th>Unlist?</th>
                     </tr>
                   </thead>
                   <tbody>
@@ -123,6 +136,7 @@ const ListPublicTrade = () => {
                       <MyListedCard
                         key={tcard._id}
                         tcard={tcard}
+                        onUnlistClick={() => handleUnlistClick(tcard)} // Pass the handleUnlistClick function to MyListedCard component
                       />
                     ))}
                   </tbody>

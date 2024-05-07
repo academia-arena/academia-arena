@@ -48,6 +48,22 @@ const ListTCard = () => {
   function handleChange(e) {
     setQuery(e.target.value);
   }
+
+  // Function to handle the trade action
+  const handleTradeClick = (tcard) => {
+    TCards.collection.update(tcard._id, {
+      $set: {
+        isListedForTrade: 'Yes',
+      },
+    }, (error) => {
+      if (error) {
+        console.error('Error Listing Card:', error);
+      } else {
+        console.log('Card Listed');
+      }
+    });
+  };
+
   return (ready ? (
     <Col id="view-collection-page">
       <Container fluid className="py-3" id="title-block">
@@ -61,9 +77,9 @@ const ListTCard = () => {
           <Row style={{ paddingLeft: '6vh' }} className="py-3 gx-2 justify-content-center">
             {
               filteredCards.map((tcard) => {
-                if (tcard.type === 'Common') return <Col><ThisCard key={tcard._id} card={tcard} background={commonBackground} title={commonTitle} image={commonImage} text={commonText} /></Col>;
-                if (tcard.type === 'Rare') return <Col><ThisCard key={tcard._id} card={tcard} background={rareBackground} title={rareTitle} image={rareImage} text={rareText} /></Col>;
-                return <Col><ThisCard key={tcard._id} card={tcard} background={legendaryBackground} title={legendaryTitle} image={legendaryImage} text={legendaryText} /></Col>;
+                if (tcard.type === 'Common') return <Col><ThisCard key={tcard._id} card={tcard} background={commonBackground} title={commonTitle} image={commonImage} text={commonText} onTradeClick={handleTradeClick} /></Col>;
+                if (tcard.type === 'Rare') return <Col><ThisCard key={tcard._id} card={tcard} background={rareBackground} title={rareTitle} image={rareImage} text={rareText} onTradeClick={handleTradeClick} /></Col>;
+                return <Col><ThisCard key={tcard._id} card={tcard} background={legendaryBackground} title={legendaryTitle} image={legendaryImage} text={legendaryText} onTradeClick={handleTradeClick} /></Col>;
               })
             }
           </Row>

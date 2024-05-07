@@ -95,14 +95,17 @@ p {
   border: none;
 }
 
-#obtain-button {
+#obtain-button,
+#unlist-button {
   background-color: #faf3e2;
   color: black;
   border: none;
 }
 
 #obtain-button:hover,
-#obtain-button.active {
+#obtain-button.active,
+#unlist-button:hover,
+#unlist-button.active {
   background-color: #749885;
   border: none;
 }
