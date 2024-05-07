@@ -2,13 +2,11 @@
   "defaultAccounts": [
     {
       "email": "admin@foo.com",
-      "nickname": "admin",
       "password": "changeme",
       "role": "admin"
     },
     {
       "email": "john@foo.com",
-      "nickname": "john",
       "password": "changeme"
     }
   ],

@@ -1,17 +1,17 @@
 import React, { useState } from 'react';
 import { Meteor } from 'meteor/meteor';
 import { useTracker } from 'meteor/react-meteor-data';
-import { Col, Container, Nav, Row, Table, Button, Modal, Card } from 'react-bootstrap';
+import { Col, Container, Nav, Row, Table, Button, Modal } from 'react-bootstrap';
 import LoadingSpinner from '../components/LoadingSpinner';
+import { TCards } from '../../api/tcard/TCard';
 import ListedCard from '../components/ListedCard';
 import MyListedCard from '../components/MyListedCard';
-import { AllCards } from '../../api/allcard/AllCard';
 
 const ListPublicTrade = () => {
-  const { ready, cards, currentUser } = useTracker(() => {
-    const subscription = Meteor.subscribe(AllCards.userTradePublicationName);
+  const { ready, tcards, currentUser } = useTracker(() => {
+    const subscription = Meteor.subscribe(TCards.userTradePublicationName);
     return {
-      cards: AllCards.collection.find({ isListedForTrade: 'Yes' }).fetch(),
+      tcards: TCards.collection.find({ isListedForTrade: 'Yes' }).fetch(),
       ready: subscription.ready(),
       currentUser: Meteor.user(),
     };
@@ -25,18 +25,18 @@ const ListPublicTrade = () => {
     setActiveView(view);
   };
 
-  const handleObtainClick = (card) => {
-    if (card.owner === currentUser.username) {
+  const handleObtainClick = (tcard) => {
+    if (tcard.owner === currentUser.username) {
       alert('You already own this card.');
       return;
     }
-    setSelectedCard(card);
+    setSelectedCard(tcard);
     setShowConfirmation(true);
   };
 
   const obtainCard = () => {
     if (selectedCard) {
-      AllCards.collection.update(selectedCard._id, {
+      TCards.collection.update(selectedCard._id, {
         $set: {
           owner: currentUser.username,
           isListedForTrade: 'No',
@@ -53,14 +53,14 @@ const ListPublicTrade = () => {
     }
   };
 
-  let filteredCards = cards; // Initialize filteredCards with all cards
+  let filteredCards = tcards; // Initialize filteredCards with all cards
 
   if (activeView === 'my-listed') {
     // If in "My Listed Cards" view, filter cards owned by the current user
-    filteredCards = cards.filter(tcard => tcard.owner === currentUser.username);
+    filteredCards = tcards.filter(tcard => tcard.owner === currentUser.username);
   } else if (activeView === 'market') {
     // If in "Market" view, filter out cards owned by the current user
-    filteredCards = cards.filter(tcard => tcard.owner !== currentUser.username);
+    filteredCards = tcards.filter(tcard => tcard.owner !== currentUser.username);
   }
 
   return ready ? (
@@ -85,28 +85,26 @@ const ListPublicTrade = () => {
         <Row className="justify-content-center">
           <Col md={7}>
             {activeView === 'market' ? (
-              <Card id="market-table" className="table-responsive">
-                <Table className="table-success table-striped table-borderless">
-                  <thead>
-                    <tr>
-                      <th>Image</th>
-                      <th>Name</th>
-                      <th>Type</th>
-                      <th>Owner</th>
-                      <th>Trade</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    {filteredCards.map((card) => (
-                      <ListedCard
-                        key={card._id}
-                        tcard={card}
-                        onObtainClick={() => handleObtainClick(card)}
-                      />
-                    ))}
-                  </tbody>
-                </Table>
-              </Card>
+              <Table id="market-table" className="table-success table-borderless">
+                <thead>
+                  <tr>
+                    <th>Image</th>
+                    <th>Name</th>
+                    <th>Type</th>
+                    <th>Owner</th>
+                    <th>Trade</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {filteredCards.map((tcard) => (
+                    <ListedCard
+                      key={tcard._id}
+                      tcard={tcard}
+                      onObtainClick={() => handleObtainClick(tcard)}
+                    />
+                  ))}
+                </tbody>
+              </Table>
             ) : (
               <Table id="my-table" className="table-success table-borderless">
                 <thead>
@@ -118,10 +116,10 @@ const ListPublicTrade = () => {
                   </tr>
                 </thead>
                 <tbody>
-                  {filteredCards.map((card) => (
+                  {filteredCards.map((tcard) => (
                     <MyListedCard
-                      key={card._id}
-                      tcard={card}
+                      key={tcard._id}
+                      tcard={tcard}
                     />
                   ))}
                 </tbody>

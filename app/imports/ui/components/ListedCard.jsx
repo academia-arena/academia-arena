@@ -2,30 +2,30 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Button } from 'react-bootstrap';
 
-const ListedCard = ({ card, onObtainClick }) => {
+const ListedCard = ({ tcard, onObtainClick }) => {
   const handleObtainClick = () => {
     // Call the onObtainClick function passed from the parent component
-    onObtainClick(card);
+    onObtainClick(tcard);
   };
 
   return (
     <tr>
       <td style={{ textAlign: 'center', verticalAlign: 'middle' }}>
-        <img src={card.image} alt={card.cardName} id="prof-icon" />
+        <img src={tcard.image} alt={tcard.cardName} id="prof-icon" />
       </td>
-      <td>{card.cardName}</td>
-      <td>{card.type}</td>
-      <td>{card.owner}</td>
+      <td>{tcard.cardName}</td>
+      <td>{tcard.type}</td>
+      <td>{tcard.owner}</td>
       <td>
         {/* Pass the handleObtainClick function to the onClick event */}
-        <Button id="obtain-button" onClick={handleObtainClick}>Obtain Card</Button>
+        <Button onClick={handleObtainClick}>Obtain Card</Button>
       </td>
     </tr>
   );
 };
 
 ListedCard.propTypes = {
-  card: PropTypes.shape({
+  tcard: PropTypes.shape({
     cardName: PropTypes.string,
     image: PropTypes.string,
     type: PropTypes.string,

@@ -82,16 +82,13 @@ p {
   border: none;
 }
 
-#signin-form-submit,
-#signup-form-submit {
+#signin-form-submit {
   background-color: #95bea9;
   border: none;
 }
 
 #signin-form-submit:hover,
-#signin-form-submit.active,
-#signup-form-submit:hover,
-#signup-form-submit.hover {
+#signin-form-submit.active {
   background-color: #749885;
   border: none;
 }
@@ -312,40 +309,6 @@ p {
   margin-right: 10px;
   margin-left: 10px;
   transition: background-color 0.01ms ease;
-}
-
-#obtain-button {
-  background-color: #faf3e2;
-  color: black;
-  border: none;
-}
-
-#obtain-button:hover,
-#obtain-button.active {
-  background-color: #749885;
-  border: none;
-}
-
-#market-table th,
-#my-table th,
-#market-table tbody,
-#my-table tbody {
-  text-align: center;
-  vertical-align: middle;
-}
-
-#market-table td,
-#my-table td {
-  padding: 15px;
-}
-
-#market-table {
-  border-radius: 20px;
-  background-color: #c8ded4;
-}
-
-#prof-icon {
-  border-radius: 10px;
 }
 
 #loginSection, #signupSection {
