@@ -6,12 +6,6 @@ const QuizQuestions = [
     answer: '<!-- Comment /—>',
   },
   {
-    question: 'What primitive data types does Javascript have? (Select all that apply)',
-    type: 'checkbox',
-    options: ['String', 'Integer', 'Float', 'Boolean', 'Undefined'],
-    answer: ['String', 'Boolean', 'Undefined'],
-  },
-  {
     question: 'What 200 in Binary?',
     type: 'input',
     answer: '11001000',

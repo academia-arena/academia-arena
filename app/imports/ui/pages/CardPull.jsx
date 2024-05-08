@@ -1,28 +1,46 @@
 import React, { useState } from 'react';
+import { Meteor } from 'meteor/meteor';
+import { useTracker } from 'meteor/react-meteor-data';
 import { Col, Container, Row, Button } from 'react-bootstrap';
 import QuizQuestions from '../components/QuizQuestions';
 import PointsBar from '../components/PointsBar';
+import PullButton from '../components/PullButton';
+import { AllCards } from '../../api/allcard/AllCard';
+import { TCards } from '../../api/tcard/TCard';
 
 const CardPull = () => {
-  // code written by Theodore John.S (Creating a Dynamic Quiz App in React.js Guide)
+  const { ready, cards, currentUser } = useTracker(() => {
+    const subscription = Meteor.subscribe(AllCards.userAllPublicationName);
+    return {
+      cards: AllCards.collection.find().fetch(),
+      ready: subscription.ready(),
+      currentUser: Meteor.user(),
+    };
+  });
+
+  console.log('All Cards length: ', AllCards.collection.find().count());
+
   const [currentQuestion, setCurrentQuestion] = useState(0);
-  const [score, setScore] = useState(0);
+  const [score, setScore] = useState(100);
   const [answers, setAnswers] = useState([]);
   const [showScore, setShowScore] = useState(false);
 
-  // code written by Theodore John.S (Creating a Dynamic Quiz App in React.js Guide)
   const handleAnswerSelection = (questionIndex, selectedAnswer) => {
     const updatedAnswers = [...answers];
     updatedAnswers[questionIndex] = selectedAnswer;
     setAnswers(updatedAnswers);
   };
 
-  // code written by Theodore John.S (Creating a Dynamic Quiz App in React.js Guide)
+  const quizLoop = () => {
+    setCurrentQuestion(0);
+    setAnswers([]);
+    setShowScore(false);
+  };
+
   const handleNextQuestion = () => {
     if (
       answers[currentQuestion] === QuizQuestions[currentQuestion].answer ||
-      JSON.stringify(answers[currentQuestion]) ===
-      JSON.stringify(QuizQuestions[currentQuestion].answer)
+      JSON.stringify(answers[currentQuestion]) === JSON.stringify(QuizQuestions[currentQuestion].answer)
     ) {
       setScore(score + 10);
     }
@@ -30,12 +48,60 @@ const CardPull = () => {
       setCurrentQuestion(currentQuestion + 1);
     } else {
       setShowScore(true);
+      quizLoop(() => {
+        setCurrentQuestion(0);
+        setAnswers([]);
+        setShowScore(false);
+      }, 1000);
     }
   };
 
-  // code adapted from Theodore John.S (Creating a Dynamic Quiz App in React.js Guide)
-  return (
-    <Col className="card-pull-page">
+  const pullRandomCard = () => {
+    // Create a weighted array where card types are repeated based on their weights
+    // More common cards will be repeated more so the user has a higher chance of drawing them.
+    const weightedCards = [];
+    cards.forEach(card => {
+      if (card.type === 'Common') {
+        const repeatCount = 10;
+        for (let i = 0; i < repeatCount; i++) {
+          weightedCards.push(card);
+        }
+      } else if (card.type === 'Rare') {
+        const repeatCount = 3;
+        for (let i = 0; i < repeatCount; i++) {
+          weightedCards.push(card);
+        }
+      } else if (card.type === 'Legendary') {
+        const repeatCount = 1;
+        for (let i = 0; i < repeatCount; i++) {
+          weightedCards.push(card);
+        }
+      }
+    });
+
+    // Select a random card from the weighted array
+    const randomIndex = Math.floor(Math.random() * weightedCards.length);
+    const pulledCard = weightedCards[randomIndex];
+
+    const copiedCard = {
+      ...pulledCard,
+      owner: currentUser.username,
+    };
+
+    TCards.collection.insert(copiedCard, (error, result) => {
+      if (error) {
+        console.log('Error inserting card:', error);
+        setTimeout(pullRandomCard, 1000); // Retry after 1 second
+      } else {
+        console.log('Card added to TCards collection:', result);
+        setScore(0); // Reset score after pulling a card
+        alert('A new card has been added to your collection!');
+      }
+    });
+  };
+
+  return ready ? (
+    <Col id="pull-page" className="card-pull-page">
       <div id="card-pull-title" className="partition-bar h1">Card Pull Game</div>
       <Container>
         <Row id="card-pull-row">
@@ -48,14 +114,14 @@ const CardPull = () => {
               <PointsBar bgcolor="#fca4cd" completed={score} />
             </Col>
             <Col size={4}>
-              <Button id="pull-button">Pull Card!</Button>
+              <PullButton score={score} resetScore={pullRandomCard} />
             </Col>
           </Row>
           <Col id="quiz-section" className="align-content-center">
             <div className="quiz text-center">
               {showScore ? (
                 <div className="score-section">
-                  You scored {score} out of 100
+                  <h2>You scored {score} out of 100</h2>
                 </div>
               ) : (
                 <div>
@@ -65,13 +131,17 @@ const CardPull = () => {
                       <ul>
                         {QuizQuestions[currentQuestion].options.map((option, index) => (
                           <li key={index}>
-                            <input
-                              type="radio"
-                              name={`question${currentQuestion}`}
-                              value={option}
-                              onChange={() => handleAnswerSelection(currentQuestion, option)}
-                            />
-                            {option}
+                            <label htmlFor={`radio-${currentQuestion}-${index}`} className="radio-label">
+                              <input
+                                type="radio"
+                                id={`radio-${currentQuestion}-${index}`}
+                                name={`question${currentQuestion}`}
+                                value={option}
+                                onChange={() => handleAnswerSelection(currentQuestion, option)}
+                                checked={answers[currentQuestion] === option}
+                              />
+                              {option}
+                            </label>
                           </li>
                         ))}
                       </ul>
@@ -114,7 +184,7 @@ const CardPull = () => {
       </Container>
       <div className="partition-bar" />
     </Col>
-  );
+  ) : null;
 };
 
 export default CardPull;
