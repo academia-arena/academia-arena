@@ -31,6 +31,14 @@ Meteor.publish(TCards.userPublicationName, function () {
   return this.ready();
 });
 
+Meteor.publish(AllCards.userPublicationName, function () {
+  if (this.userId) {
+    const username = Meteor.users.findOne(this.userId).username;
+    return AllCards.collection.find({ owner: username });
+  }
+  return this.ready();
+});
+
 // Publish offers to users
 Meteor.publish(Offers.userPublicationName, function () {
   if (this.userId) {
