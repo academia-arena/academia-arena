@@ -18,7 +18,7 @@ const CardPull = () => {
     };
   });
   const [currentQuestion, setCurrentQuestion] = useState(0);
-  const [score, setScore] = useState(100);
+  const [score, setScore] = useState(0);
   const [answers, setAnswers] = useState([]);
   const [showScore, setShowScore] = useState(false);
 
@@ -51,8 +51,6 @@ const CardPull = () => {
     }
   };
   const pullRandomCard = () => {
-    // Create a weighted array where card types are repeated based on their weights
-    // More common cards will be repeated more so the user has a higher chance of drawing them.
     const weightedCards = [];
     cards.forEach(card => {
       if (card.type === 'Common') {
@@ -73,7 +71,6 @@ const CardPull = () => {
       }
     });
 
-    // Select a random card from the weighted array
     const randomIndex = Math.floor(Math.random() * weightedCards.length);
     const pulledCard = weightedCards[randomIndex];
 
@@ -85,7 +82,7 @@ const CardPull = () => {
     TCards.collection.insert(copiedCard, (error, result) => {
       if (error) {
         console.log('Error inserting card:', error);
-        alert('An error occurred while adding the card to your collection.');
+        setTimeout(pullRandomCard, 1000); // Retry after 1 second
       } else {
         console.log('Card added to TCards collection:', result);
         setScore(0); // Reset score after pulling a card
@@ -150,15 +147,15 @@ const CardPull = () => {
                       <ul>
                         {QuizQuestions[currentQuestion].options.map((option, index) => (
                           <li key={index}>
-                            <input
-                              type="checkbox"
-                              id={`checkbox-${currentQuestion}-${index}`}
-                              name={`question${currentQuestion}`}
-                              value={option}
-                              onChange={() => handleAnswerSelection(currentQuestion, option)}
-                              checked={answers[currentQuestion] && answers[currentQuestion].includes(option)}
-                            />
-                            <label htmlFor={`checkbox-${currentQuestion}-${index}`}>
+                            <label htmlFor={`checkbox-${currentQuestion}-${index}`} className="checkbox-label">
+                              <input
+                                type="checkbox"
+                                id={`checkbox-${currentQuestion}-${index}`}
+                                name={`question${currentQuestion}`}
+                                value={option}
+                                onChange={() => handleAnswerSelection(currentQuestion, option)}
+                                checked={answers[currentQuestion] && answers[currentQuestion].includes(option)}
+                              />
                               {option}
                             </label>
                           </li>
