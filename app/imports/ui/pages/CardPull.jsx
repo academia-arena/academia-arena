@@ -28,12 +28,14 @@ const CardPull = () => {
     setAnswers(updatedAnswers);
   };
 
+
   const quizLoop = () => {
     setCurrentQuestion(0);
     setAnswers([]);
     setShowScore(false);
   };
 
+  // code written by Theodore John.S (Creating a Dynamic Quiz App in React.js Guide)
   const handleNextQuestion = () => {
     if (
       answers[currentQuestion] === QuizQuestions[currentQuestion].answer ||
@@ -45,13 +47,9 @@ const CardPull = () => {
       setCurrentQuestion(currentQuestion + 1);
     } else {
       setShowScore(true);
-      quizLoop(() => {
-        setCurrentQuestion(0);
-        setAnswers([]);
-        setShowScore(false);
-      }, 1000);
     }
   };
+
 
   const pullRandomCard = () => {
     // Create a weighted array where card types are repeated based on their weights
@@ -97,6 +95,7 @@ const CardPull = () => {
     });
   };
 
+  // code adapted from Theodore John.S (Creating a Dynamic Quiz App in React.js Guide)
   return ready ? (
     <Col id="pull-page" className="card-pull-page">
       <Container fluid className="py-3" id="title-block">
@@ -122,7 +121,7 @@ const CardPull = () => {
             <div className="quiz text-center">
               {showScore ? (
                 <div className="score-section">
-                  <h2>You scored {score} out of 100</h2>
+                  You scored {score} out of 100
                 </div>
               ) : (
                 <div>

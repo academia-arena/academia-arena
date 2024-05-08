@@ -1,90 +1,55 @@
 {
-  "defaultAccounts": [
-    {
-      "email": "admin@foo.com",
-      "password": "changeme",
-      "role": "admin"
-    },
-    {
-      "email": "john@foo.com",
-      "password": "changeme"
-    }
-  ],
-  "defaultData": [
-    {
-      "name": "Basket",
-      "quantity": 3,
-      "owner": "john@foo.com",
-      "condition": "excellent"
-    },
-    {
-      "name": "Bicycle",
-      "quantity": 2,
-      "owner": "john@foo.com",
-      "condition": "poor"
-    },
-    {
-      "name": "Banana",
-      "quantity": 2,
-      "owner": "admin@foo.com",
-      "condition": "good"
-    },
-    {
-      "name": "Boogie Board",
-      "quantity": 2,
-      "owner": "admin@foo.com",
-      "condition": "excellent"
-    }
-  ],
-  "defaultCards": [
-    {
-      "firstName": "Philip",
-      "lastName": "Johnson",
-      "course": "ICS 314",
-      "power": 25,
-      "type": "Common",
-      "role": "Professor",
-      "title": "WOD Attack",
-      "description": "Professor Johnson assigns a surprise WOD to the enemy. The shock makes them skip their turn and take 25 damage.",
-      "funFact": "Plays electric guitar in a band called Hardly Strictly Jerry.",
-      "cardName": "God of Programming",
-      "image": "https://github.com/philipmjohnson.png",
-      "owner": "admin@foo.com",
-      "isListedForTrade": "No"
-    },
-    {
-      "firstName": "Philip",
-      "lastName": "Johnson",
-      "course": "ICS 314",
-      "power": 50,
-      "type": "Rare",
-      "role": "Professor",
-      "title": "WOD Attack",
-      "description": "Professor Johnson assigns a surprise WOD to the enemy. The shock makes them skip their turn and take 50 damage.",
-      "funFact": "Plays electric guitar in a band called Hardly Strictly Jerry.",
-      "cardName": "God of Programming",
-      "image": "https://github.com/philipmjohnson.png",
-      "owner": "admin@foo.com",
-      "isListedForTrade": "No"
-    },
-    {
-      "firstName": "Philip",
-      "lastName": "Johnson",
-      "course": "ICS 314",
-      "power": 100,
-      "type": "Legendary",
-      "role": "Professor",
-      "title": "WOD Attack",
-      "description": "Professor Johnson assigns a surprise WOD to the enemy. The shock makes them skip their turn and take 100 damage.",
-      "funFact": "Plays electric guitar in a band called Hardly Strictly Jerry.",
-      "cardName": "God of Programming",
-      "image": "https://github.com/philipmjohnson.png",
-      "owner": "admin@foo.com",
-      "isListedForTrade": "No"
-    }
-  ],
   "monti": {
-    "appId": "changeme",
-    "appSecret": "changeme"
-  }
+    "appId": "ZYrwddT2jLSc2zH5s",
+    "appSecret": "44b91801-4969-4ac7-8970-2e706c6a1183"
+  },
+
+  "defaultAccounts": [
+    { "email": "admin@foo.com", "password": "changeme", "role": "admin" },
+    { "email": "john@foo.com", "password": "changeme" }
+  ],
+
+  "defaultCards": [
+    { "firstName": "Philip", "lastName": "Johnson", "course": "ICS 314: Software Engineering I", "power": 25, "type": "Common", "role": "Professor", "title": "WOD Attack", "description": "Professor Johnson assigns a surprise WOD to the enemy. The shock makes them skip their turn and take 25 damage.", "funFact": "Plays electric guitar in a band called Hardly Strictly Jerry.", "cardName": "Lord of Programming", "image": "https://github.com/philipmjohnson.png", "owner": "admin@foo.com", "isListedForTrade": "No" },
+    { "firstName": "Philip", "lastName": "Johnson", "course": "ICS 314: Software Engineering I", "power": 50, "type": "Rare", "role": "Professor", "title": "WOD Attack", "description": "Professor Johnson assigns a surprise WOD to the enemy. The shock makes them skip their turn and take 50 damage.", "funFact": "Plays electric guitar in a band called Hardly Strictly Jerry.", "cardName": "Master of Programming", "image": "https://github.com/philipmjohnson.png", "owner": "admin@foo.com", "isListedForTrade": "No" },
+    { "firstName": "Philip", "lastName": "Johnson", "course": "ICS 314: Software Engineering I", "power": 100, "type": "Legendary", "role": "Professor", "title": "WOD Attack", "description": "Professor Johnson assigns a surprise WOD to the enemy. The shock makes them skip their turn and take 100 damage.", "funFact": "Plays electric guitar in a band called Hardly Strictly Jerry.", "cardName": "God of Programming", "image": "https://github.com/philipmjohnson.png", "owner": "admin@foo.com", "isListedForTrade": "No" },
+
+    { "firstName": "Philip", "lastName": "Johnson", "course": "ICS 314: Software Engineering I", "power": 25, "type": "Common", "role": "Professor", "title": "WOD Attack", "description": "Professor Johnson assigns a surprise WOD to the enemy. The shock makes them skip their turn and take 25 damage.", "funFact": "Plays electric guitar in a band called Hardly Strictly Jerry.", "cardName": "Lord of Programming", "image": "https://github.com/philipmjohnson.png", "owner": "john@foo.com", "isListedForTrade": "No" },
+    { "firstName": "Philip", "lastName": "Johnson", "course": "ICS 314: Software Engineering I", "power": 50, "type": "Rare", "role": "Professor", "title": "WOD Attack", "description": "Professor Johnson assigns a surprise WOD to the enemy. The shock makes them skip their turn and take 50 damage.", "funFact": "Plays electric guitar in a band called Hardly Strictly Jerry.", "cardName": "Master of Programming", "image": "https://github.com/philipmjohnson.png", "owner": "john@foo.com", "isListedForTrade": "No" },
+    { "firstName": "Philip", "lastName": "Johnson", "course": "ICS 314: Software Engineering I", "power": 100, "type": "Legendary", "role": "Professor", "title": "WOD Attack", "description": "Professor Johnson assigns a surprise WOD to the enemy. The shock makes them skip their turn and take 100 damage.", "funFact": "Plays electric guitar in a band called Hardly Strictly Jerry.", "cardName": "God of Programming", "image": "https://github.com/philipmjohnson.png", "owner": "john@foo.com", "isListedForTrade": "No" }
+  ],
+
+  "allCards": [
+    { "firstName": "Anthony", "lastName": "Peruma", "course": "ICS 496: Capstone Project, ICS 615: Software Quality and Maintenance", "power": 25, "type": "Common", "role": "Professor", "title": "X", "description": "X", "funFact": "Owns a functioning Nintendo Entertainment System which he keeps in his office.", "cardName": "X", "image": "images/anthony-peruma.jpeg", "owner": "admin@foo.com", "isListedForTrade": "No" },
+    { "firstName": "Anthony", "lastName": "Peruma", "course": "ICS 496: Capstone Project, ICS 615: Software Quality and Maintenance", "power": 50, "type": "Rare", "role": "Professor", "title": "X", "description": "X", "funFact": "Owns a functioning Nintendo Entertainment System which he keeps in his office.", "cardName": "X", "image": "images/anthony-peruma.jpeg", "owner": "admin@foo.com", "isListedForTrade": "No" },
+    { "firstName": "Anthony", "lastName": "Peruma", "course": "ICS 496: Capstone Project, ICS 615: Software Quality and Maintenance", "power": 100, "type": "Legendary", "role": "Professor", "title": "X", "description": "X", "funFact": "Owns a functioning Nintendo Entertainment System which he keeps in his office.", "cardName": "X", "image": "images/anthony-peruma.jpeg", "owner": "admin@foo.com", "isListedForTrade": "No" },
+
+    { "firstName": "Dan", "lastName": "Port", "course": "ICS 314: Software Engineering I", "power": 25, "type": "Common", "role": "Professor", "title": "X", "description": "X", "funFact": "Worked with Steve Jobs at a company called \"NeXT Computers\" after finishing graduate school. After NeXT was acquired by Apple in 1996, the NeXTStep operating system became the basis for macOS and iOS, the operating systems used in today's Apple computers and smartphones.", "cardName": "X", "image": "images/dan-port.png", "owner": "admin@foo.com", "isListedForTrade": "No" },
+    { "firstName": "Dan", "lastName": "Port", "course": "ICS 314: Software Engineering I", "power": 50, "type": "Rare", "role": "Professor", "title": "X", "description": "X", "funFact": "Worked with Steve Jobs at a company called \"NeXT Computers.\" After NeXT was acquired by Apple in 1996, the NeXTStep operating system became the basis for macOS and iOS, the operating systems used in today's Apple computers and smartphones.", "cardName": "X", "image": "images/dan-port.png", "owner": "admin@foo.com", "isListedForTrade": "No" },
+    { "firstName": "Dan", "lastName": "Port", "course": "ICS 314: Software Engineering I", "power": 100, "type": "Legendary", "role": "Professor", "title": "X", "description": "X", "funFact": "Worked with Steve Jobs at a company called \"NeXT Computers\" after finishing graduate school. After NeXT was acquired by Apple in 1996, the NeXTStep operating system became the basis for macOS and iOS, the operating systems used in today's Apple computers and smartphones.", "cardName": "X", "image": "images/dan-port.png", "owner": "admin@foo.com", "isListedForTrade": "No" },
+
+    { "firstName": "Edo", "lastName": "Biagioni", "course": "ICS 211: Intro to Computer Science II, ICS 313: Programming Language Theory, ICS 612: Theory of Operating Systems, ICS 651: Computer Networks", "power": 25, "type": "Common", "role": "Professor", "title": "X", "description": "X", "funFact": "Enjoys hiking and sailing.", "cardName": "Expert in Wireless Networking", "image": "images/edo-biagioni.jpeg", "owner": "admin@foo.com", "isListedForTrade": "No" },
+    { "firstName": "Edo", "lastName": "Biagioni", "course": "ICS 211: Intro to Computer Science II, ICS 313: Programming Language Theory, ICS 612: Theory of Operating Systems, ICS 651: Computer Networks", "power": 50, "type": "Rare", "role": "Professor", "title": "X", "description": "X", "funFact": "Enjoys hiking and sailing.", "cardName": "Master of Wireless Networking", "image": "images/edo-biagioni.jpeg", "owner": "admin@foo.com", "isListedForTrade": "No" },
+    { "firstName": "Edo", "lastName": "Biagioni", "course": "ICS 211: Intro to Computer Science II, ICS 313: Programming Language Theory, ICS 612: Theory of Operating Systems, ICS 651: Computer Networks", "power": 100, "type": "Legendary", "role": "Professor", "title": "X", "description": "X", "funFact": "Enjoys hiking and sailing.", "cardName": "God of Wireless Networking", "image": "images/edo-biagioni.jpeg", "owner": "admin@foo.com", "isListedForTrade": "No" },
+
+    { "firstName": "Jason", "lastName": "Leigh", "course": "ICS 485: Video Game Development, ICS 486: Virtual Reality, ICS 484: Data Visualization", "power": 25, "type": "Common", "role": "Professor", "title": "X", "description": "X", "funFact": "Wields the incredible power of the Force to open (automatic) doors without touching them.", "cardName": "Jedi Apprentice", "image": "images/jason-leigh.jpeg", "owner": "admin@foo.com", "isListedForTrade": "No" },
+    { "firstName": "Jason", "lastName": "Leigh", "course": "ICS 485: Video Game Development, ICS 486: Virtual Reality, ICS 484: Data Visualization", "power": 50, "type": "Rare", "role": "Professor", "title": "X", "description": "X", "funFact": "Wields the incredible power of the Force to open (automatic) doors without touching them.", "cardName": "Jedi Knight", "image": "images/jason-leigh.jpeg", "owner": "admin@foo.com", "isListedForTrade": "No" },
+    { "firstName": "Jason", "lastName": "Leigh", "course": "ICS 485: Video Game Development, ICS 486: Virtual Reality, ICS 484: Data Visualization", "power": 100, "type": "Legendary", "role": "Professor", "title": "X", "description": "X", "funFact": "Wields the incredible power of the Force to open (automatic) doors without touching them.", "cardName": "Jedi Master", "image": "images/jason-leigh.jpeg", "owner": "admin@foo.com", "isListedForTrade": "No" },
+
+    { "firstName": "Nurit", "lastName": "Kirshenbaum", "course": "ICS 484: Data Visualization", "power": 25, "type": "Common", "role": "Professor", "title": "X", "description": "X", "funFact": "Fan of Hearthstone and Geoguesser eSports events.", "cardName": "Lord of Programming", "image": "images/nurit-kirshenbaum.jpeg", "owner": "admin@foo.com", "isListedForTrade": "No" },
+    { "firstName": "Nurit", "lastName": "Kirshenbaum", "course": "ICS 484: Data Visualization", "power": 50, "type": "Rare", "role": "Professor", "title": "X", "description": "X", "funFact": "Fan of Hearthstone and Geoguesser eSports events.", "cardName": "Lord of Programming", "image": "images/nurit-kirshenbaum.jpeg", "owner": "admin@foo.com", "isListedForTrade": "No" },
+    { "firstName": "Nurit", "lastName": "Kirshenbaum", "course": "ICS 484: Data Visualization", "power": 100, "type": "Legendary", "role": "Professor", "title": "X", "description": "X", "funFact": "Fan of Hearthstone and Geoguesser eSports events.", "cardName": "Lord of Programming", "image": "images/nurit-kirshenbaum.jpeg", "owner": "admin@foo.com", "isListedForTrade": "No" },
+
+    { "firstName": "Peter", "lastName": "Sadowski", "course": "ICS 235: Machine Learning Methods, ICS 311: Algorithms, ICS 435: Machine Learning Fundamentals, ICS 635: Machine Learning, ICS 637: Deep Learning with Neural Networks", "power": 25, "type": "Common", "role": "Professor", "title": "X", "description": "X", "funFact": "Birthday is on the same day as one of North Korea's biggest national holidays.", "cardName": "Lord of Machine Learning", "image": "images/anthony-peruma.jpeg", "owner": "admin@foo.com", "isListedForTrade": "No" },
+    { "firstName": "Peter", "lastName": "Sadowski", "course": "ICS 235: Machine Learning Methods, ICS 311: Algorithms, ICS 435: Machine Learning Fundamentals, ICS 635: Machine Learning, ICS 637: Deep Learning with Neural Networks", "power": 50, "type": "Rare", "role": "Professor", "title": "X", "description": "X", "funFact": "Birthday is on the same day as one of North Korea's biggest national holidays.", "cardName": "Master of Machine Learning", "image": "images/anthony-peruma.jpeg", "owner": "admin@foo.com", "isListedForTrade": "No" },
+    { "firstName": "Peter", "lastName": "Sadowski", "course": "ICS 235: Machine Learning Methods, ICS 311: Algorithms, ICS 435: Machine Learning Fundamentals, ICS 635: Machine Learning, ICS 637: Deep Learning with Neural Networks", "power": 100, "type": "Legendary", "role": "Professor", "title": "X", "description": "X", "funFact": "Birthday is on the same day as one of North Korea's biggest national holidays.", "cardName": "God of Machine Learning", "image": "images/anthony-peruma.jpeg", "owner": "admin@foo.com", "isListedForTrade": "No" },
+
+    { "firstName": "Philip", "lastName": "Johnson", "course": "ICS 314: Software Engineering I", "power": 25, "type": "Common", "role": "Professor", "title": "WOD Attack", "description": "Professor Johnson assigns a surprise WOD to the enemy. The shock makes them skip their turn and take 25 damage.", "funFact": "Plays electric guitar in a band called Hardly Strictly Jerry.", "cardName": "Lord of Programming", "image": "https://github.com/philipmjohnson.png", "owner": "admin@foo.com", "isListedForTrade": "No" },
+    { "firstName": "Philip", "lastName": "Johnson", "course": "ICS 314: Software Engineering I", "power": 50, "type": "Rare", "role": "Professor", "title": "WOD Attack", "description": "Professor Johnson assigns a surprise WOD to the enemy. The shock makes them skip their turn and take 50 damage.", "funFact": "Plays electric guitar in a band called Hardly Strictly Jerry.", "cardName": "Master of Programming", "image": "https://github.com/philipmjohnson.png", "owner": "admin@foo.com", "isListedForTrade": "No" },
+    { "firstName": "Philip", "lastName": "Johnson", "course": "ICS 314: Software Engineering I", "power": 100, "type": "Legendary", "role": "Professor", "title": "WOD Attack", "description": "Professor Johnson assigns a surprise WOD to the enemy. The shock makes them skip their turn and take 100 damage.", "funFact": "Plays electric guitar in a band called Hardly Strictly Jerry.", "cardName": "God of Programming", "image": "https://github.com/philipmjohnson.png", "owner": "admin@foo.com", "isListedForTrade": "No" },
+
+    { "firstName": "Ravi", "lastName": "Narayan", "course": "ICS 212: Program Structure III", "power": 25, "type": "Common", "role": "Instructor", "title": "X", "description": "X", "funFact": "Competitive Ballroom Dance Champion", "cardName": "Master of C", "image": "images/ravi-narayan.png", "owner": "admin@foo.com", "isListedForTrade": "No" },
+    { "firstName": "Ravi", "lastName": "Narayan", "course": "ICS 212: Program Structure III", "power": 50, "type": "Rare", "role": "Instructor", "title": "X", "description": "X", "funFact": "Competitive Ballroom Dance Champion", "cardName": "Master of C & C++", "image": "images/ravi-narayan.png", "owner": "admin@foo.com", "isListedForTrade": "No" },
+    { "firstName": "Ravi", "lastName": "Narayan", "course": "ICS 212: Program Structure III", "power": 100, "type": "Legendary", "role": "Instructor", "title": "X", "description": "X", "funFact": "Competitive Ballroom Dance Champion", "cardName": "Master of C, C++ & Cha Cha", "image": "images/ravi-narayan.png", "owner": "admin@foo.com", "isListedForTrade": "No" }
+  ]
 }

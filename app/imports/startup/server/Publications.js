@@ -32,6 +32,13 @@ Meteor.publish(TCards.userPublicationName, function () {
 
 Meteor.publish(AllCards.userAllPublicationName, function () {
   return AllCards.collection.find();
+
+Meteor.publish(AllCards.userPublicationName, function () {
+  if (this.userId) {
+    const username = Meteor.users.findOne(this.userId).username;
+    return AllCards.collection.find({ owner: username });
+  }
+  return this.ready();
 });
 
 // Admin-level publication.

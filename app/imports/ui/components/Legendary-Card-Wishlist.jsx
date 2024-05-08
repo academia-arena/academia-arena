@@ -10,11 +10,10 @@ const LegendaryCardWishlist = ({ card, inWishlist, addToWishlist }) => {
       return (
         <Button
           variant="link"
-          className="position-absolute top-4 end-0"
-          style={{ top: '54%', marginRight: '5%' }}
+          className="position-absolute top-0 end-0 m-2"
           onClick={() => addToWishlist(card._id)}
         >
-          <HeartFill size={30} color="red" />
+          <HeartFill size={24} color="red" />
         </Button>
       );
     }
@@ -25,7 +24,7 @@ const LegendaryCardWishlist = ({ card, inWishlist, addToWishlist }) => {
       {renderHeartIcon()}
       <Card.Title id="CardsTitle3">
         <Container className="text-center">
-          <strong>{card.role} {card.firstName} {card.lastName}</strong>
+          <strong>{card.role} {card.lastName}</strong>
         </Container>
       </Card.Title>
       <Card.Body id="CardsImage3" className="text-center mb-2 mt-3">

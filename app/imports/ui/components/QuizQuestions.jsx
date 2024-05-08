@@ -6,10 +6,10 @@ const QuizQuestions = [
     answer: '<!-- Comment /—>',
   },
   {
-    question: 'Which of the following is NOT an object-oriented language?',
-    type: 'radio',
-    options: ['C++', 'Java', 'Python', 'C'],
-    answer: 'C',
+    question: 'What primitive data types does Javascript have? (Select all that apply)',
+    type: 'checkbox',
+    options: ['String', 'Integer', 'Float', 'Boolean', 'Undefined'],
+    answer: ['String', 'Boolean', 'Undefined'],
   },
   {
     question: 'What is 200 in Binary?',
