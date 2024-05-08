@@ -1,8 +1,13 @@
 import React, { useState } from 'react';
+import { Meteor } from 'meteor/meteor';
 import { Col, Container, Row, Button } from 'react-bootstrap';
+import _ from 'underscore';
 import QuizQuestions from '../components/QuizQuestions';
 import PointsBar from '../components/PointsBar';
 import PullButton from '../components/PullButton';
+import { AllCards } from '../../api/allcard/AllCard';
+// import { TCards } from '../../api/tcard/TCard';
+// import CardPullPopUpBox from '../components/CardPullPopUpBox';
 
 const CardPull = () => {
   // code written by Theodore John.S (Creating a Dynamic Quiz App in React.js Guide)
@@ -10,19 +15,18 @@ const CardPull = () => {
   const [score, setScore] = useState(0);
   const [answers, setAnswers] = useState([]);
   const [showScore, setShowScore] = useState(false);
-
-  // code written by Theodore John.S (Creating a Dynamic Quiz App in React.js Guide)
   const handleAnswerSelection = (questionIndex, selectedAnswer) => {
     const updatedAnswers = [...answers];
     updatedAnswers[questionIndex] = selectedAnswer;
     setAnswers(updatedAnswers);
   };
+  // automatically resets the Quiz once the user reaches the end
   const quizLoop = () => {
     setCurrentQuestion(0);
     setAnswers([]);
     setShowScore(false);
   };
-  // code written by Theodore John.S (Creating a Dynamic Quiz App in React.js Guide)
+  // code adapted from Theodore John.S (Creating a Dynamic Quiz App in React.js Guide)
   const handleNextQuestion = () => {
     if (
       answers[currentQuestion] === QuizQuestions[currentQuestion].answer ||
@@ -42,11 +46,22 @@ const CardPull = () => {
       }, 1000);
     }
   };
-
-  const resetScore = () => {
-    setScore(0);
+  // when points reach 100, a random card from AllCards is selected and added into the TCards (users
+  const pullRandomCard = () => {
+    const allCards = AllCards.collection.find().fetch();
+    console.log(allCards);
+    if (allCards.length === 0) {
+      throw new Meteor.Error('no-cards', 'No cards found.');
+    }
+    const randomCard = _.sample(allCards);
+    // console.log(randomCard);
+    // Assuming TCards is another collection, replace it with your collection
+    // TCards.insert(randomCard);
+    // generate a pop-up box that lets users know that their card is in collection
+    // CardPullPopUpBox();
+    // reset Score
+    // setScore(0);
   };
-
   // code adapted from Theodore John.S (Creating a Dynamic Quiz App in React.js Guide)
   return (
     <Col id="pull-page" className="card-pull-page">
@@ -62,7 +77,8 @@ const CardPull = () => {
               <PointsBar bgcolor="#fca4cd" completed={score} />
             </Col>
             <Col size={4}>
-              <PullButton score={score} resetScore={resetScore} />
+              {/* eslint-disable-next-line react/jsx-no-bind */}
+              <PullButton score={score} resetScore={pullRandomCard} />
             </Col>
           </Row>
           <Col id="quiz-section" className="align-content-center">

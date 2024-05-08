@@ -7,7 +7,6 @@ const PullButton = ({ score, resetScore }) => (
       <div>
         {/* eslint-disable-next-line react/button-has-type */}
         <button id="pull-button" onClick={resetScore}>Pull Card!</button>
-        <p>Score: {score}</p>
       </div>
     ) : (
       <div>
