@@ -32,6 +32,7 @@ Meteor.publish(TCards.userPublicationName, function () {
 
 Meteor.publish(AllCards.userAllPublicationName, function () {
   return AllCards.collection.find();
+});
 
 Meteor.publish(AllCards.userPublicationName, function () {
   if (this.userId) {

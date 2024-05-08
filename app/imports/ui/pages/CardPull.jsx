@@ -18,7 +18,7 @@ const CardPull = () => {
     };
   });
   const [currentQuestion, setCurrentQuestion] = useState(0);
-  const [score, setScore] = useState(0);
+  const [score, setScore] = useState(100);
   const [answers, setAnswers] = useState([]);
   const [showScore, setShowScore] = useState(false);
 
@@ -27,8 +27,6 @@ const CardPull = () => {
     updatedAnswers[questionIndex] = selectedAnswer;
     setAnswers(updatedAnswers);
   };
-
-
   const quizLoop = () => {
     setCurrentQuestion(0);
     setAnswers([]);
@@ -37,20 +35,21 @@ const CardPull = () => {
 
   // code written by Theodore John.S (Creating a Dynamic Quiz App in React.js Guide)
   const handleNextQuestion = () => {
-    if (
-      answers[currentQuestion] === QuizQuestions[currentQuestion].answer ||
-      JSON.stringify(answers[currentQuestion]) === JSON.stringify(QuizQuestions[currentQuestion].answer)
-    ) {
+    const correct = answers[currentQuestion] === QuizQuestions[currentQuestion].answer ||
+      JSON.stringify(answers[currentQuestion]) === JSON.stringify(QuizQuestions[currentQuestion].answer);
+
+    if (correct) {
       setScore(score + 10);
     }
-    if (currentQuestion + 1 < QuizQuestions.length) {
-      setCurrentQuestion(currentQuestion + 1);
+
+    const nextQuestionIndex = currentQuestion + 1;
+    if (nextQuestionIndex < QuizQuestions.length) {
+      setCurrentQuestion(nextQuestionIndex);
     } else {
       setShowScore(true);
+      setTimeout(quizLoop, 1000);
     }
   };
-
-
   const pullRandomCard = () => {
     // Create a weighted array where card types are repeated based on their weights
     // More common cards will be repeated more so the user has a higher chance of drawing them.
