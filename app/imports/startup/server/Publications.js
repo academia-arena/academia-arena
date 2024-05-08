@@ -5,6 +5,7 @@ import { TCards } from '../../api/tcard/TCard';
 import { AllCards } from '../../api/allcard/AllCard';
 import { WishlistCard } from '../../api/wishcard/WishlistCard';
 import { CatalogCard } from '../../api/cardcatalog/CatalogCard';
+import { Offers } from '../../api/trade/Offer';
 
 // User-level publication.
 // If logged in, then publish documents owned by this user. Otherwise, publish nothing.
@@ -30,13 +31,11 @@ Meteor.publish(TCards.userPublicationName, function () {
   return this.ready();
 });
 
-Meteor.publish(AllCards.userAllPublicationName, function () {
-  return AllCards.collection.find();
-
-Meteor.publish(AllCards.userPublicationName, function () {
+// Publish offers to users
+Meteor.publish(Offers.userPublicationName, function () {
   if (this.userId) {
     const username = Meteor.users.findOne(this.userId).username;
-    return AllCards.collection.find({ owner: username });
+    return Offers.collection.find({ owner: username });
   }
   return this.ready();
 });
@@ -46,6 +45,13 @@ Meteor.publish(AllCards.userPublicationName, function () {
 Meteor.publish(Stuffs.adminPublicationName, function () {
   if (this.userId && Roles.userIsInRole(this.userId, 'admin')) {
     return Stuffs.collection.find();
+  }
+  return this.ready();
+});
+
+Meteor.publish(Offers.adminPublicationName, function () {
+  if (this.userId && Roles.userIsInRole(this.userId, 'admin')) {
+    return Offers.collection.find();
   }
   return this.ready();
 });

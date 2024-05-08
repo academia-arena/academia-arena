@@ -30,16 +30,11 @@ class AllCardsCollection {
       cardName: String,
       image: String,
       owner: String,
-      isListedForTrade: {
-        type: String,
-        defaultValue: 'No',
-        allowedValues: ['No', 'Yes'],
-      },
     });
     // Attach the schema to the collection, so all attempts to insert a document are checked against schema.
     this.collection.attachSchema(this.schema);
     // Define names for publications and subscriptions
-    this.userAllPublicationName = `${this.name}.publication.user`;
+    this.userPublicationName = `${this.name}.publication.user`;
     this.adminPublicationName = `${this.name}.publication.admin`;
   }
 }
