@@ -1,37 +1,43 @@
 import React, { useState } from 'react';
 import { Meteor } from 'meteor/meteor';
+import { useTracker } from 'meteor/react-meteor-data';
 import { Col, Container, Row, Button } from 'react-bootstrap';
-import _ from 'underscore';
 import QuizQuestions from '../components/QuizQuestions';
 import PointsBar from '../components/PointsBar';
 import PullButton from '../components/PullButton';
 import { AllCards } from '../../api/allcard/AllCard';
-// import { TCards } from '../../api/tcard/TCard';
-// import CardPullPopUpBox from '../components/CardPullPopUpBox';
+import { TCards } from '../../api/tcard/TCard';
 
 const CardPull = () => {
-  // code written by Theodore John.S (Creating a Dynamic Quiz App in React.js Guide)
+  const { ready, cards, currentUser } = useTracker(() => {
+    const subscription = Meteor.subscribe(AllCards.userAllPublicationName);
+    return {
+      cards: AllCards.collection.find().fetch(),
+      ready: subscription.ready(),
+      currentUser: Meteor.user(),
+    };
+  });
   const [currentQuestion, setCurrentQuestion] = useState(0);
   const [score, setScore] = useState(0);
   const [answers, setAnswers] = useState([]);
   const [showScore, setShowScore] = useState(false);
+
   const handleAnswerSelection = (questionIndex, selectedAnswer) => {
     const updatedAnswers = [...answers];
     updatedAnswers[questionIndex] = selectedAnswer;
     setAnswers(updatedAnswers);
   };
-  // automatically resets the Quiz once the user reaches the end
+
   const quizLoop = () => {
     setCurrentQuestion(0);
     setAnswers([]);
     setShowScore(false);
   };
-  // code adapted from Theodore John.S (Creating a Dynamic Quiz App in React.js Guide)
+
   const handleNextQuestion = () => {
     if (
       answers[currentQuestion] === QuizQuestions[currentQuestion].answer ||
-      JSON.stringify(answers[currentQuestion]) ===
-      JSON.stringify(QuizQuestions[currentQuestion].answer)
+      JSON.stringify(answers[currentQuestion]) === JSON.stringify(QuizQuestions[currentQuestion].answer)
     ) {
       setScore(score + 10);
     }
@@ -46,38 +52,69 @@ const CardPull = () => {
       }, 1000);
     }
   };
-  // when points reach 100, a random card from AllCards is selected and added into the TCards (users
+
   const pullRandomCard = () => {
-    const allCards = AllCards.collection.find().fetch();
-    console.log(allCards);
-    if (allCards.length === 0) {
-      throw new Meteor.Error('no-cards', 'No cards found.');
-    }
-    const randomCard = _.sample(allCards);
-    // console.log(randomCard);
-    // Assuming TCards is another collection, replace it with your collection
-    // TCards.insert(randomCard);
-    // generate a pop-up box that lets users know that their card is in collection
-    // CardPullPopUpBox();
-    // reset Score
-    // setScore(0);
+    // Create a weighted array where card types are repeated based on their weights
+    // More common cards will be repeated more so the user has a higher chance of drawing them.
+    const weightedCards = [];
+    cards.forEach(card => {
+      if (card.type === 'Common') {
+        const repeatCount = 10;
+        for (let i = 0; i < repeatCount; i++) {
+          weightedCards.push(card);
+        }
+      } else if (card.type === 'Rare') {
+        const repeatCount = 3;
+        for (let i = 0; i < repeatCount; i++) {
+          weightedCards.push(card);
+        }
+      } else if (card.type === 'Legendary') {
+        const repeatCount = 1;
+        for (let i = 0; i < repeatCount; i++) {
+          weightedCards.push(card);
+        }
+      }
+    });
+
+    // Select a random card from the weighted array
+    const randomIndex = Math.floor(Math.random() * weightedCards.length);
+    const pulledCard = weightedCards[randomIndex];
+
+    const copiedCard = {
+      ...pulledCard,
+      owner: currentUser.username,
+    };
+
+    TCards.collection.insert(copiedCard, (error, result) => {
+      if (error) {
+        console.log('Error inserting card:', error);
+        alert('An error occurred while adding the card to your collection.');
+      } else {
+        console.log('Card added to TCards collection:', result);
+        setScore(0); // Reset score after pulling a card
+        alert('A new card has been added to your collection!');
+      }
+    });
   };
-  // code adapted from Theodore John.S (Creating a Dynamic Quiz App in React.js Guide)
-  return (
+
+  return ready ? (
     <Col id="pull-page" className="card-pull-page">
-      <div id="card-pull-title" className="partition-bar h1">Card Pull Game</div>
+      <Container fluid className="py-3" id="title-block">
+        <Container>
+          <h2 className="pt-2 text-center" id="card-pull-title">Card Pull Game</h2>
+        </Container>
+      </Container>
       <Container>
         <Row id="card-pull-row">
           <div id="about-quiz" className="justify-content-center">Answer questions to gather points. Once you reach 100pts, pull a card!</div>
           <Row className="align-content-center">
             <Col>
-              <div id="quiz-points"> Total Pts:</div>
+              <div id="quiz-points" className="pe-2"> Total Pts:</div>
             </Col>
             <Col>
-              <PointsBar bgcolor="#fca4cd" completed={score} />
+              <PointsBar bgcolor="#fca4cd" id="points-bar" completed={score} />
             </Col>
             <Col size={4}>
-              {/* eslint-disable-next-line react/jsx-no-bind */}
               <PullButton score={score} resetScore={pullRandomCard} />
             </Col>
           </Row>
@@ -95,28 +132,37 @@ const CardPull = () => {
                       <ul>
                         {QuizQuestions[currentQuestion].options.map((option, index) => (
                           <li key={index}>
-                            <input
-                              type="radio"
-                              name={`question${currentQuestion}`}
-                              value={option}
-                              onChange={() => handleAnswerSelection(currentQuestion, option)}
-                            />
-                            {option}
+                            <label htmlFor={`radio-${currentQuestion}-${index}`} className="radio-label">
+                              <input
+                                type="radio"
+                                id={`radio-${currentQuestion}-${index}`}
+                                name={`question${currentQuestion}`}
+                                value={option}
+                                onChange={() => handleAnswerSelection(currentQuestion, option)}
+                                checked={answers[currentQuestion] === option}
+                              />
+                              {option}
+                            </label>
                           </li>
                         ))}
                       </ul>
                     )}
+
                     {QuizQuestions[currentQuestion].type === 'checkbox' && (
                       <ul>
                         {QuizQuestions[currentQuestion].options.map((option, index) => (
                           <li key={index}>
                             <input
                               type="checkbox"
+                              id={`checkbox-${currentQuestion}-${index}`}
                               name={`question${currentQuestion}`}
                               value={option}
                               onChange={() => handleAnswerSelection(currentQuestion, option)}
+                              checked={answers[currentQuestion] && answers[currentQuestion].includes(option)}
                             />
-                            {option}
+                            <label htmlFor={`checkbox-${currentQuestion}-${index}`}>
+                              {option}
+                            </label>
                           </li>
                         ))}
                       </ul>
@@ -144,7 +190,7 @@ const CardPull = () => {
       </Container>
       <div className="partition-bar" />
     </Col>
-  );
+  ) : null;
 };
 
 export default CardPull;
