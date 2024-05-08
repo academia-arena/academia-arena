@@ -5,7 +5,7 @@ const PointsBar = (props) => {
   // eslint-disable-next-line react/prop-types
   const { bgcolor, completed } = props;
   const containerStyles = {
-    height: 20,
+    height: 25,
     width: '100%',
     backgroundColor: '#e0e0de',
     borderRadius: 50,
@@ -22,9 +22,10 @@ const PointsBar = (props) => {
   };
 
   const labelStyles = {
-    padding: 5,
     color: 'white',
     fontWeight: 'bold',
+    marginRight: 20,
+    marginLeft: 20,
   };
 
   return (

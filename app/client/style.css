@@ -556,13 +556,6 @@ p {
   width: 100px;
 }
 
-#card-pull-title {
-  font-family: "Pixelify Sans", sans-serif;
-  font-size: xxx-large;
-  color: #95BEA9;
-  padding: 10px;
-}
-
 .card-pull-page {
   background-color: #95BEA9;
 }
@@ -571,15 +564,25 @@ p {
   margin-top: 50px;
 }
 
-#about-quiz, #quiz-points {
+#about-quiz {
   background-color: #FAF3E2;
-  color: #95BEA9;
+  color: black;
   font-family: "Pixelify Sans", sans-serif;
   font-size: x-large;
   border-radius: 15px;
   padding: 10px;
   margin: 10px;
   text-align: center;
+}
+
+#quiz-points {
+  background-color: #FAF3E2;
+  color: black;
+  font-family: "Pixelify Sans", sans-serif;
+  font-size: x-large;
+  border-radius: 15px;
+  border: 5px solid #FAF3E2;
+  margin-top: 10px;
 }
 
 .quiz {
@@ -628,13 +631,13 @@ ul li {
   border-radius: 15px;
   display: flex;
   padding: 5px;
-  border: 5px solid #F0FFF0;
+  margin: 10px;
   cursor: pointer;
   font-family: "Pixelify Sans", sans-serif;
   margin-left: -15px;
 }
 
-#pull-button {
+#pull-button, #no-pull-button {
   width: 100%;
   padding: 5px;
   background-color: #95BEA9;
@@ -644,6 +647,7 @@ ul li {
   font-family: "Pixelify Sans", sans-serif;
   font-size: x-large !important;
   margin-left: 50px !important;
+  margin-top: 10px;
   text-align: center;
 }
 
@@ -652,6 +656,7 @@ ul li {
   background-color: #95BEA9 !important;
   border: 5px solid #F0FFF0 !important;
   border-radius: 15px !important;
+  margin-top: 20px;
 }
 
 ul li:hover,
@@ -672,8 +677,26 @@ ul li:active {
   margin-right: 5px;
 }
 
+label {
+  display: block;
+  padding: 8px;
+  margin: 2px;
+  cursor: pointer;
+}
+
+input[type="radio"], input[type="checkbox"] {
+  margin-right: 10px;
+}
+
+.radio-label,
+.checkbox-label {
+  display: block;
+  cursor: pointer; /* Add cursor pointer to indicate it's clickable */
+  padding: 5px;
+  width: inherit;
+}
+
 #market-table,
 #my-table {
   font-family: "Pixelify Sans";
 }
-
