@@ -10,15 +10,12 @@ import { TCards } from '../../api/tcard/TCard';
 /* Renders a table containing all of the Stuff documents. Use <CommonCard> to render each row. */
 const AdminPage = () => {
   // useTracker connects Meteor data to React components. https://guide.meteor.com/react.html#using-withTracker
-  const { tcards, ready } = useTracker(() => {
+  const { ready } = useTracker(() => {
     // Get access to Stuff documents.
     const subscription = Meteor.subscribe(TCards.adminPublicationName);
     // Determine if the subscription is ready
     const rdy = subscription.ready();
-    // Get the Stuff documents
-    const cardItems = TCards.collection.find({}).fetch();
     return {
-      tcards: cardItems,
       ready: rdy,
     };
   }, []);
