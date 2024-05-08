@@ -584,3 +584,54 @@ ul li:active {
 #quiz-button svg {
   margin-right: 5px;
 }
+
+#exclamationCircle {
+  font-size: 50px;
+  color: red;
+}
+
+#edit-button {
+  color: #759985;
+  text-decoration: none;
+  background-color: #faf3e2;
+  border-radius: 1.5vh;
+  width: 300px;
+  font-size: 20px;
+  position: relative;
+  bottom: 4px;
+  border-style: solid;
+  border-width: 5px;
+  border-color: #759985;
+  transition: 0.05s;
+}
+
+#delete-button {
+  color: orangered;
+  text-decoration: none;
+  background-color: #faf3e2;
+  border-radius: 1.5vh;
+  width: 300px;
+  font-size: 20px;
+  position: relative;
+  bottom: 4px;
+  border-style: solid;
+  border-width: 5px;
+  border-color: #FF6666;
+  transition: 0.05s;
+}
+
+#cancel-button {
+  color: gray;
+  border-top-left-radius: 0;
+  border-top-color: lightgray;
+  border-right-color: lightgray;
+  height: 45px;
+}
+
+#delete-button-2 {
+  color: red;
+  border-top-right-radius: 0;
+  border-top-color: lightgray;
+  border-left-color: lightgray;
+  height: 45px;
+}

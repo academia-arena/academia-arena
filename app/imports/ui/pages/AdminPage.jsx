@@ -5,7 +5,6 @@ import { useTracker } from 'meteor/react-meteor-data';
 import { Col, Container, Nav, Table } from 'react-bootstrap';
 import { NavLink } from 'react-router-dom';
 import LoadingSpinner from '../components/LoadingSpinner';
-import CardItem from '../components/CardItem';
 import { TCards } from '../../api/tcard/TCard';
 
 /* Renders a table containing all of the Stuff documents. Use <CommonCard> to render each row. */
@@ -55,9 +54,6 @@ const AdminPage = () => {
                   <th>Edit</th>
                 </tr>
               </thead>
-              <tbody>
-                {tcards.map((tcard) => <CardItem key={tcard._id} card={tcard} />)}
-              </tbody>
             </Table>
           </Container>
         </Col>
