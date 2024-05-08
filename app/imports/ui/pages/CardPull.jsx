@@ -21,7 +21,7 @@ const CardPull = () => {
   console.log('All Cards length: ', AllCards.collection.find().count());
 
   const [currentQuestion, setCurrentQuestion] = useState(0);
-  const [score, setScore] = useState(100);
+  const [score, setScore] = useState(0);
   const [answers, setAnswers] = useState([]);
   const [showScore, setShowScore] = useState(false);
 
