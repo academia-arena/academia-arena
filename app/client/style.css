@@ -430,7 +430,7 @@ p {
 #CardsTitle1 {
   background-color: #C7C7C7;
   border-radius: 25px;
-  height: 60px;
+  height: 65px;
   width: 335px;
   margin-top: 10px;
   padding-top: 5px;
@@ -442,7 +442,7 @@ p {
 #CardsTitle2 {
   background-color: #FFFFCC;
   border-radius: 25px;
-  height: 60px;
+  height: 65px;
   width: 335px;
   margin-top: 10px;
   padding-top: 5px;
@@ -454,7 +454,7 @@ p {
 #CardsTitle3 {
   background-color: #CCFFCC;
   border-radius: 25px;
-  height: 60px;
+  height: 65px;
   width: 335px;
   margin-top: 10px;
   padding-top: 5px;
@@ -587,7 +587,7 @@ p {
 
 .quiz {
   background-color: #FAF3E2;
-  color: #95BEA9;
+  color: black;
   width: 800px;
   font-family: "Pixelify Sans", sans-serif;
   font-size: x-large;
@@ -625,7 +625,7 @@ p {
 ul li {
   width: 100%;
   font-size: 16px;
-  color: #ffffff;
+  color: black;
   cursor: pointer;
   background-color: #95BEA9;
   border-radius: 15px;
@@ -699,4 +699,67 @@ input[type="radio"], input[type="checkbox"] {
 #market-table,
 #my-table {
   font-family: "Pixelify Sans";
+}
+
+#exclamationCircle {
+  font-size: 50px;
+  color: red;
+}
+
+#edit-button {
+  color: #759985;
+  text-decoration: none;
+  background-color: #faf3e2;
+  border-radius: 1.5vh;
+  width: 300px;
+  font-size: 20px;
+  position: relative;
+  bottom: 4px;
+  border-style: solid;
+  border-width: 5px;
+  border-color: #759985;
+  transition: 0.05s;
+}
+
+#delete-button {
+  color: orangered;
+  text-decoration: none;
+  background-color: #faf3e2;
+  border-radius: 1.5vh;
+  width: 300px;
+  font-size: 20px;
+  position: relative;
+  bottom: 4px;
+  border-style: solid;
+  border-width: 5px;
+  border-color: #FF6666;
+  transition: 0.05s;
+}
+
+#cancel-button {
+  color: gray;
+  border-top-left-radius: 0;
+  border-top-color: lightgray;
+  border-right-color: lightgray;
+  height: 45px;
+}
+
+#delete-button-2 {
+  color: red;
+  border-top-right-radius: 0;
+  border-top-color: lightgray;
+  border-left-color: lightgray;
+  height: 45px;
+}
+
+#AccountTableTitle {
+  background-color: #C0C0C0 ;
+}
+
+table tr td{
+  background-color: #E3F3EB !important;
+}
+
+.table {
+  --bs-table-hover-bg: #9CC9B2 !important;
 }

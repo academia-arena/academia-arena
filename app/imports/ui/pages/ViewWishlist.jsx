@@ -63,7 +63,7 @@ const ViewCardsAdmin = () => {
       <Container fluid className="py-3" id="title-block">
         <Container>
           <Nav variant="pills">
-            <Col className="text-center"><h2>Wishlist</h2></Col>
+            <Col><h2>Wishlist</h2></Col>
           </Nav>
         </Container>
       </Container>
@@ -102,7 +102,7 @@ const ViewCardsAdmin = () => {
       <Container fluid className="py-3" id="title-block">
         <Container>
           <Nav variant="pills">
-            <Col className="text-center"><h2>Card Catalog</h2></Col>
+            <Col><h2>Card Catalog</h2></Col>
           </Nav>
         </Container>
       </Container>

@@ -1,5 +1,5 @@
 import React from 'react';
-import { Card, Col, Container, Nav, Row } from 'react-bootstrap';
+import { Card, Col, Container, Nav, Navbar, Row } from 'react-bootstrap';
 import { AutoForm, ErrorsField, LongTextField, NumField, SelectField, SubmitField, TextField } from 'uniforms-bootstrap5';
 import swal from 'sweetalert';
 import { Meteor } from 'meteor/meteor';
@@ -7,7 +7,7 @@ import SimpleSchema2Bridge from 'uniforms-bridge-simple-schema-2';
 import SimpleSchema from 'simpl-schema';
 import { Roles } from 'meteor/alanning:roles';
 import { NavLink } from 'react-router-dom';
-import { TCards } from '../../api/tcard/TCard';
+import { AllCards } from '../../api/allcard/AllCard';
 
 // Create a schema to specify the structure of the data to appear in the form.
 const formSchema = new SimpleSchema({
@@ -39,7 +39,7 @@ const AddCard = () => {
   const submit = (data, formRef) => {
     const { firstName, lastName, course, power, type, role, title, description, funFact, cardName, image } = data;
     const owner = Meteor.user().username;
-    TCards.collection.insert(
+    AllCards.collection.insert(
       { firstName, lastName, course, power, type, role, title, description, funFact, cardName, image, owner },
       (error) => {
         if (error) {
@@ -61,11 +61,16 @@ const AddCard = () => {
           <Container fluid className="py-3" id="title-block">
             <Container>
               <Nav variant="pills">
-                <Col><h2>Admin</h2></Col>
-                <Nav.Item><Nav.Link style={{ color: 'black' }} id="list-card-nav" as={NavLink} to="/admin" key="admin">View Cards</Nav.Link></Nav.Item>
-                <Nav.Item><Nav.Link style={{ color: 'black' }} id="add-card-nav" as={NavLink} to="/add" key="add">Add Card</Nav.Link></Nav.Item>
-                <Nav.Item><Nav.Link style={{ color: 'black' }} id="manage-accounts-admin-nav" as={NavLink} to="/adminmanage" key="adminmanage">Manage Accounts</Nav.Link></Nav.Item>
-
+                <Col><h2 className="my-2">Admin</h2></Col>
+                <Navbar expand="lg">
+                  <Navbar.Toggle aria-controls="basic-navbar-nav" />
+                  <Navbar.Collapse id="basic-navbar-nav">
+                    <Nav.Item><Nav.Link style={{ color: 'black' }} id="list-card-nav" as={NavLink} to="/admin" key="admin">View Cards</Nav.Link></Nav.Item>
+                    <Nav.Item><Nav.Link style={{ color: 'black' }} id="add-card-nav" as={NavLink} to="/add" key="add">Add Card</Nav.Link></Nav.Item>
+                    <Nav.Item><Nav.Link style={{ color: 'black' }} id="manage-accounts-admin-nav" as={NavLink} to="/adminmanage" key="adminmanage">Accounts</Nav.Link></Nav.Item>
+                    <Nav.Item><Nav.Link style={{ color: 'black' }} id="settings-admin-nav" as={NavLink} to="/settings" key="settings">Settings</Nav.Link></Nav.Item>
+                  </Navbar.Collapse>
+                </Navbar>
               </Nav>
             </Container>
           </Container>

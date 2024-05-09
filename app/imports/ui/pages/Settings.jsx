@@ -9,7 +9,7 @@ import LoadingSpinner from '../components/LoadingSpinner';
 // import RareCard from '../components/Rare-Card';
 // import LegendaryCard from '../components/Legendary-Card';
 import { AllCards } from '../../api/allcard/AllCard';
-import ThisCard from '../components/Card';
+import AdminCard from '../components/AdminCard';
 
 const getFilteredCards = (query, tcards) => {
   if (!query) {
@@ -18,7 +18,7 @@ const getFilteredCards = (query, tcards) => {
   return tcards.filter((card) => card.firstName.includes(query) || card.firstName.toLowerCase().includes(query) || card.lastName.includes(query) || card.lastName.toLowerCase().includes(query));
 };
 /* Renders a table containing all of the Stuff documents. Use <CardItem> to render each row. */
-const ViewCardsAdmin = () => {
+const Settings = () => {
   // useTracker connects Meteor data to React components. https://guide.meteor.com/react.html#using-withTracker
   const [query, setQuery] = useState('');
   const { ready, allcards } = useTracker(() => {
@@ -79,9 +79,9 @@ const ViewCardsAdmin = () => {
             <Row style={{ paddingLeft: '6vh' }} className="py-4 gx-2 justify-content-center">
               {
                 filteredCards.map((tcard) => {
-                  if (tcard.type === 'Common') return <Col><ThisCard key={tcard._id} card={tcard} background={commonBackground} title={commonTitle} image={commonImage} text={commonText} /></Col>;
-                  if (tcard.type === 'Rare') return <Col><ThisCard key={tcard._id} card={tcard} background={rareBackground} title={rareTitle} image={rareImage} text={rareText} /></Col>;
-                  return <Col><ThisCard key={tcard._id} card={tcard} background={legendaryBackground} title={legendaryTitle} image={legendaryImage} text={legendaryText} /></Col>;
+                  if (tcard.type === 'Common') return <Col><AdminCard key={tcard._id} card={tcard} background={commonBackground} title={commonTitle} image={commonImage} text={commonText} /></Col>;
+                  if (tcard.type === 'Rare') return <Col><AdminCard key={tcard._id} card={tcard} background={rareBackground} title={rareTitle} image={rareImage} text={rareText} /></Col>;
+                  return <Col><AdminCard key={tcard._id} card={tcard} background={legendaryBackground} title={legendaryTitle} image={legendaryImage} text={legendaryText} /></Col>;
                 })
               }
             </Row>
@@ -113,4 +113,4 @@ const ViewCardsAdmin = () => {
   ) : <LoadingSpinner />);
 };
 
-export default ViewCardsAdmin;
+export default Settings;

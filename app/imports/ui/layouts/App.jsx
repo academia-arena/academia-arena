@@ -23,6 +23,8 @@ import ViewWishlist from '../pages/ViewWishlist';
 import CardPull from '../pages/CardPull';
 import EditCard from '../pages/EditCard';
 import ManageAccountsAdmin from '../pages/ManageAccountsAdmin';
+import Settings from '../pages/Settings';
+import AdminAsking from '../pages/AdminAsking';
 
 /** Top-level layout component for this application. Called in imports/startup/client/startup.jsx. */
 const App = () => {
@@ -51,13 +53,15 @@ const App = () => {
           <Route path="/landing" element={<ProtectedRoute><Landing /></ProtectedRoute>} />
           <Route path="/list" element={<ProtectedRoute><ListTCard /></ProtectedRoute>} />
           <Route path="/wishlist" element={<ProtectedRoute><ViewWishlist /></ProtectedRoute>} />
-          <Route path="/add" element={<ProtectedRoute><AddCard /></ProtectedRoute>} />
+          <Route path="/add" element={<AdminProtectedRoute ready={ready}><AddCard /></AdminProtectedRoute>} />
           <Route path="/trade" element={<ProtectedRoute><ListPublicTrade /></ProtectedRoute>} />
           <Route path="/listtrade/:_id" element={<ProtectedRoute><ListForTrade /></ProtectedRoute>} />
           <Route path="/pull" element={<ProtectedRoute><CardPull /></ProtectedRoute>} />
           <Route path="/edit/:_id" element={<ProtectedRoute><EditCard /></ProtectedRoute>} />
           <Route path="/admin" element={<AdminProtectedRoute ready={ready}><ViewCardsAdmin /></AdminProtectedRoute>} />
           <Route path="/adminmanage" element={<AdminProtectedRoute ready={ready}><ManageAccountsAdmin /></AdminProtectedRoute>} />
+          <Route path="/settings" element={<AdminProtectedRoute ready={ready}><Settings /></AdminProtectedRoute>} />
+          <Route path="/adminasking/:_id" element={<AdminProtectedRoute ready={ready}><AdminAsking /></AdminProtectedRoute>} />
           <Route path="/each/:_id" element={<AdminProtectedRoute ready={ready}><ViewCardsAdmin /></AdminProtectedRoute>} />
           <Route path="/notauthorized" element={<NotAuthorized />} />
           <Route path="*" element={<NotFound />} />

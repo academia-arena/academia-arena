@@ -1,6 +1,6 @@
 import React from 'react';
 import { Roles } from 'meteor/alanning:roles';
-import { Col, Container, Nav, Row, Image } from 'react-bootstrap';
+import { Col, Container, Nav, Row, Image, Navbar } from 'react-bootstrap';
 import { NavLink } from 'react-router-dom';
 import { Meteor } from 'meteor/meteor';
 
@@ -12,10 +12,16 @@ const HomePage = () => (
         <Container fluid className="py-3" id="title-block">
           <Container>
             <Nav variant="pills">
-              <Col><h2>Admin</h2></Col>
-              <Nav.Item><Nav.Link style={{ color: 'black' }} id="list-card-nav" as={NavLink} to="/admin" key="admin">View Cards</Nav.Link></Nav.Item>
-              <Nav.Item><Nav.Link style={{ color: 'black' }} id="add-card-nav" as={NavLink} to="/add" key="add">Add Card</Nav.Link></Nav.Item>
-              <Nav.Item><Nav.Link style={{ color: 'black' }} id="manage-accounts-admin-nav" as={NavLink} to="/adminmanage" key="adminmanage">Manage Accounts</Nav.Link></Nav.Item>
+              <Col><h2 className="my-2">Admin</h2></Col>
+              <Navbar expand="lg">
+                <Navbar.Toggle aria-controls="basic-navbar-nav" />
+                <Navbar.Collapse id="basic-navbar-nav">
+                  <Nav.Item><Nav.Link style={{ color: 'black' }} id="list-card-nav" as={NavLink} to="/admin" key="admin">View Cards</Nav.Link></Nav.Item>
+                  <Nav.Item><Nav.Link style={{ color: 'black' }} id="add-card-nav" as={NavLink} to="/add" key="add">Add Card</Nav.Link></Nav.Item>
+                  <Nav.Item><Nav.Link style={{ color: 'black' }} id="manage-accounts-admin-nav" as={NavLink} to="/adminmanage" key="adminmanage">Accounts</Nav.Link></Nav.Item>
+                  <Nav.Item><Nav.Link style={{ color: 'black' }} id="settings-admin-nav" as={NavLink} to="/settings" key="settings">Settings</Nav.Link></Nav.Item>
+                </Navbar.Collapse>
+              </Navbar>
             </Nav>
           </Container>
         </Container>

@@ -5,21 +5,17 @@ import { useTracker } from 'meteor/react-meteor-data';
 import { Col, Container, Nav, Table } from 'react-bootstrap';
 import { NavLink } from 'react-router-dom';
 import LoadingSpinner from '../components/LoadingSpinner';
-import CardItem from '../components/CardItem';
 import { TCards } from '../../api/tcard/TCard';
 
 /* Renders a table containing all of the Stuff documents. Use <CommonCard> to render each row. */
 const AdminPage = () => {
   // useTracker connects Meteor data to React components. https://guide.meteor.com/react.html#using-withTracker
-  const { tcards, ready } = useTracker(() => {
+  const { ready } = useTracker(() => {
     // Get access to Stuff documents.
     const subscription = Meteor.subscribe(TCards.adminPublicationName);
     // Determine if the subscription is ready
     const rdy = subscription.ready();
-    // Get the Stuff documents
-    const cardItems = TCards.collection.find({}).fetch();
     return {
-      tcards: cardItems,
       ready: rdy,
     };
   }, []);
@@ -55,9 +51,6 @@ const AdminPage = () => {
                   <th>Edit</th>
                 </tr>
               </thead>
-              <tbody>
-                {tcards.map((tcard) => <CardItem key={tcard._id} card={tcard} />)}
-              </tbody>
             </Table>
           </Container>
         </Col>

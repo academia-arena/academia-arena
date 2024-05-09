@@ -6,7 +6,7 @@ const QuizQuestions = [
     answer: '<!-- Comment /—>',
   },
   {
-    question: 'What is 200 in Binary?',
+    question: 'What 200 in Binary?',
     type: 'input',
     answer: '11001000',
   },

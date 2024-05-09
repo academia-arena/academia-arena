@@ -21,36 +21,48 @@ const CardPull = () => {
   const [score, setScore] = useState(0);
   const [answers, setAnswers] = useState([]);
   const [showScore, setShowScore] = useState(false);
+  const [errorMessage, setErrorMessage] = useState('');
 
   const handleAnswerSelection = (questionIndex, selectedAnswer) => {
     const updatedAnswers = [...answers];
     updatedAnswers[questionIndex] = selectedAnswer;
     setAnswers(updatedAnswers);
+    setErrorMessage(''); // Clear error message when a new answer is selected
   };
+
   const quizLoop = () => {
     setCurrentQuestion(0);
     setAnswers([]);
     setShowScore(false);
+    setErrorMessage(''); // Ensure the error message is cleared at the start of a new quiz
   };
 
-  // code written by Theodore John.S (Creating a Dynamic Quiz App in React.js Guide)
   const handleNextQuestion = () => {
-    const correct = answers[currentQuestion] === QuizQuestions[currentQuestion].answer ||
-      JSON.stringify(answers[currentQuestion]) === JSON.stringify(QuizQuestions[currentQuestion].answer);
+    const isCorrect = (
+      answers[currentQuestion] === QuizQuestions[currentQuestion].answer ||
+      JSON.stringify(answers[currentQuestion]) === JSON.stringify(QuizQuestions[currentQuestion].answer)
+    );
 
-    if (correct) {
-      setScore(score + 10);
+    if (isCorrect) {
+      setScore(prevScore => prevScore + 10);
+      setErrorMessage(''); // Clear message on correct answer
+    } else {
+      setErrorMessage('Incorrect! Please try again.');
     }
 
-    const nextQuestionIndex = currentQuestion + 1;
-    if (nextQuestionIndex < QuizQuestions.length) {
-      setCurrentQuestion(nextQuestionIndex);
+    if (currentQuestion + 1 < QuizQuestions.length) {
+      setCurrentQuestion(prevCurrent => prevCurrent + 1);
     } else {
       setShowScore(true);
-      setTimeout(quizLoop, 1000);
+      setTimeout(() => {
+        quizLoop();
+      }, 1000);
     }
   };
+
   const pullRandomCard = () => {
+    // Create a weighted array where card types are repeated based on their weights
+    // More common cards will be repeated more so the user has a higher chance of drawing them.
     const weightedCards = [];
     cards.forEach(card => {
       if (card.type === 'Common') {
@@ -71,6 +83,7 @@ const CardPull = () => {
       }
     });
 
+    // Select a random card from the weighted array
     const randomIndex = Math.floor(Math.random() * weightedCards.length);
     const pulledCard = weightedCards[randomIndex];
 
@@ -91,23 +104,20 @@ const CardPull = () => {
     });
   };
 
-  // code adapted from Theodore John.S (Creating a Dynamic Quiz App in React.js Guide)
   return ready ? (
     <Col id="pull-page" className="card-pull-page">
-      <Container fluid className="py-3" id="title-block">
-        <Container>
-          <h2 className="pt-2 text-center" id="card-pull-title">Card Pull Game</h2>
-        </Container>
+      <Container fluid className="py-3 text-center" id="title-block">
+        <h2 className="pt-2">Card Pull Game</h2>
       </Container>
       <Container>
         <Row id="card-pull-row">
           <div id="about-quiz" className="justify-content-center">Answer questions to gather points. Once you reach 100pts, pull a card!</div>
           <Row className="align-content-center">
             <Col>
-              <div id="quiz-points" className="pe-2"> Total Pts:</div>
+              <div id="quiz-points"> Total Pts:</div>
             </Col>
             <Col>
-              <PointsBar bgcolor="#fca4cd" id="points-bar" completed={score} />
+              <PointsBar bgcolor="#fca4cd" completed={score} />
             </Col>
             <Col size={4}>
               <PullButton score={score} resetScore={pullRandomCard} />
@@ -117,7 +127,7 @@ const CardPull = () => {
             <div className="quiz text-center">
               {showScore ? (
                 <div className="score-section">
-                  You scored {score} out of 100
+                  <h2>You scored {score} out of 100</h2>
                 </div>
               ) : (
                 <div>
@@ -142,22 +152,17 @@ const CardPull = () => {
                         ))}
                       </ul>
                     )}
-
                     {QuizQuestions[currentQuestion].type === 'checkbox' && (
                       <ul>
                         {QuizQuestions[currentQuestion].options.map((option, index) => (
                           <li key={index}>
-                            <label htmlFor={`checkbox-${currentQuestion}-${index}`} className="checkbox-label">
-                              <input
-                                type="checkbox"
-                                id={`checkbox-${currentQuestion}-${index}`}
-                                name={`question${currentQuestion}`}
-                                value={option}
-                                onChange={() => handleAnswerSelection(currentQuestion, option)}
-                                checked={answers[currentQuestion] && answers[currentQuestion].includes(option)}
-                              />
-                              {option}
-                            </label>
+                            <input
+                              type="checkbox"
+                              name={`question${currentQuestion}`}
+                              value={option}
+                              onChange={() => handleAnswerSelection(currentQuestion, option)}
+                            />
+                            {option}
                           </li>
                         ))}
                       </ul>
@@ -177,6 +182,7 @@ const CardPull = () => {
                     )}
                   </div>
                   <Button className="next-button" onClick={handleNextQuestion}>Next Question</Button>
+                  {errorMessage && <div style={{ color: 'red' }}>{errorMessage}</div>}
                 </div>
               )}
             </div>
