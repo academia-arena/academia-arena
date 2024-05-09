@@ -17,41 +17,45 @@ const CardPull = () => {
       currentUser: Meteor.user(),
     };
   });
-
-  console.log('All Cards length: ', AllCards.collection.find().count());
-
   const [currentQuestion, setCurrentQuestion] = useState(0);
   const [score, setScore] = useState(0);
   const [answers, setAnswers] = useState([]);
   const [showScore, setShowScore] = useState(false);
+  const [errorMessage, setErrorMessage] = useState('');
 
   const handleAnswerSelection = (questionIndex, selectedAnswer) => {
     const updatedAnswers = [...answers];
     updatedAnswers[questionIndex] = selectedAnswer;
     setAnswers(updatedAnswers);
+    setErrorMessage(''); // Clear error message when a new answer is selected
   };
 
   const quizLoop = () => {
     setCurrentQuestion(0);
     setAnswers([]);
     setShowScore(false);
+    setErrorMessage(''); // Ensure the error message is cleared at the start of a new quiz
   };
 
   const handleNextQuestion = () => {
-    if (
+    const isCorrect = (
       answers[currentQuestion] === QuizQuestions[currentQuestion].answer ||
       JSON.stringify(answers[currentQuestion]) === JSON.stringify(QuizQuestions[currentQuestion].answer)
-    ) {
-      setScore(score + 10);
+    );
+
+    if (isCorrect) {
+      setScore(prevScore => prevScore + 10);
+      setErrorMessage(''); // Clear message on correct answer
+    } else {
+      setErrorMessage('Incorrect! Please try again.');
     }
+
     if (currentQuestion + 1 < QuizQuestions.length) {
-      setCurrentQuestion(currentQuestion + 1);
+      setCurrentQuestion(prevCurrent => prevCurrent + 1);
     } else {
       setShowScore(true);
-      quizLoop(() => {
-        setCurrentQuestion(0);
-        setAnswers([]);
-        setShowScore(false);
+      setTimeout(() => {
+        quizLoop();
       }, 1000);
     }
   };
@@ -102,7 +106,9 @@ const CardPull = () => {
 
   return ready ? (
     <Col id="pull-page" className="card-pull-page">
-      <div id="card-pull-title" className="partition-bar h1">Card Pull Game</div>
+      <Container fluid className="py-3 text-center" id="title-block">
+        <h2 className="pt-2">Card Pull Game</h2>
+      </Container>
       <Container>
         <Row id="card-pull-row">
           <div id="about-quiz" className="justify-content-center">Answer questions to gather points. Once you reach 100pts, pull a card!</div>
@@ -176,6 +182,7 @@ const CardPull = () => {
                     )}
                   </div>
                   <Button className="next-button" onClick={handleNextQuestion}>Next Question</Button>
+                  {errorMessage && <div style={{ color: 'red' }}>{errorMessage}</div>}
                 </div>
               )}
             </div>
