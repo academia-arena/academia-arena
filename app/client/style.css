@@ -751,3 +751,15 @@ input[type="radio"], input[type="checkbox"] {
   border-left-color: lightgray;
   height: 45px;
 }
+
+#AccountTableTitle {
+  background-color: #C0C0C0 ;
+}
+
+table tr td{
+  background-color: #E3F3EB !important;
+}
+
+.table {
+  --bs-table-hover-bg: #9CC9B2 !important;
+}

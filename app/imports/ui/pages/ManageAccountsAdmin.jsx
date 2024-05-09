@@ -1,7 +1,7 @@
 import React from 'react';
 import { Meteor } from 'meteor/meteor';
 import { Roles } from 'meteor/alanning:roles';
-import { Button, Col, Container, Form, InputGroup, Nav, Navbar, Row, Table } from 'react-bootstrap';
+import { Col, Container, Nav, Navbar, Row, Table } from 'react-bootstrap';
 import { useTracker } from 'meteor/react-meteor-data';
 import { NavLink } from 'react-router-dom';
 import LoadingSpinner from '../components/LoadingSpinner';
@@ -46,27 +46,17 @@ const ManageAccountsAdmin = () => {
               </Nav>
             </Container>
           </Container>
-          <Container>
-            <Row className="justify-content-center">
-              <Row className="py-4" style={{ width: '400px' }}>
-                <InputGroup>
-                  <Form.Control id="SearchBar" placeholder="Name" />
-                  <Button variant="success">Search</Button>
-                </InputGroup>
-              </Row>
-            </Row>
-          </Container>
           <Col className="py-5">
             <Container>
               <Row>
                 <Col>
-                  <Table striped bordered hover>
+                  <Table variant="success" responsive striped bordered hover>
                     <thead>
                       <tr>
-                        <th>Username</th>
-                        <th>ID</th>
-                        <th>Email</th>
-                        <th>User Since</th>
+                        <th id="AccountTableTitle">Username</th>
+                        <th id="AccountTableTitle">ID</th>
+                        <th id="AccountTableTitle">Email</th>
+                        <th id="AccountTableTitle">User Since</th>
                       </tr>
                     </thead>
                     <tbody>

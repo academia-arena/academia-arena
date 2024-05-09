@@ -8,7 +8,7 @@ const AccountItem = ({ account }) => (
     <td>{account.username}</td>
     <td>{account._id}</td>
     <td>{account.emails.map((item) => (item.address))}</td>
-    <td>{account.createdAt.toDateString()}</td>
+    <td>{account.createdAt.toLocaleString()}</td>
   </tr>
 );
 
